@@ -1,0 +1,154 @@
+[
+
+  {
+    "terminalName": "ALDBROUGH",
+    "flowValue": 13.77089,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "AVONMOUTH",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "BACTON BBL",
+    "flowValue": 0.01373,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "BACTON IC",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "BACTON PERENCO",
+    "flowValue": 0.85969,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "BACTON SEAL",
+    "flowValue": 11.86542,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "BACTON SHELL",
+    "flowValue": 10.52,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "BARROW SOUTH",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "DYNEVOR ARMS",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "EASINGTON DIMLINGTON",
+    "flowValue": 5.56764,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "EASINGTON LANGELED",
+    "flowValue": 5.18677,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "EASINGTON ROUGH",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "GLENMAVIS",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "GRAIN NTS 1",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "GRAIN NTS 2",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "HILLTOP",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "HOLE HOUSE FARM",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "HOLFORD",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "HORNSEA",
+    "flowValue": 9.06157,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "MILFORD HAVEN - DRAGON",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "MILFORD HAVEN - SOUTH HOOK",
+    "flowValue": 46.15427,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "PARTINGTON",
+    "flowValue": 0.0,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "ST FERGUS MOBIL",
+    "flowValue": 17.71023,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "ST FERGUS NSMP",
+    "flowValue": 40.5182,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "ST FERGUS SHELL",
+    "flowValue": 30.52268,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "STUBLACH",
+    "flowValue": 4.79973,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "TEESSIDE BP",
+    "flowValue": 7.84765,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "TEESSIDE PX",
+    "flowValue": 9.04903,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "THEDDLETHORPE",
+    "flowValue": 0.6592,
+    "timestamp": "01/09/2016 20:58"
+  },
+  {
+    "terminalName": "Bacton",
+    "flowValue": 23.25884,
+    "timestamp": "01/09/2016 20:58"
+  }
+
+]
