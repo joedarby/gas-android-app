@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,7 +16,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ListView myListView = (ListView) findViewById(R.id.listView);
 
-        GasAdapter gasAdapter = new GasAdapter();
+        DataParser dataParser = new DataParser();
+        Terminal[] terminals = {};
+        try {
+            terminals = dataParser.getTerminals(getAssets().open("data.json"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        GasAdapter gasAdapter = new GasAdapter(terminals);
         myListView.setAdapter(gasAdapter);
 
         View header_view = LayoutInflater
@@ -24,7 +34,11 @@ public class MainActivity extends AppCompatActivity {
         myListView.addHeaderView(header_view);
 
 
+
+
     }
+
+
 
 
 }

@@ -16,7 +16,7 @@ public class TerminalDetailActivity extends AppCompatActivity {
         setContentView(R.layout.detail);
 
         TextView myText = (TextView) findViewById(R.id.terminal);
-        myText.setText(getIntent().getStringExtra("david"));
+        myText.setText(getIntent().getStringExtra("terminal name"));
     }
 }
 

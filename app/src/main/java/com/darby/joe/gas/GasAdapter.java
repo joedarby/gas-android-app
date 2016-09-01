@@ -14,11 +14,15 @@ import java.util.Random;
  */
 class GasAdapter extends BaseAdapter {
 
-    String[] terminal_names = {"Bacton", "Easington", "St.Fergus", "Theddlethorpe"};
+    Terminal[] terminals;
+
+    public GasAdapter(Terminal[] terminals) {
+        this.terminals = terminals;
+    }
 
     @Override
     public int getCount() {
-        return terminal_names.length;
+        return terminals.length;
     }
 
     @Override
@@ -41,17 +45,17 @@ class GasAdapter extends BaseAdapter {
             @Override
             public void onClick(View clickedView) {
                 Intent detail = new Intent(clickedView.getContext(), TerminalDetailActivity.class);
-                detail.putExtra("david", terminal_names[position]);
+                detail.putExtra("terminal name", terminals[position].terminalName);
                 clickedView.getContext().startActivity(detail);
             }
         });
 
         TextView terminal = (TextView) convertView.findViewById(R.id.terminal);
-        terminal.setText(terminal_names[position]);
+        terminal.setText(terminals[position].terminalName);
 
-        TextView flow_vol = (TextView) convertView.findViewById(R.id.flow_vol);
-        Random rand = new Random();
-        flow_vol.setText(String.valueOf(rand.nextInt(70)));
+        TextView flowVol = (TextView) convertView.findViewById(R.id.flow_vol);
+        String flowVolVal = String.valueOf(terminals[position].flowValue);
+        flowVol.setText(flowVolVal);
 
         return convertView;
     }
