@@ -15,10 +15,10 @@ public class DataParser {
 
     }
 
-    public Terminal[] getTerminals(InputStream inputStream) {
+    public TerminalGroup[] getTerminals(InputStream inputStream) {
 
         Gson gson = new Gson();
-        Terminal[] terminals = gson.fromJson(new InputStreamReader(inputStream), Terminal[].class);
+        TerminalGroup[] terminals = gson.fromJson(new InputStreamReader(inputStream), TerminalGroup[].class);
 
         return terminals;
 

@@ -1,154 +1,233 @@
 [
 
   {
-    "terminalName": "ALDBROUGH",
-    "flowValue": 13.77089,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "LNG STORAGE",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 0.0,
+    "terminals": [
+      {
+        "terminalName": "AVONMOUTH",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "DYNEVOR ARMS",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "GLENMAVIS",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "PARTINGTON",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "AVONMOUTH",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "ST FERGUS",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 87.6695,
+    "terminals": [
+      {
+        "terminalName": "ST FERGUS MOBIL",
+        "flowValue": 18.92699,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "ST FERGUS NSMP",
+        "flowValue": 38.75157,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "ST FERGUS SHELL",
+        "flowValue": 29.99094,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "BACTON BBL",
-    "flowValue": 0.01373,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "ISLE OF GRAIN",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 0.0,
+    "terminals": [
+      {
+        "terminalName": "GRAIN NTS 1",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "GRAIN NTS 2",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "BACTON IC",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "TEESSIDE",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 18.47379,
+    "terminals": [
+      {
+        "terminalName": "TEESSIDE BP",
+        "flowValue": 8.11627,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "TEESSIDE PX",
+        "flowValue": 10.35752,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "BACTON PERENCO",
-    "flowValue": 0.85969,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "MILFORD HAVEN",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 14.95262,
+    "terminals": [
+      {
+        "terminalName": "MILFORD HAVEN - DRAGON",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "MILFORD HAVEN - SOUTH HOOK",
+        "flowValue": 14.95262,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "BACTON SEAL",
-    "flowValue": 11.86542,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "THEDDLETHORPE",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 0.50099,
+    "terminals": [
+      {
+        "terminalName": "THEDDLETHORPE",
+        "flowValue": 0.50099,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "BACTON SHELL",
-    "flowValue": 10.52,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "BARROW SOUTH",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 0.0,
+    "terminals": [
+      {
+        "terminalName": "BARROW SOUTH",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "BARROW SOUTH",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "MEDIUM RANGE STORAGE",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 17.778950000000002,
+    "terminals": [
+      {
+        "terminalName": "ALDBROUGH",
+        "flowValue": 4.10964,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "HILLTOP",
+        "flowValue": 5.41936,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "HOLE HOUSE FARM",
+        "flowValue": 4.90822,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "HOLFORD",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "HORNSEA",
+        "flowValue": 3.34173,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "STUBLACH",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "DYNEVOR ARMS",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "EASINGTON",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 19.66926,
+    "terminals": [
+      {
+        "terminalName": "EASINGTON DIMLINGTON",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "EASINGTON LANGELED",
+        "flowValue": 19.66926,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "EASINGTON DIMLINGTON",
-    "flowValue": 5.56764,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "BACTON IP",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 0.00824,
+    "terminals": [
+      {
+        "terminalName": "BACTON BBL",
+        "flowValue": 0.00824,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "BACTON IC",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "EASINGTON LANGELED",
-    "flowValue": 5.18677,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "EASINGTON ROUGH",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 0.0,
+    "terminals": [
+      {
+        "terminalName": "EASINGTON ROUGH",
+        "flowValue": 0.0,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   },
   {
-    "terminalName": "EASINGTON ROUGH",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "GLENMAVIS",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "GRAIN NTS 1",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "GRAIN NTS 2",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "HILLTOP",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "HOLE HOUSE FARM",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "HOLFORD",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "HORNSEA",
-    "flowValue": 9.06157,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "MILFORD HAVEN - DRAGON",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "MILFORD HAVEN - SOUTH HOOK",
-    "flowValue": 46.15427,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "PARTINGTON",
-    "flowValue": 0.0,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "ST FERGUS MOBIL",
-    "flowValue": 17.71023,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "ST FERGUS NSMP",
-    "flowValue": 40.5182,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "ST FERGUS SHELL",
-    "flowValue": 30.52268,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "STUBLACH",
-    "flowValue": 4.79973,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "TEESSIDE BP",
-    "flowValue": 7.84765,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "TEESSIDE PX",
-    "flowValue": 9.04903,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "THEDDLETHORPE",
-    "flowValue": 0.6592,
-    "timestamp": "01/09/2016 20:58"
-  },
-  {
-    "terminalName": "Bacton",
-    "flowValue": 23.25884,
-    "timestamp": "01/09/2016 20:58"
+    "terminalGroupName": "BACTON UKCS",
+    "groupTimestamp": "04/09/2016 00:10",
+    "groupTotalFlow": 30.630359999999996,
+    "terminals": [
+      {
+        "terminalName": "BACTON PERENCO",
+        "flowValue": 1.3431,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "BACTON SEAL",
+        "flowValue": 17.41726,
+        "timestamp": "04/09/2016 00:10"
+      },
+      {
+        "terminalName": "BACTON SHELL",
+        "flowValue": 11.87,
+        "timestamp": "04/09/2016 00:10"
+      }
+    ]
   }
 
 ]

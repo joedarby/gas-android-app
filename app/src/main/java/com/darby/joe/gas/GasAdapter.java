@@ -14,9 +14,9 @@ import java.util.Random;
  */
 class GasAdapter extends BaseAdapter {
 
-    Terminal[] terminals;
+    TerminalGroup[] terminals;
 
-    public GasAdapter(Terminal[] terminals) {
+    public GasAdapter(TerminalGroup[] terminals) {
         this.terminals = terminals;
     }
 
@@ -45,16 +45,16 @@ class GasAdapter extends BaseAdapter {
             @Override
             public void onClick(View clickedView) {
                 Intent detail = new Intent(clickedView.getContext(), TerminalDetailActivity.class);
-                detail.putExtra("terminal name", terminals[position].terminalName);
+                detail.putExtra("terminal name", terminals[position].terminalGroupName);
                 clickedView.getContext().startActivity(detail);
             }
         });
 
         TextView terminal = (TextView) convertView.findViewById(R.id.terminal);
-        terminal.setText(terminals[position].terminalName);
+        terminal.setText(terminals[position].terminalGroupName);
 
         TextView flowVol = (TextView) convertView.findViewById(R.id.flow_vol);
-        String flowVolVal = String.valueOf(terminals[position].flowValue);
+        String flowVolVal = String.valueOf(terminals[position].groupTotalFlow);
         flowVol.setText(flowVolVal);
 
         return convertView;

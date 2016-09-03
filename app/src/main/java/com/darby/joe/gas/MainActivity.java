@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         ListView myListView = (ListView) findViewById(R.id.listView);
 
         DataParser dataParser = new DataParser();
-        Terminal[] terminals = {};
+        TerminalGroup[] terminals = {};
         try {
             terminals = dataParser.getTerminals(getAssets().open("data.json"));
         } catch (IOException e) {
