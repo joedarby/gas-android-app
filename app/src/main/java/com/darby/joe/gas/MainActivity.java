@@ -1,5 +1,6 @@
 package com.darby.joe.gas;
 
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -32,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        listDataHeader = DataParser.getTerminalGroupNames(terminalGroups);
-        listDataChild = DataParser.getTerminalMapping(terminalGroups);
+        //listDataHeader = DataParser.getTerminalGroupNames(terminalGroups);
+       // listDataChild = DataParser.getTerminalMapping(terminalGroups);
 
 
         //ListView myListView = (ListView) findViewById(R.id.listView);
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
+        listAdapter = new ExpandableListAdapter(this, terminalGroups);
         expListView.setAdapter(listAdapter);
 
 
