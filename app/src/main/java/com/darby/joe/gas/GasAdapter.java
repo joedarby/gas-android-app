@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -54,7 +55,8 @@ class GasAdapter extends BaseAdapter {
         terminal.setText(terminals[position].terminalGroupName);
 
         TextView flowVol = (TextView) convertView.findViewById(R.id.flow_vol);
-        String flowVolVal = String.valueOf(terminals[position].groupTotalFlow);
+       /// String flowVolVal = String.valueOf(terminals[position].groupTotalFlow);
+        String flowVolVal = String.format(Locale.UK, "%.1f", terminals[position].groupTotalFlow);
         flowVol.setText(flowVolVal);
 
         return convertView;
