@@ -2,15 +2,12 @@ package com.darby.joe.gas;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 
 /**
@@ -18,28 +15,17 @@ import java.util.Locale;
  */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-   TerminalGroup[] _terminalGroupList;
-    private Context _context;
-  //  private List<String> _listDataHeader; // header titles
-    // child data in format of header title, child title
- //   private HashMap<String, List<String>> _listDataChild;
+    private Terminal[] terminalList;
+    private Context context;
 
-    /*public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
-        this._context = context;
-        this._listDataHeader = listDataHeader;
-        this._listDataChild = listChildData;
-    }
-    */
-
-    public ExpandableListAdapter(Context context, TerminalGroup[] terminalGroupList ){
-        this._context = context;
-        this._terminalGroupList = terminalGroupList;
+    public ExpandableListAdapter(Context cont, Terminal[] groups ){
+        this.context = cont;
+        this.terminalList = groups;
     }
 
     @Override
-    public Terminal getChild(int groupPosition, int childPosititon) {
-        return this._terminalGroupList[groupPosition].terminals[childPosititon];
+    public Pipeline getChild(int groupPosition, int childPosititon) {
+        return this.terminalList[groupPosition].pipelines[childPosititon];
     }
 
     @Override
@@ -48,49 +34,45 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(final int groupPosition, final int childPosition,
-                             boolean isLastChild, View convertView, ViewGroup parent) {
-
-        final String childText = (String) getChild(groupPosition, childPosition).terminalName;
+    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
+            LayoutInflater inflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_content, null);
+            convertView = inflater.inflate(R.layout.list_content_child, null);
         }
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View clickedView) {
                 Intent detail = new Intent(clickedView.getContext(), TerminalDetailActivity.class);
-                detail.putExtra("terminal name", _terminalGroupList[groupPosition].terminals[childPosition].terminalName);
+                detail.putExtra("terminal name", terminalList[groupPosition].pipelines[childPosition].pipelineName);
                 clickedView.getContext().startActivity(detail);
             }
         });
 
         TextView terminal = (TextView) convertView.findViewById(R.id.terminal);
-        terminal.setText(_terminalGroupList[groupPosition].terminals[childPosition].terminalName);
+        terminal.setText(terminalList[groupPosition].pipelines[childPosition].pipelineName);
 
         TextView flowVol = (TextView) convertView.findViewById(R.id.flow_vol);
-        /// String flowVolVal = String.valueOf(terminals[position].groupTotalFlow);
-        String flowVolVal = String.format(Locale.UK, "%.1f", _terminalGroupList[groupPosition].terminals[childPosition].flowValue);
+        String flowVolVal = String.format(Locale.UK, "%.1f", terminalList[groupPosition].pipelines[childPosition].flowValue);
         flowVol.setText(flowVolVal);
         return convertView;
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this._terminalGroupList[groupPosition].terminals.length;
+        return this.terminalList[groupPosition].pipelines.length;
     }
 
     @Override
-    public TerminalGroup getGroup(int groupPosition) {
-        return this._terminalGroupList[groupPosition];
+    public Terminal getGroup(int groupPosition) {
+        return this.terminalList[groupPosition];
     }
 
     @Override
     public int getGroupCount() {
-        return this._terminalGroupList.length;
+        return this.terminalList.length;
     }
 
     @Override
@@ -101,19 +83,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
-        String headerTitle = (String) getGroup(groupPosition).terminalGroupName;
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
+            LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_content, null);
+            convertView = infalInflater.inflate(R.layout.list_content_parent, null);
         }
 
         TextView terminal = (TextView) convertView.findViewById(R.id.terminal);
-        terminal.setText(_terminalGroupList[groupPosition].terminalGroupName);
+        terminal.setText(terminalList[groupPosition].terminalName);
 
         TextView flowVol = (TextView) convertView.findViewById(R.id.flow_vol);
-        /// String flowVolVal = String.valueOf(terminals[position].groupTotalFlow);
-        String flowVolVal = String.format(Locale.UK, "%.1f", _terminalGroupList[groupPosition].groupTotalFlow);
+        String flowVolVal = String.format(Locale.UK, "%.1f", terminalList[groupPosition].terminalFlow);
         flowVol.setText(flowVolVal);
 
         return convertView;

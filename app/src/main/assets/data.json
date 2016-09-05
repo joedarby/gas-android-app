@@ -1,231 +1,231 @@
 [
 
   {
-    "terminalGroupName": "LNG STORAGE",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 0.0,
-    "terminals": [
+    "terminalName": "Easington",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 20.64981,
+    "pipelines": [
       {
-        "terminalName": "AVONMOUTH",
+        "pipelineName": "Easington Dimlington",
         "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
+        "timestamp": "05/09/2016 01:22"
       },
       {
-        "terminalName": "DYNEVOR ARMS",
-        "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "GLENMAVIS",
-        "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "PARTINGTON",
-        "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
+        "pipelineName": "Easington Langeled",
+        "flowValue": 20.64981,
+        "timestamp": "05/09/2016 01:22"
       }
     ]
   },
   {
-    "terminalGroupName": "ST FERGUS",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 87.6695,
-    "terminals": [
+    "terminalName": "Milford Haven",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 16.50538,
+    "pipelines": [
       {
-        "terminalName": "ST FERGUS MOBIL",
-        "flowValue": 18.92699,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "ST FERGUS NSMP",
-        "flowValue": 38.75157,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "ST FERGUS SHELL",
-        "flowValue": 29.99094,
-        "timestamp": "04/09/2016 00:10"
-      }
-    ]
-  },
-  {
-    "terminalGroupName": "ISLE OF GRAIN",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 0.0,
-    "terminals": [
-      {
-        "terminalName": "GRAIN NTS 1",
+        "pipelineName": "Dragon",
         "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
+        "timestamp": "05/09/2016 01:22"
       },
       {
-        "terminalName": "GRAIN NTS 2",
-        "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
+        "pipelineName": "South Hook",
+        "flowValue": 16.50538,
+        "timestamp": "05/09/2016 01:22"
       }
     ]
   },
   {
-    "terminalGroupName": "TEESSIDE",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 18.47379,
-    "terminals": [
+    "terminalName": "Theddlethorpe",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 0.36124,
+    "pipelines": [
       {
-        "terminalName": "TEESSIDE BP",
-        "flowValue": 8.11627,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "TEESSIDE PX",
-        "flowValue": 10.35752,
-        "timestamp": "04/09/2016 00:10"
+        "pipelineName": "Theddlethorpe",
+        "flowValue": 0.36124,
+        "timestamp": "05/09/2016 01:22"
       }
     ]
   },
   {
-    "terminalGroupName": "MILFORD HAVEN",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 14.95262,
-    "terminals": [
+    "terminalName": "St Fergus",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 68.21186,
+    "pipelines": [
       {
-        "terminalName": "MILFORD HAVEN - DRAGON",
-        "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
+        "pipelineName": "St Fergus Mobil",
+        "flowValue": 9.17922,
+        "timestamp": "05/09/2016 01:22"
       },
       {
-        "terminalName": "MILFORD HAVEN - SOUTH HOOK",
-        "flowValue": 14.95262,
-        "timestamp": "04/09/2016 00:10"
+        "pipelineName": "St Fergus NSMP",
+        "flowValue": 28.73628,
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "St Fergus Shell",
+        "flowValue": 30.29636,
+        "timestamp": "05/09/2016 01:22"
       }
     ]
   },
   {
-    "terminalGroupName": "THEDDLETHORPE",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 0.50099,
-    "terminals": [
+    "terminalName": "Bacton IP",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 0.00824,
+    "pipelines": [
       {
-        "terminalName": "THEDDLETHORPE",
-        "flowValue": 0.50099,
-        "timestamp": "04/09/2016 00:10"
-      }
-    ]
-  },
-  {
-    "terminalGroupName": "BARROW SOUTH",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 0.0,
-    "terminals": [
-      {
-        "terminalName": "BARROW SOUTH",
-        "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
-      }
-    ]
-  },
-  {
-    "terminalGroupName": "MEDIUM RANGE STORAGE",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 17.778950000000002,
-    "terminals": [
-      {
-        "terminalName": "ALDBROUGH",
-        "flowValue": 4.10964,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "HILLTOP",
-        "flowValue": 5.41936,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "HOLE HOUSE FARM",
-        "flowValue": 4.90822,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "HOLFORD",
-        "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "HORNSEA",
-        "flowValue": 3.34173,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "STUBLACH",
-        "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
-      }
-    ]
-  },
-  {
-    "terminalGroupName": "EASINGTON",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 19.66926,
-    "terminals": [
-      {
-        "terminalName": "EASINGTON DIMLINGTON",
-        "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
-      },
-      {
-        "terminalName": "EASINGTON LANGELED",
-        "flowValue": 19.66926,
-        "timestamp": "04/09/2016 00:10"
-      }
-    ]
-  },
-  {
-    "terminalGroupName": "BACTON IP",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 0.00824,
-    "terminals": [
-      {
-        "terminalName": "BACTON BBL",
+        "pipelineName": "Bacton BBL",
         "flowValue": 0.00824,
-        "timestamp": "04/09/2016 00:10"
+        "timestamp": "05/09/2016 01:22"
       },
       {
-        "terminalName": "BACTON IC",
+        "pipelineName": "Interconnector",
         "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
+        "timestamp": "05/09/2016 01:22"
       }
     ]
   },
   {
-    "terminalGroupName": "EASINGTON ROUGH",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 0.0,
-    "terminals": [
+    "terminalName": "Medium Range Storage",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 28.97497,
+    "pipelines": [
       {
-        "terminalName": "EASINGTON ROUGH",
+        "pipelineName": "Aldbrough",
+        "flowValue": 13.10964,
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "Hilltop",
+        "flowValue": 5.27517,
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "Hole House Farm",
+        "flowValue": 4.55445,
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "Holford",
         "flowValue": 0.0,
-        "timestamp": "04/09/2016 00:10"
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "Hornsea",
+        "flowValue": 6.03571,
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "Stublach",
+        "flowValue": 0.0,
+        "timestamp": "05/09/2016 01:22"
       }
     ]
   },
   {
-    "terminalGroupName": "BACTON UKCS",
-    "groupTimestamp": "04/09/2016 00:10",
-    "groupTotalFlow": 30.630359999999996,
-    "terminals": [
+    "terminalName": "Rough Storage",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 0.0,
+    "pipelines": [
       {
-        "terminalName": "BACTON PERENCO",
-        "flowValue": 1.3431,
-        "timestamp": "04/09/2016 00:10"
+        "pipelineName": "Rough Storage",
+        "flowValue": 0.0,
+        "timestamp": "05/09/2016 01:22"
+      }
+    ]
+  },
+  {
+    "terminalName": "Bacton UKCS",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 24.29252,
+    "pipelines": [
+      {
+        "pipelineName": "Bacton Perenco",
+        "flowValue": 3.26711,
+        "timestamp": "05/09/2016 01:22"
       },
       {
-        "terminalName": "BACTON SEAL",
-        "flowValue": 17.41726,
-        "timestamp": "04/09/2016 00:10"
+        "pipelineName": "Bacton SEAL",
+        "flowValue": 9.15541,
+        "timestamp": "05/09/2016 01:22"
       },
       {
-        "terminalName": "BACTON SHELL",
+        "pipelineName": "Bacton Shell",
         "flowValue": 11.87,
-        "timestamp": "04/09/2016 00:10"
+        "timestamp": "05/09/2016 01:22"
+      }
+    ]
+  },
+  {
+    "terminalName": "Isle of Grain",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 0.0,
+    "pipelines": [
+      {
+        "pipelineName": "Grain NTS 1",
+        "flowValue": 0.0,
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "Grain NTS 2",
+        "flowValue": 0.0,
+        "timestamp": "05/09/2016 01:22"
+      }
+    ]
+  },
+  {
+    "terminalName": "Barrow",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 0.0,
+    "pipelines": [
+      {
+        "pipelineName": "Barrow South",
+        "flowValue": 0.0,
+        "timestamp": "05/09/2016 01:22"
+      }
+    ]
+  },
+  {
+    "terminalName": "Teesside",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 14.047329999999999,
+    "pipelines": [
+      {
+        "pipelineName": "Teesside CATS",
+        "flowValue": 4.37372,
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "Teesside PX",
+        "flowValue": 9.67361,
+        "timestamp": "05/09/2016 01:22"
+      }
+    ]
+  },
+  {
+    "terminalName": "LNG Storage",
+    "terminalTimestamp": "05/09/2016 01:22",
+    "terminalFlow": 0.0,
+    "pipelines": [
+      {
+        "pipelineName": "Avonmouth",
+        "flowValue": 0.0,
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "Dynevor Arms",
+        "flowValue": 0.0,
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "Glenmavis",
+        "flowValue": 0.0,
+        "timestamp": "05/09/2016 01:22"
+      },
+      {
+        "pipelineName": "Partington",
+        "flowValue": 0.0,
+        "timestamp": "05/09/2016 01:22"
       }
     ]
   }

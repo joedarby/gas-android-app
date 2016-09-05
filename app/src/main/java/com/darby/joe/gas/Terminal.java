@@ -1,20 +1,18 @@
 package com.darby.joe.gas;
 
 /**
- * Created by Joe on 01/09/2016.
+ * Created by Joe on 04/09/2016.
  */
 public class Terminal {
     public String terminalName;
-    public double flowValue;
-    public String timestamp;
+    public String terminalTimestamp;
+    public double terminalFlow;
+    public Pipeline[] pipelines;
 
-    public Terminal(){
-
-    }
-
-    public Terminal(String name, double flow, String stamp) {
+    public Terminal(String name, double flow, String stamp, Pipeline[] pipes) {
         terminalName = name;
-        flowValue = flow;
-        timestamp = stamp;
+        terminalFlow = flow;
+        terminalTimestamp = stamp;
+        pipelines = pipes;
     }
 }
