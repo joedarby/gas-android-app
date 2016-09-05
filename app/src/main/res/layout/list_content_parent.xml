@@ -10,19 +10,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="5"
-        android:paddingLeft="40dp"
-        android:text="Bacton"
-        android:textSize="18dp"/>
+        android:paddingLeft="30dp"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/flow_vol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:paddingRight="40dp"
-        android:text="46.9"
+        android:paddingRight="30dp"
         android:textSize="24dp"
-        android:gravity="right"/>
+        android:gravity="right"
+        android:textStyle="bold"/>
 
 
 </LinearLayout>

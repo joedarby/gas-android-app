@@ -4,34 +4,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ListView;
-
+import android.widget.ExpandableListView;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
+
+    ExpandableListView expListView;
+    ExpandableListAdapter listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ListView myListView = (ListView) findViewById(R.id.listView);
 
         DataParser dataParser = new DataParser();
-        TerminalGroup[] terminals = {};
+        Terminal[] terminals = {};
         try {
             terminals = dataParser.getTerminals(getAssets().open("data.json"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        GasAdapter gasAdapter = new GasAdapter(terminals);
-        myListView.setAdapter(gasAdapter);
+        expListView = (ExpandableListView) findViewById(R.id.lvExp);
+        listAdapter = new ExpandableListAdapter(this, terminals);
+        expListView.setAdapter(listAdapter);
 
         View header_view = LayoutInflater
                 .from(this)
                 .inflate(R.layout.list_header, null);
-
-        myListView.addHeaderView(header_view);
+        expListView.addHeaderView(header_view);
 
 
 
