@@ -7,26 +7,54 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
-    ExpandableListView expListView;
-    ExpandableListAdapter listAdapter;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DataParser dataParser = new DataParser();
-        Terminal[] terminals = {};
-        try {
-            terminals = dataParser.getTerminals(getAssets().open("data.json"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        runClient("http://gas-server.herokuapp.com/");
+    }
 
-        expListView = (ExpandableListView) findViewById(R.id.lvExp);
-        listAdapter = new ExpandableListAdapter(terminals);
+    private void runClient(String url) {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Call call = new OkHttpClient().newCall(request);
+
+        Callback callback = new Callback() {
+            Terminal[] terminals;
+            @Override
+            public void onFailure (Call call, IOException e){
+
+            }
+
+            @Override
+            public void onResponse (Call call, Response response)throws IOException {
+                terminals = new DataParser().getTerminals(response.body().byteStream());
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        createView(terminals);
+                    }
+                });
+            }
+        };
+
+        call.enqueue(callback);
+    }
+
+    private void createView(Terminal[] terms) {
+        ExpandableListView expListView = (ExpandableListView) findViewById(R.id.lvExp);
+        ExpandableListAdapter listAdapter = new ExpandableListAdapter(terms);
         expListView.setAdapter(listAdapter);
 
         View header_view = LayoutInflater
@@ -34,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 .inflate(R.layout.list_header, null);
         expListView.addHeaderView(header_view);
     }
-
-
 
 
 }

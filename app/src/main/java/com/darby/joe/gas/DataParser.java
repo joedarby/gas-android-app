@@ -9,9 +9,6 @@ import java.io.InputStreamReader;
  */
 public class DataParser {
 
-    public DataParser(){
-    }
-
     public Terminal[] getTerminals(InputStream inputStream) {
         Gson gson = new Gson();
         return gson.fromJson(new InputStreamReader(inputStream), Terminal[].class);
