@@ -1,6 +1,5 @@
 package com.darby.joe.gas;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +15,8 @@ import java.util.Locale;
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Terminal[] terminalList;
-    private Context context;
 
-    public ExpandableListAdapter(Context cont, Terminal[] groups ){
-        this.context = cont;
+    public ExpandableListAdapter(Terminal[] groups){
         this.terminalList = groups;
     }
 
@@ -37,8 +34,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) this.context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             convertView = inflater.inflate(R.layout.list_content_child, null);
         }
 
@@ -46,7 +42,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View clickedView) {
                 Intent detail = new Intent(clickedView.getContext(), TerminalDetailActivity.class);
-                detail.putExtra("terminal name", terminalList[groupPosition].pipelines[childPosition].pipelineName);
+                detail.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].pipelines[childPosition].pipelineName);
                 clickedView.getContext().startActivity(detail);
             }
         });
@@ -84,9 +80,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this.context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_content_parent, null);
+            LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+            convertView = layoutInflater.inflate(R.layout.list_content_parent, null);
         }
 
         TextView terminal = (TextView) convertView.findViewById(R.id.terminal);

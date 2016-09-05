@@ -26,17 +26,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-        listAdapter = new ExpandableListAdapter(this, terminals);
+        listAdapter = new ExpandableListAdapter(terminals);
         expListView.setAdapter(listAdapter);
 
         View header_view = LayoutInflater
                 .from(this)
                 .inflate(R.layout.list_header, null);
         expListView.addHeaderView(header_view);
-
-
-
-
     }
 
 

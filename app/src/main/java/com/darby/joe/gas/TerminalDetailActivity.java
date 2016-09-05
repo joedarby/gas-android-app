@@ -9,6 +9,7 @@ import android.widget.TextView;
  * Created by Joe on 26/08/2016.
  */
 public class TerminalDetailActivity extends AppCompatActivity {
+    public static final String TERMINAL_NAME = "terminal name";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -16,7 +17,7 @@ public class TerminalDetailActivity extends AppCompatActivity {
         setContentView(R.layout.detail);
 
         TextView myText = (TextView) findViewById(R.id.terminal);
-        myText.setText(getIntent().getStringExtra("terminal name"));
+        myText.setText(getIntent().getStringExtra(TERMINAL_NAME));
     }
 }
 
