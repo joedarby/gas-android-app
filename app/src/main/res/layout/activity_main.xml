@@ -3,7 +3,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#f4f4f4" >
+    android:background="#f4f4f4">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Hello"
+        android:layout_weight="35"
+        android:gravity="right"
+        android:id="@+id/timestamp"
+        android:textSize="12dp"
+        android:paddingRight="20dp"
+        />
 
     <ExpandableListView
         android:id="@+id/lvExp"
@@ -11,6 +22,7 @@
         android:layout_width="match_parent"
         android:divider="@null"
         android:childDivider="@null"
+        android:layout_weight="1"
         />
 
 </LinearLayout>

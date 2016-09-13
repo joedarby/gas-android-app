@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -61,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 .from(this)
                 .inflate(R.layout.list_header, null);
         expListView.addHeaderView(header_view);
+
+        TextView timestamp = (TextView) findViewById(R.id.timestamp);
+        timestamp.setText("Last update at: " + terms[0].terminalTimestamp);
     }
 
 
