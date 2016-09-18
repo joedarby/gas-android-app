@@ -8,6 +8,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -25,18 +26,36 @@ public class MainActivity extends AppCompatActivity {
         runClient("http://gas-server.herokuapp.com/");
     }
 
+    /*@Override
+    protected void onResume() {
+        super.onResume();
+        // every X seconds run runClient
+        getWindow().getDecorView().getHandler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }, 10 * 1000);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+    */
+
     private void runClient(String url) {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
 
-        Call call = new OkHttpClient().newCall(request);
+        Call call = new OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS).build().newCall(request);
 
         Callback callback = new Callback() {
             Terminal[] terminals;
             @Override
             public void onFailure (Call call, IOException e){
-
+                configFailView(false);
             }
 
             @Override
@@ -45,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        createView(terminals);
+                        configListView(terminals);
                     }
                 });
             }
@@ -54,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(callback);
     }
 
-    private void createView(Terminal[] terms) {
+    private void configListView(Terminal[] terms) {
+        configFailView(true);
+
         ExpandableListView expListView = (ExpandableListView) findViewById(R.id.lvExp);
         ExpandableListAdapter listAdapter = new ExpandableListAdapter(terms);
         expListView.setAdapter(listAdapter);
@@ -67,6 +88,23 @@ public class MainActivity extends AppCompatActivity {
         TextView timestamp = (TextView) findViewById(R.id.timestamp);
         timestamp.setText("Last update at: " + terms[0].terminalTimestamp);
     }
+
+    private void configFailView(Boolean serverSuccess) {
+        View waitView = findViewById(R.id.waiting);
+        waitView.setVisibility(View.GONE);
+        if (serverSuccess) {
+            View failView = findViewById(R.id.fail);
+            failView.setVisibility(View.GONE);
+            View successView = findViewById(R.id.success);
+            successView.setVisibility(View.VISIBLE);
+        } else {
+            View failView = findViewById(R.id.fail);
+            failView.setVisibility(View.VISIBLE);
+            View successView = findViewById(R.id.success);
+            successView.setVisibility(View.GONE);
+        }
+    }
+
 
 
 }
