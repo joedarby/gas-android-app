@@ -13,4 +13,9 @@ public class DataParser {
         Gson gson = new Gson();
         return gson.fromJson(new InputStreamReader(inputStream), Terminal[].class);
     }
+
+    public LinepackDataSet getLinepackData(InputStream inputStream) {
+        Gson gson = new Gson();
+        return gson.fromJson(new InputStreamReader(inputStream), LinepackDataSet.class);
+    }
 }

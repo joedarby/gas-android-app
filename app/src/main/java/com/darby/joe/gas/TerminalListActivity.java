@@ -16,14 +16,14 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class TerminalListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.terminal_list);
 
-        runClient("http://gas-server.herokuapp.com/");
+        runClient("http://gas-server.herokuapp.com/terminals");
     }
 
     /*@Override
