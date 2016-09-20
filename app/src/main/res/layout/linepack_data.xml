@@ -1,12 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lpdata"/>
+        android:layout_height="wrap_content"
+        android:text="NBP Live Summary"
+        android:textSize="32dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/lp_heading"
+        />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/lp_subheading"
+        android:layout_below="@+id/lp_heading"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="30dp"
+        android:id="@+id/sysimbalcontainer"
+        android:layout_below="@+id/lp_subheading">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="72dp"
+            android:textStyle="bold"
+            android:id="@+id/sysimbal"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="mcm"
+            android:layout_toRightOf="@+id/sysimbal"
+            android:layout_alignBaseline="@+id/sysimbal"
+        />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:id="@+id/under_over"
+        android:layout_below="@+id/sysimbalcontainer"
+        android:gravity="center|top"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="30dp"
+        android:id="@+id/OLPcontainer"
+        android:layout_below="@+id/under_over">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="OLP"
+            android:paddingRight="2dp"
+            android:layout_gravity="bottom"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36dp"
+            android:id="@+id/olp"
+            android:paddingRight="25dp"
+            android:paddingLeft="5dp"
+            android:layout_gravity="bottom"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="PCLP"
+            android:paddingLeft="25dp"
+            android:paddingRight="2dp"
+            android:layout_gravity="bottom"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36dp"
+            android:id="@+id/pclp"
+            android:paddingLeft="5dp"
+            android:layout_gravity="bottom"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:id="@+id/DemContainer"
+        android:layout_below="@+id/OLPcontainer">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Demand"
+            android:paddingRight="2dp"
+            android:layout_gravity="bottom"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36dp"
+            android:id="@+id/dem"
+            android:paddingRight="25dp"
+            android:paddingLeft="5dp"
+            android:layout_gravity="bottom"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Flow"
+            android:paddingLeft="25dp"
+            android:paddingRight="2dp"
+            android:layout_gravity="bottom"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36dp"
+            android:id="@+id/flow"
+            android:paddingLeft="5dp"
+            android:layout_gravity="bottom"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:id="@+id/LPtime"
+        android:layout_below="@+id/DemContainer"
+        android:gravity="right|top"
+        android:paddingRight="25dp"
+        />
+
+</RelativeLayout>
