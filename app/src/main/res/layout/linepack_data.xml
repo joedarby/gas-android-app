@@ -4,6 +4,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/lpwaiting"
+        android:layout_gravity="center">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="true" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainlinepackview"
+        android:visibility="gone"
+        >
     <!--Header-->
     <TextView
         android:id="@+id/lp_heading"
@@ -197,5 +216,21 @@
         android:layout_margin="20dp"
         android:textAllCaps="false"
         android:textSize="24dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linepackfail"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Server is offline. Please try later."
+            android:gravity="center"
+            android:textSize="20dp"
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>
