@@ -90,6 +90,8 @@ public class TerminalListActivity extends AppCompatActivity {
     }
 
     private void configFailView(Boolean serverSuccess) {
+        View waitView = findViewById(R.id.TermViewWaiting);
+        waitView.setVisibility(View.GONE);
         if (serverSuccess) {
             View failView = findViewById(R.id.fail);
             failView.setVisibility(View.GONE);

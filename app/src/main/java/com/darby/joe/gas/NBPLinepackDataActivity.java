@@ -1,14 +1,10 @@
 package com.darby.joe.gas;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import java.io.IOException;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -17,9 +13,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * Created by Joe on 20/09/2016.
- */
 public class NBPLinepackDataActivity extends AppCompatActivity {
 
     @Override
