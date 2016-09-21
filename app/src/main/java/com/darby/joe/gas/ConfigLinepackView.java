@@ -1,9 +1,11 @@
 package com.darby.joe.gas;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -39,5 +41,14 @@ public class ConfigLinepackView{
 
         TextView LPtime = (TextView) a.findViewById(R.id.LPtime);
         LPtime.setText("Forecast by National Grid at " + data.PCLPTime.toString());
+
+        final Button button = (Button) a.findViewById(R.id.IFButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent detail = new Intent(v.getContext(), TerminalListActivity.class);
+                v.getContext().startActivity(detail);
+            }
+        });
+
     }
 }

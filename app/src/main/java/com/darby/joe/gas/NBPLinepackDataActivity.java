@@ -35,18 +35,17 @@ public class NBPLinepackDataActivity extends AppCompatActivity {
                 .url(url)
                 .build();
 
-        Call call = new OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS).build().newCall(request);
+        Call call = new OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS).build().newCall(request);
 
         Callback callback = new Callback() {
             LinepackDataSet data;
 
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(Call call, final IOException e) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         configFailView2(false);
-                        Log.e("Error fetching data", exception);
                     }
                 });
             }

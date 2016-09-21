@@ -49,7 +49,7 @@ public class TerminalListActivity extends AppCompatActivity {
                 .url(url)
                 .build();
 
-        Call call = new OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS).build().newCall(request);
+        Call call = new OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS).build().newCall(request);
 
         Callback callback = new Callback() {
             Terminal[] terminals;
