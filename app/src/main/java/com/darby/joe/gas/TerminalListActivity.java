@@ -23,7 +23,7 @@ public class TerminalListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.terminal_list);
 
-        runClient("http://gas-server.herokuapp.com/terminals");
+        runClient();
     }
 
     /*@Override
@@ -44,12 +44,8 @@ public class TerminalListActivity extends AppCompatActivity {
     }
     */
 
-    private void runClient(String url) {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        Call call = new OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS).build().newCall(request);
+    private void runClient() {
+        Call call = HttpHelper.getCall("http://gas-server.herokuapp.com/terminals");
 
         Callback callback = new Callback() {
             Terminal[] terminals;

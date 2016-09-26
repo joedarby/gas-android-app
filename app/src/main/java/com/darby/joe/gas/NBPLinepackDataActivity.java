@@ -5,12 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 
 public class NBPLinepackDataActivity extends AppCompatActivity {
@@ -20,15 +17,12 @@ public class NBPLinepackDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linepack_data);
 
-        runClient("http://gas-server.herokuapp.com/linepack");
+        runClient();
     }
 
-    private void runClient(String url) {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
+    private void runClient() {
 
-        Call call = new OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS).build().newCall(request);
+        Call call = HttpHelper.getCall("http://gas-server.herokuapp.com/linepack");
 
         Callback callback = new Callback() {
             LinepackDataSet data;
