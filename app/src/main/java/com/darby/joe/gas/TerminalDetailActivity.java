@@ -12,7 +12,7 @@ import okhttp3.Callback;
  * Created by Joe on 26/08/2016.
  */
 public class TerminalDetailActivity extends AppCompatActivity {
-    public static final String TERMINAL_NAME = "terminal name";
+    public static String TERMINAL_NAME = "terminal name";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,8 +29,12 @@ public class TerminalDetailActivity extends AppCompatActivity {
 
     private void runClient() {
 
-        Call call = HttpHelper.getCall("http://localhost:9000/dbEasington");
-        Callback callback = HttpHelper.getCallback(TerminalDetailActivity.this);
+        String tName = getIntent().getStringExtra(TERMINAL_NAME);
+        String callUrl = "https://gas-server.herokuapp.com/db" + tName;
+        Call call = HttpHelper.getCall(callUrl);
+        Callback callback = HttpHelper.getCallback(tName, TerminalDetailActivity.this);
+        call.enqueue(callback);
+
 
     }
 }

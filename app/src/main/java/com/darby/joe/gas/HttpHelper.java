@@ -1,6 +1,7 @@
 package com.darby.joe.gas;
 
 import android.app.Activity;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class HttpHelper {
 
     }
 
-    public static Callback getCallback(final Activity a) {
+    public static Callback getCallback(final String tName, final Activity a) {
 
         return new Callback() {
             HashMap<String, String> data;
@@ -37,7 +38,8 @@ public class HttpHelper {
                 a.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        //config failure view code here;
+                        TextView myText = (TextView) a.findViewById(R.id.terminal);
+                        myText.setText("No response");
                     }
                 });
             }
@@ -50,7 +52,7 @@ public class HttpHelper {
                     @Override
                     public void run() {
                         TextView myText = (TextView) a.findViewById(R.id.terminal);
-                        myText.setText(data.values().toString());
+                        myText.setText(tName + " " + data.toString());
                     }
                 });
             }
