@@ -3,6 +3,9 @@ package com.darby.joe.gas;
 import android.app.Activity;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.LineData;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -46,16 +49,26 @@ public class HttpHelper {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                final List<TerminalDataPoint> data = new DataParser().getDbData(response.body().byteStream());
+                final TerminalHistory history = new DataParser().getDbData(response.body().byteStream());
                 a.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         TextView myText = (TextView) a.findViewById(R.id.terminal);
-                        String dataString = tName + "\n";
-                        for (TerminalDataPoint terminalDataPoint : data) {
-                            dataString += String.valueOf(terminalDataPoint.timestamp) + " " + terminalDataPoint.flowRate + "\n";
+                        LineChart chart = (LineChart) a.findViewById(R.id.chart);
+
+                       /* String dataString = tName + "\n";
+                        for (TerminalDataPoint terminalDataPoint : history.data) {
+                            dataString += String.valueOf(new Date(terminalDataPoint.timestamp)) + " " + terminalDataPoint.flowRate + "\n";
                         }
+
                         myText.setText(dataString);
+                        */
+                        myText.setText(tName);
+                        LineData lineData = new BuildChartData(history).getLineData();
+                        chart.setData(lineData);
+                        chart.invalidate();
+
+
                     }
                 });
             }

@@ -24,9 +24,10 @@ public class DataParser {
         return gson.fromJson(new InputStreamReader(inputStream), LinepackDataSet.class);
     }
 
-    public List<TerminalDataPoint> getDbData(InputStream inputStream) {
+
+    public TerminalHistory getDbData(InputStream inputStream) {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
-        TerminalHistory history = gson.fromJson(new InputStreamReader(inputStream), TerminalHistory.class);
-        return history.data;
+        return gson.fromJson(new InputStreamReader(inputStream), TerminalHistory.class);
+
     }
 }
