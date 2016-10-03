@@ -1,11 +1,11 @@
 package com.darby.joe.gas;
 
 import android.app.Activity;
-import android.util.Log;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -31,7 +31,6 @@ public class HttpHelper {
     public static Callback getCallback(final String tName, final Activity a) {
 
         return new Callback() {
-            HashMap<String, String> data;
 
             @Override
             public void onFailure(Call call, final IOException e) {
@@ -47,12 +46,16 @@ public class HttpHelper {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                data = new DataParser().getDbData(response.body().byteStream());
+                final List<TerminalDataPoint> data = new DataParser().getDbData(response.body().byteStream());
                 a.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         TextView myText = (TextView) a.findViewById(R.id.terminal);
-                        myText.setText(tName + " " + data.toString());
+                        String dataString = tName + "\n";
+                        for (TerminalDataPoint terminalDataPoint : data) {
+                            dataString += String.valueOf(new Date(terminalDataPoint.timestamp)) + " " + terminalDataPoint.flowRate + "\n";
+                        }
+                        myText.setText(dataString);
                     }
                 });
             }
