@@ -53,7 +53,7 @@ public class HttpHelper {
                         TextView myText = (TextView) a.findViewById(R.id.terminal);
                         String dataString = tName + "\n";
                         for (TerminalDataPoint terminalDataPoint : data) {
-                            dataString += String.valueOf(new Date(terminalDataPoint.timestamp)) + " " + terminalDataPoint.flowRate + "\n";
+                            dataString += String.valueOf(terminalDataPoint.timestamp) + " " + terminalDataPoint.flowRate + "\n";
                         }
                         myText.setText(dataString);
                     }

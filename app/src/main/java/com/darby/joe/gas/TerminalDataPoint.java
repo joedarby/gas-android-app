@@ -1,14 +1,16 @@
 package com.darby.joe.gas;
 
 
+import java.util.Date;
+
 /**
  * Created by Joe on 01/10/2016.
  */
 public class TerminalDataPoint {
-    public long timestamp;
+    public Date timestamp;
     public  String flowRate;
 
-    public TerminalDataPoint(long time, String flow) {
+    public TerminalDataPoint(Date time, String flow) {
         timestamp = time;
         flowRate = flow;
     }

@@ -15,8 +15,7 @@ import java.util.List;
 public class DataParser {
 
     public Terminal[] getTerminals(InputStream inputStream) {
-       // Gson gson = new GsonBuilder().setDateFormat("dd/MM/yyyy hh:mm").create();
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
         return gson.fromJson(new InputStreamReader(inputStream), Terminal[].class);
     }
 
@@ -26,7 +25,7 @@ public class DataParser {
     }
 
     public List<TerminalDataPoint> getDbData(InputStream inputStream) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
         TerminalHistory history = gson.fromJson(new InputStreamReader(inputStream), TerminalHistory.class);
         return history.data;
     }

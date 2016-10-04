@@ -7,11 +7,11 @@ import java.util.Date;
  */
 public class Terminal {
     public String terminalName;
-    public long terminalTimestamp;
+    public Date terminalTimestamp;
     public double terminalFlow;
     public Pipeline[] pipelines;
 
-    public Terminal(String name, double flow, long stamp, Pipeline[] pipes) {
+    public Terminal(String name, double flow, Date stamp, Pipeline[] pipes) {
         terminalName = name;
         terminalFlow = flow;
         terminalTimestamp = stamp;
