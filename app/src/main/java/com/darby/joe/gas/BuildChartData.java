@@ -5,7 +5,9 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Joe on 03/10/2016.
@@ -23,8 +25,8 @@ public class BuildChartData {
 
         for (TerminalDataPoint dp : terminalHistory.data) {
             float flow = Float.parseFloat(dp.flowRate);
-            float time = (float) dp.timestamp;
-            entries.add(new Entry(dp.timestamp, flow));
+            Date time = new Date(dp.timestamp);
+            entries.add(new Entry(TimeUnit.HOURS.toHours( dp.timestamp), flow));
         }
 
         LineDataSet dataSet = new LineDataSet(entries, "Label");
