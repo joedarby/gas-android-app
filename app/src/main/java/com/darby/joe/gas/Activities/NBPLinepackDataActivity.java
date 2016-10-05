@@ -1,8 +1,14 @@
-package com.darby.joe.gas;
+package com.darby.joe.gas.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.darby.joe.gas.Tools.ConfigLinepackView;
+import com.darby.joe.gas.Tools.DataParser;
+import com.darby.joe.gas.Tools.HttpHelper;
+import com.darby.joe.gas.Data.LinepackDataSet;
+import com.darby.joe.gas.R;
 
 import java.io.IOException;
 

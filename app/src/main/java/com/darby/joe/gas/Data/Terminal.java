@@ -1,4 +1,6 @@
-package com.darby.joe.gas;
+package com.darby.joe.gas.Data;
+
+import com.darby.joe.gas.Data.Pipeline;
 
 import java.util.Date;
 

@@ -1,13 +1,14 @@
-package com.darby.joe.gas;
+package com.darby.joe.gas.Tools;
 
+import com.darby.joe.gas.Data.ChartData;
+import com.darby.joe.gas.Data.LinepackDataSet;
+import com.darby.joe.gas.Data.Terminal;
+import com.darby.joe.gas.Data.TerminalHistory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Joe on 28/08/2016.

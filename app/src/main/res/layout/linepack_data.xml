@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/mainlinepackview"
+        android:gravity="center|top"
         android:visibility="gone"
         >
     <!--Header-->
@@ -28,7 +29,7 @@
         android:id="@+id/lp_heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
+        android:gravity="center"
         android:text="NBP Live Summary"
         android:textSize="32dp" />
 
@@ -38,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lp_heading"
-        android:paddingLeft="10dp"
+        android:gravity="center"
         android:textSize="22dp" />
 
     <!--System Imbalance-->
@@ -203,7 +204,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/DemContainer"
-        android:gravity="right|top"
+        android:gravity="center|top"
         android:paddingRight="10dp"
         android:textSize="12dp" />
 

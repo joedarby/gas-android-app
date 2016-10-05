@@ -1,9 +1,16 @@
-package com.darby.joe.gas;
+package com.darby.joe.gas.Tools;
 
 import android.app.Activity;
 import android.widget.TextView;
 
+import com.darby.joe.gas.Data.ChartData;
+import com.darby.joe.gas.R;
+import com.darby.joe.gas.Tools.ChartXAxisFormatter;
+import com.darby.joe.gas.Tools.DataParser;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.LineData;
 
 import java.io.IOException;
@@ -29,7 +36,7 @@ public class HttpHelper {
 
     }
 
-    public static Callback getCallback(final String tName, final Activity a) {
+    public static Callback getTerminalDetailCallback(final String tName, final Activity a) {
 
         return new Callback() {
 
@@ -53,14 +60,8 @@ public class HttpHelper {
                     public void run() {
                         TextView myText = (TextView) a.findViewById(R.id.terminal);
                         LineChart chart = (LineChart) a.findViewById(R.id.chart);
+                        ConfigureChart.configure(chart);
 
-                       /* String dataString = tName + "\n";
-                        for (TerminalDataPoint terminalDataPoint : history.data) {
-                            dataString += String.valueOf(new Date(terminalDataPoint.timestamp)) + " " + terminalDataPoint.flowRate + "\n";
-                        }
-
-                        myText.setText(dataString);
-                        */
                         myText.setText(tName);
                         LineData lineData = chartData.createLineChartData();
                         chart.setData(lineData);

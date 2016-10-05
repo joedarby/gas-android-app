@@ -1,9 +1,11 @@
-package com.darby.joe.gas;
+package com.darby.joe.gas.Activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+
+import com.darby.joe.gas.Tools.HttpHelper;
+import com.darby.joe.gas.R;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -32,7 +34,7 @@ public class TerminalDetailActivity extends AppCompatActivity {
         String tName = getIntent().getStringExtra(TERMINAL_NAME);
         String callUrl = "https://gas-server.herokuapp.com/chart/" + tName;
         Call call = HttpHelper.getCall(callUrl);
-        Callback callback = HttpHelper.getCallback(tName, TerminalDetailActivity.this);
+        Callback callback = HttpHelper.getTerminalDetailCallback(tName, TerminalDetailActivity.this);
         call.enqueue(callback);
 
 

@@ -8,16 +8,17 @@ package="com.darby.joe.gas">
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
     android:supportsRtl="true"
-    android:theme="@style/AppTheme">
-    <activity android:name=".NBPLinepackDataActivity">
+    android:theme="@style/AppTheme"
+    android:name=".Tools.GasApplication">
+    <activity android:name=".Activities.NBPLinepackDataActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <activity android:name=".TerminalListActivity"/>
-    <activity android:name=".TerminalDetailActivity"/>
+    <activity android:name=".Activities.TerminalListActivity"/>
+    <activity android:name=".Activities.TerminalDetailActivity"/>
 
 </application>
 

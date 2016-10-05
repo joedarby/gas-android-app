@@ -1,5 +1,7 @@
-package com.darby.joe.gas;
+package com.darby.joe.gas.Data;
 
+import com.darby.joe.gas.Tools.GasApplication;
+import com.darby.joe.gas.R;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -29,7 +31,14 @@ public class ChartData {
 
 
         Collections.sort(entries, new EntryXComparator());
-        LineDataSet dataSet = new LineDataSet(entries, "Label");
+        LineDataSet dataSet = new LineDataSet(entries, "");
+        dataSet.setDrawValues(false);
+        dataSet.setDrawCircles(false);
+        dataSet.setDrawFilled(true);
+
+        dataSet.setColor(GasApplication.getChartColor(R.color.orange));
+        dataSet.setFillColor(GasApplication.getChartColor(R.color.orange));
+
         return new LineData(dataSet);
     }
 
