@@ -7,8 +7,6 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.LineData;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -49,7 +47,7 @@ public class HttpHelper {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                final TerminalHistory history = new DataParser().getDbData(response.body().byteStream());
+                final ChartData chartData = new DataParser().getChartData(response.body().byteStream());
                 a.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -64,7 +62,7 @@ public class HttpHelper {
                         myText.setText(dataString);
                         */
                         myText.setText(tName);
-                        LineData lineData = new BuildChartData(history).getLineData();
+                        LineData lineData = chartData.createLineChartData();
                         chart.setData(lineData);
                         chart.invalidate();
 

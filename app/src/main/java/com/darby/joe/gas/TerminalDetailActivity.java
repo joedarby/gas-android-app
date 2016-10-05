@@ -30,7 +30,7 @@ public class TerminalDetailActivity extends AppCompatActivity {
     private void runClient() {
 
         String tName = getIntent().getStringExtra(TERMINAL_NAME);
-        String callUrl = "https://gas-server.herokuapp.com/db/" + tName;
+        String callUrl = "https://gas-server.herokuapp.com/chart/" + tName;
         Call call = HttpHelper.getCall(callUrl);
         Callback callback = HttpHelper.getCallback(tName, TerminalDetailActivity.this);
         call.enqueue(callback);

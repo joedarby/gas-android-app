@@ -30,4 +30,10 @@ public class DataParser {
         return gson.fromJson(new InputStreamReader(inputStream), TerminalHistory.class);
 
     }
+
+    public ChartData getChartData(InputStream inputStream) {
+        Gson gson = new Gson();
+        return gson.fromJson(new InputStreamReader(inputStream), ChartData.class);
+    }
+
 }
