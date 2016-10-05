@@ -1,4 +1,4 @@
-package com.darby.joe.gas;
+package com.darby.joe.gas.Data;
 
 import java.util.Date;
 
@@ -8,9 +8,9 @@ import java.util.Date;
 public class Pipeline {
     public String pipelineName;
     public double flowValue;
-    public long timestamp;
+    public Date timestamp;
 
-    public Pipeline(String name, double flow, long stamp) {
+    public Pipeline(String name, double flow, Date stamp) {
         pipelineName = name;
         flowValue = flow;
         timestamp = stamp;

@@ -1,14 +1,23 @@
-package com.darby.joe.gas;
+package com.darby.joe.gas.Tools;
 
 import android.app.Activity;
 import android.widget.TextView;
 
+<<<<<<< HEAD:app/src/main/java/com/darby/joe/gas/HttpHelper.java
 import com.github.mikephil.charting.charts.LineChart;
+=======
+import com.darby.joe.gas.Data.ChartData;
+import com.darby.joe.gas.R;
+import com.darby.joe.gas.Tools.ChartXAxisFormatter;
+import com.darby.joe.gas.Tools.DataParser;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+>>>>>>> e6510418737609f6ebb48e8333c9f199884a8225:app/src/main/java/com/darby/joe/gas/Tools/HttpHelper.java
 import com.github.mikephil.charting.data.LineData;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -31,7 +40,7 @@ public class HttpHelper {
 
     }
 
-    public static Callback getCallback(final String tName, final Activity a) {
+    public static Callback getTerminalDetailCallback(final String tName, final Activity a) {
 
         return new Callback() {
 
@@ -49,12 +58,17 @@ public class HttpHelper {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+<<<<<<< HEAD:app/src/main/java/com/darby/joe/gas/HttpHelper.java
                 final TerminalHistory history = new DataParser().getDbData(response.body().byteStream());
+=======
+                final ChartData chartData = new DataParser().getChartData(response.body().byteStream());
+>>>>>>> e6510418737609f6ebb48e8333c9f199884a8225:app/src/main/java/com/darby/joe/gas/Tools/HttpHelper.java
                 a.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         TextView myText = (TextView) a.findViewById(R.id.terminal);
                         LineChart chart = (LineChart) a.findViewById(R.id.chart);
+<<<<<<< HEAD:app/src/main/java/com/darby/joe/gas/HttpHelper.java
 
                        /* String dataString = tName + "\n";
                         for (TerminalDataPoint terminalDataPoint : history.data) {
@@ -65,6 +79,12 @@ public class HttpHelper {
                         */
                         myText.setText(tName);
                         LineData lineData = new BuildChartData(history).getLineData();
+=======
+                        ConfigureChart.configure(chart);
+
+                        myText.setText(tName);
+                        LineData lineData = chartData.createLineChartData();
+>>>>>>> e6510418737609f6ebb48e8333c9f199884a8225:app/src/main/java/com/darby/joe/gas/Tools/HttpHelper.java
                         chart.setData(lineData);
                         chart.invalidate();
 

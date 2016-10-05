@@ -1,4 +1,4 @@
-package com.darby.joe.gas;
+package com.darby.joe.gas.Tools;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -6,6 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
+import com.darby.joe.gas.Activities.TerminalDetailActivity;
+import com.darby.joe.gas.Data.Pipeline;
+import com.darby.joe.gas.Data.Terminal;
+import com.darby.joe.gas.R;
 
 import java.util.Locale;
 
