@@ -25,13 +25,23 @@ public class ConfigLinepackView{
         TextView sysImbal = (TextView) a.findViewById(R.id.sysimbal);
         sysImbal.setText(String.format(Locale.UK, "%.1f", data.sysImbalance));
         TextView underOver = (TextView) a.findViewById(R.id.under_over);
+
         if (data.sysImbalance >= 0) {
             underOver.setText("Forecast oversupply");
-            sysImbal.setTextColor(Color.rgb(0, 200, 0));
         } else {
             underOver.setText("Forecast undersupply");
-            sysImbal.setTextColor(Color.rgb(200, 0, 0));
         }
+
+        if ((Math.abs(data.sysImbalance)) > 20) {
+            sysImbal.setTextColor(Color.rgb(200, 0, 0));
+        } else if ((Math.abs(data.sysImbalance)) > 12) {
+            sysImbal.setTextColor(Color.rgb(255, 102, 0));
+        } else if ((Math.abs(data.sysImbalance)) > 5) {
+            sysImbal.setTextColor(Color.rgb(255, 204, 0));
+        } else {
+            sysImbal.setTextColor(Color.rgb(0, 200, 0));
+        }
+
         TextView olp = (TextView) a.findViewById(R.id.olp);
         olp.setText(String.format(Locale.UK, "%.1f", data.OLP));
         TextView pclp = (TextView) a.findViewById(R.id.pclp);
