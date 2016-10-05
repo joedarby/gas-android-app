@@ -22,12 +22,10 @@ public class ConfigureChart {
         xAxis.setAxisMinimum(0);
         xAxis.setAxisMaximum(4320); //4320 minutes in 3 days
         xAxis.setLabelCount(7, true);
-        xAxis.setLabelRotationAngle(0);
         xAxis.setValueFormatter(new ChartXAxisFormatter());
-        xAxis.setAvoidFirstLastClipping(true);
 
-        YAxis yAxis = chart.getAxisLeft();
-        yAxis.setAxisMinimum(0);
+        //YAxis yAxis = chart.getAxisLeft();
+        //yAxis.setAxisMinimum(0);
 
         YAxis rightAxis = chart.getAxisRight();
         rightAxis.setEnabled(false);

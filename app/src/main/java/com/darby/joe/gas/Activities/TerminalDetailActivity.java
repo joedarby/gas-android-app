@@ -22,10 +22,7 @@ public class TerminalDetailActivity extends AppCompatActivity {
         setContentView(R.layout.detail);
 
         runClient();
-        /*
-        TextView myText = (TextView) findViewById(R.id.terminal);
-        myText.setText(getIntent().getStringExtra(TERMINAL_NAME));
-        */
+
     }
 
 

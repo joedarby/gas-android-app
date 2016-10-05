@@ -46,16 +46,16 @@ public class ChartXAxisFormatter implements IAxisValueFormatter {
 
         switch (index) {
             case 0:
-                label = String.valueOf(dayOne.get(Calendar.DAY_OF_MONTH)) + " " + dayOne.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.UK) + " 05:00";
+                label = String.valueOf(dayOne.get(Calendar.DAY_OF_MONTH)) + " " + dayOne.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.UK) + "\n05:00";
                 break;
             case 1440:
-                label = String.valueOf(dayTwo.get(Calendar.DAY_OF_MONTH)) + " " + dayTwo.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.UK) + " 05:00";
+                label = String.valueOf(dayTwo.get(Calendar.DAY_OF_MONTH)) + " " + dayTwo.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.UK) + "\n05:00";
                 break;
             case 2880:
-                label = String.valueOf(dayThree.get(Calendar.DAY_OF_MONTH)) + " " + dayThree.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.UK) + " 05:00";
+                label = String.valueOf(dayThree.get(Calendar.DAY_OF_MONTH)) + " " + dayThree.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.UK) + "\n05:00";
                 break;
             case 4320:
-                label = String.valueOf(dayFour.get(Calendar.DAY_OF_MONTH)) + " " + dayFour.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.UK) + " 05:00";
+                label = String.valueOf(dayFour.get(Calendar.DAY_OF_MONTH)) + " " + dayFour.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.UK) + "\n05:00";
                 break;
 
         }
