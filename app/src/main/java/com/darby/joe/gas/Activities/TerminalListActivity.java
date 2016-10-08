@@ -84,6 +84,11 @@ public class TerminalListActivity extends AppCompatActivity {
                 .inflate(R.layout.list_header, null);
         expListView.addHeaderView(header_view);
 
+        int count = listAdapter.getGroupCount();
+        for ( int i = 0; i < count; i++){
+            expListView.expandGroup(i);
+        }
+
         TextView timestamp = (TextView) findViewById(R.id.timestamp);
         timestamp.setText("Last update at: " + terms[0].terminalTimestamp);
     }
