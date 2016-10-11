@@ -7,6 +7,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.EntryXComparator;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 
 public class ChartData {
-    public HashMap<Float, Float> dataList = new HashMap<>();
+    public HashMap<Float, BigDecimal> dataList = new HashMap<>();
 
 
     public LineData createLineChartData() {
@@ -25,7 +26,7 @@ public class ChartData {
 
         for (float dp : dataList.keySet()) {
             float timeIndex = dp;
-            float flow = dataList.get(dp);
+            float flow = dataList.get(dp).floatValue();
             entries.add(new Entry(timeIndex, flow));
         }
 
