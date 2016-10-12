@@ -3,8 +3,8 @@ package com.darby.joe.gas.Data;
 import com.darby.joe.gas.Tools.GasApplication;
 import com.darby.joe.gas.R;
 import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.EntryXComparator;
 
 import java.math.BigDecimal;
@@ -18,29 +18,40 @@ import java.util.List;
  */
 
 public class ChartData {
-    public HashMap<Float, BigDecimal> dataList = new HashMap<>();
+    public HashMap<String, HashMap<Float, BigDecimal>> dataList = new HashMap<>();
 
 
-    public LineDataSet createLineChartData(String pipelineName) {
-        List<Entry> entries = new ArrayList<>();
+    public List<ILineDataSet> createLineChartData() {
 
-        for (float dp : dataList.keySet()) {
-            float timeIndex = dp;
-            float flow = dataList.get(dp).floatValue();
-            entries.add(new Entry(timeIndex, flow));
+        List<ILineDataSet> output = new ArrayList<>();
+
+        int[] colors = {GasApplication.getChartColor(R.color.blue),GasApplication.getChartColor(R.color.orange),GasApplication.getChartColor(R.color.green),GasApplication.getChartColor(R.color.purple),GasApplication.getChartColor(R.color.red), GasApplication.getChartColor(R.color.lightblue)};
+        int colorCounter = 0;
+
+        for (String pipeline : dataList.keySet()){
+            List<Entry> entries = new ArrayList<>();
+
+            for (float dp : dataList.get(pipeline).keySet()) {
+                float flow = dataList.get(pipeline).get(dp).floatValue();
+                entries.add(new Entry(dp, flow));
+            }
+
+            Collections.sort(entries, new EntryXComparator());
+            LineDataSet dataSet = new LineDataSet(entries, pipeline);
+            dataSet.setDrawValues(false);
+            dataSet.setDrawCircles(false);
+            dataSet.setDrawFilled(false);
+
+            dataSet.setColor(colors[colorCounter]);
+            colorCounter ++;
+            //dataSet.setFillColor(GasApplication.getChartColor(R.color.orange));
+
+            output.add(dataSet);
         }
 
 
-        Collections.sort(entries, new EntryXComparator());
-        LineDataSet dataSet = new LineDataSet(entries, pipelineName);
-        dataSet.setDrawValues(false);
-        dataSet.setDrawCircles(false);
-        dataSet.setDrawFilled(false);
 
-        dataSet.setColor(GasApplication.getChartColor(R.color.orange));
-        dataSet.setFillColor(GasApplication.getChartColor(R.color.orange));
-
-        return dataSet;
+        return output;
     }
 
 

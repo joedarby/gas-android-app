@@ -34,7 +34,6 @@ public class TerminalDetailActivity extends AppCompatActivity {
         setContentView(R.layout.detail);
 
         runClient();
-
     }
 
     private void runClient() {
@@ -46,10 +45,11 @@ public class TerminalDetailActivity extends AppCompatActivity {
 
         myText.setText(tName);
 
-        String callUrl = "https://gas-server.herokuapp.com/chart/" + pNames.get(0);
+        String callUrl = "https://gas-server.herokuapp.com/chart/";
+        for (String name : pNames) { callUrl += name + ",";}
+
         Call call = HttpHelper.getCall(callUrl);
-        List<ILineDataSet> dataSets = new ArrayList<>();
-        Callback callback = HttpHelper.getTerminalDetailCallback(pNames, 0, TerminalDetailActivity.this, dataSets);
+        Callback callback = HttpHelper.getTerminalDetailCallback(TerminalDetailActivity.this);
         call.enqueue(callback);
 
 

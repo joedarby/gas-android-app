@@ -36,7 +36,7 @@ public class HttpHelper {
 
     }
 
-    public static Callback getTerminalDetailCallback(final ArrayList<String> pipelineNames, final int pipelineIndex, final Activity a, final List<ILineDataSet> dataSets) {
+    public static Callback getTerminalDetailCallback(final Activity a) {
 
         return new Callback() {
 
@@ -59,13 +59,13 @@ public class HttpHelper {
                     @Override
                     public void run() {
 
-                        LineDataSet lineDataSet = chartData.createLineChartData(pipelineNames.get(pipelineIndex));
+                        List<ILineDataSet> dataSets = chartData.createLineChartData();
+                        LineChart chart = (LineChart) a.findViewById(R.id.chart);
+                        ConfigureChart.configure(chart);
+                        chart.setData(new LineData(dataSets));
+                        chart.invalidate();
 
-                        int[] colors = {GasApplication.getChartColor(R.color.blue),GasApplication.getChartColor(R.color.orange),GasApplication.getChartColor(R.color.green),GasApplication.getChartColor(R.color.purple),GasApplication.getChartColor(R.color.red), GasApplication.getChartColor(R.color.lightblue)};
-                        lineDataSet.setColor(colors[pipelineIndex]);
-
-                        dataSets.add(lineDataSet);
-
+                        /*
                         if (pipelineNames.size() - 1 > pipelineIndex) {
                             String callUrl = "https://gas-server.herokuapp.com/chart/" + pipelineNames.get(pipelineIndex + 1);
                             Call call = HttpHelper.getCall(callUrl);
@@ -78,6 +78,7 @@ public class HttpHelper {
                             chart.setData(new LineData(dataSets));
                             chart.invalidate();
                         }
+                        */
 
 
 
