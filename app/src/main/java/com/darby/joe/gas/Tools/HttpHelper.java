@@ -4,19 +4,10 @@ import android.app.Activity;
 import android.widget.TextView;
 
 import com.darby.joe.gas.Activities.GetChart;
-import com.darby.joe.gas.Activities.MultipleChartActivity;
-import com.darby.joe.gas.Activities.TerminalDetailActivity;
 import com.darby.joe.gas.Data.ChartData;
-import com.darby.joe.gas.Data.TerminalMap;
 import com.darby.joe.gas.R;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;

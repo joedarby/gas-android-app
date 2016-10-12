@@ -15,10 +15,6 @@ public class GasApplication extends Application {
         application = this;
     }
 
-    public static GasApplication getContext() {
-        return application;
-    }
-
     public static int getChartColor(int color) {
         return application.getResources().getColor(color);
     }

@@ -1,11 +1,10 @@
 package com.darby.joe.gas.Tools;
 
-import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
 
 import com.darby.joe.gas.R;
 import com.github.mikephil.charting.charts.LineChart;
@@ -13,16 +12,18 @@ import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.LineData;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Created by Joe on 12/10/2016.
  */
 
 public class ChartListAdapter extends BaseAdapter {
-    ArrayList<LineData> data;
+    private HashMap<String, LineData> data;
 
 
-    public ChartListAdapter(ArrayList<LineData> d) {
+    public ChartListAdapter(HashMap<String, LineData> d) {
         data = d;
 
     }
@@ -52,11 +53,25 @@ public class ChartListAdapter extends BaseAdapter {
 
         LineChart chart = (LineChart) convertView.findViewById(R.id.m_chart);
 
+        ArrayList<String> terminalNames = new ArrayList<>();
+        ArrayList<LineData> dataSets =  new ArrayList<>();
+        for (String key : data.keySet()) {
+            terminalNames.add(key);
+        }
+
+        Collections.sort(terminalNames);
+        for (String terminal : terminalNames) {
+            dataSets.add(data.get(terminal));
+        }
+
         ConfigureChart.configure(chart);
-        //Description desc = new Description();
-        //desc.setText(terminal);
-        //chart.setDescription(desc);
-        chart.setData(data.get(position));
+        Description desc = new Description();
+        desc.setTextSize(14f);
+        desc.setPosition(20,25);
+        desc.setTextAlign(Paint.Align.LEFT);
+        desc.setText(terminalNames.get(position));
+        chart.setDescription(desc);
+        chart.setData(dataSets.get(position));
         chart.invalidate();
 
 

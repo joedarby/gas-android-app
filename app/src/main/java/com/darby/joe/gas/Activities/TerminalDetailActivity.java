@@ -10,6 +10,7 @@ import com.darby.joe.gas.Tools.ConfigureChart;
 import com.darby.joe.gas.Tools.HttpHelper;
 import com.darby.joe.gas.R;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
@@ -58,6 +59,9 @@ public class TerminalDetailActivity extends AppCompatActivity implements GetChar
         List<ILineDataSet> dataSets = chartData.createLineChartData();
         LineChart chart = (LineChart) findViewById(R.id.chart);
         ConfigureChart.configure(chart);
+        Description desc = new Description();
+        desc.setEnabled(false);
+        chart.setDescription(desc);
         chart.setData(new LineData(dataSets));
         chart.invalidate();
     }

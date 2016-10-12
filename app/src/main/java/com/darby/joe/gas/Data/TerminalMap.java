@@ -31,10 +31,10 @@ public class TerminalMap {
         TERMINAL_MAPPING.put("Grain NTS 2", "Isle of Grain");
         TERMINAL_MAPPING.put("Easington Dimlington", "Easington");
         TERMINAL_MAPPING.put("Easington Langeled", "Easington");
-        TERMINAL_MAPPING.put("Avonmouth", "LNG Storage");
-        TERMINAL_MAPPING.put("Glenmavis", "LNG Storage");
-        TERMINAL_MAPPING.put("Dynevor Arms", "LNG Storage");
-        TERMINAL_MAPPING.put("Partington", "LNG Storage");
+        //TERMINAL_MAPPING.put("Avonmouth", "LNG Storage");
+        //TERMINAL_MAPPING.put("Glenmavis", "LNG Storage");
+        //TERMINAL_MAPPING.put("Dynevor Arms", "LNG Storage");
+        //TERMINAL_MAPPING.put("Partington", "LNG Storage");
         TERMINAL_MAPPING.put("South Hook", "Milford Haven");
         TERMINAL_MAPPING.put("Dragon", "Milford Haven");
         TERMINAL_MAPPING.put("Theddlethorpe NTS", "Theddlethorpe");

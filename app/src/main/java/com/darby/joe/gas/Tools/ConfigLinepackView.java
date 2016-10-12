@@ -21,7 +21,7 @@ public class ConfigLinepackView{
 
     public static void ConfigView(LinepackDataSet data, NBPLinepackDataActivity a){
         TextView LPDate = (TextView) a.findViewById(R.id.lp_subheading);
-        LPDate.setText("Gas day " + data.OLPDate.toString());
+        LPDate.setText("Gas day " + data.OLPDate);
         TextView sysImbal = (TextView) a.findViewById(R.id.sysimbal);
         sysImbal.setText(String.format(Locale.UK, "%.1f", data.sysImbalance));
         TextView underOver = (TextView) a.findViewById(R.id.under_over);
@@ -53,7 +53,7 @@ public class ConfigLinepackView{
         flow.setText(String.format(Locale.UK, "%.1f", data.forecastFlow));
 
         TextView LPtime = (TextView) a.findViewById(R.id.LPtime);
-        LPtime.setText("Forecast by National Grid at " + data.PCLPTime.toString());
+        LPtime.setText("Forecast by National Grid at " + data.PCLPTime);
 
         final Button button = (Button) a.findViewById(R.id.IFButton);
         button.setOnClickListener(new View.OnClickListener() {
