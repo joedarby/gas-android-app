@@ -47,8 +47,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View clickedView) {
                 Intent detail = new Intent(clickedView.getContext(), TerminalDetailActivity.class);
-                //detail.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].terminalName);
-                detail.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].pipelines[childPosition].pipelineName);
+                detail.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].terminalName);
+                //detail.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].pipelines[childPosition].pipelineName);
+                detail.putStringArrayListExtra(TerminalDetailActivity.PIPELINE_NAMES, terminalList[groupPosition].getPipelineNames());
                 clickedView.getContext().startActivity(detail);
             }
         });

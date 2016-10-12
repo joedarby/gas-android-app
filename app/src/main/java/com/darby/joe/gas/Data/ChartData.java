@@ -21,7 +21,7 @@ public class ChartData {
     public HashMap<Float, BigDecimal> dataList = new HashMap<>();
 
 
-    public LineData createLineChartData() {
+    public LineDataSet createLineChartData(String pipelineName) {
         List<Entry> entries = new ArrayList<>();
 
         for (float dp : dataList.keySet()) {
@@ -32,15 +32,15 @@ public class ChartData {
 
 
         Collections.sort(entries, new EntryXComparator());
-        LineDataSet dataSet = new LineDataSet(entries, "");
+        LineDataSet dataSet = new LineDataSet(entries, pipelineName);
         dataSet.setDrawValues(false);
         dataSet.setDrawCircles(false);
-        dataSet.setDrawFilled(true);
+        dataSet.setDrawFilled(false);
 
         dataSet.setColor(GasApplication.getChartColor(R.color.orange));
         dataSet.setFillColor(GasApplication.getChartColor(R.color.orange));
 
-        return new LineData(dataSet);
+        return dataSet;
     }
 
 
