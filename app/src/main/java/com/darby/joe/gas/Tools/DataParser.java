@@ -17,7 +17,19 @@ public class DataParser {
 
     public Terminal[] getTerminals(InputStream inputStream) {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
-        return gson.fromJson(new InputStreamReader(inputStream), Terminal[].class);
+        Terminal[] terminals = gson.fromJson(new InputStreamReader(inputStream), Terminal[].class);
+
+        Terminal[] modifiedTerminals = new Terminal[terminals.length - 1];
+        int i = 0;
+        for (Terminal terminal : terminals) {
+            if (terminal.terminalName.equals("LNG Storage") && terminal.terminalFlow == 0) {
+                //Zero flow LNG Storage terminal filtered out
+            } else {
+                modifiedTerminals[i] = terminal;
+                i++;
+            }
+        }
+        return modifiedTerminals;
     }
 
     public LinepackDataSet getLinepackData(InputStream inputStream) {
