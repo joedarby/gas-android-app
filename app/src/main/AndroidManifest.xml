@@ -10,15 +10,17 @@ package="com.darby.joe.gas">
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
     android:name=".Tools.GasApplication">
-    <activity android:name=".Activities.NBPLinepackDataActivity">
+    <activity android:name=".Activities.StartActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
+    <activity android:name=".Activities.NBPLinepackDataActivity"/>
     <activity android:name=".Activities.TerminalListActivity"/>
     <activity android:name=".Activities.TerminalDetailActivity"/>
+    <activity android:name=".Activities.MultipleChartActivity"/>
 
 </application>
 

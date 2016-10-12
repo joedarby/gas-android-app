@@ -3,8 +3,11 @@ package com.darby.joe.gas.Tools;
 import android.app.Activity;
 import android.widget.TextView;
 
+import com.darby.joe.gas.Activities.GetChart;
+import com.darby.joe.gas.Activities.MultipleChartActivity;
 import com.darby.joe.gas.Activities.TerminalDetailActivity;
 import com.darby.joe.gas.Data.ChartData;
+import com.darby.joe.gas.Data.TerminalMap;
 import com.darby.joe.gas.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.LineData;
@@ -36,7 +39,7 @@ public class HttpHelper {
 
     }
 
-    public static Callback getTerminalDetailCallback(final Activity a) {
+    public static <T extends Activity & GetChart> Callback getChartCallback(final T a) {
 
         return new Callback() {
 
@@ -59,33 +62,13 @@ public class HttpHelper {
                     @Override
                     public void run() {
 
-                        List<ILineDataSet> dataSets = chartData.createLineChartData();
-                        LineChart chart = (LineChart) a.findViewById(R.id.chart);
-                        ConfigureChart.configure(chart);
-                        chart.setData(new LineData(dataSets));
-                        chart.invalidate();
-
-                        /*
-                        if (pipelineNames.size() - 1 > pipelineIndex) {
-                            String callUrl = "https://gas-server.herokuapp.com/chart/" + pipelineNames.get(pipelineIndex + 1);
-                            Call call = HttpHelper.getCall(callUrl);
-                            Callback callback = getTerminalDetailCallback(pipelineNames, pipelineIndex + 1, a, dataSets);
-                            call.enqueue(callback);
-                        } else {
-
-                            LineChart chart = (LineChart) a.findViewById(R.id.chart);
-                            ConfigureChart.configure(chart);
-                            chart.setData(new LineData(dataSets));
-                            chart.invalidate();
-                        }
-                        */
-
-
-
+                        a.getChart(chartData);
 
                     }
                 });
             }
         };
     }
+
+
 }
