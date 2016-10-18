@@ -32,7 +32,7 @@
             android:id="@+id/timestamp"
             android:textSize="12dp"
             android:paddingRight="20dp"
-            android:text="Live data provided by Gassco"
+            android:text="Live data. Provided by Gassco."
             />
 
         <ListView

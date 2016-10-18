@@ -49,14 +49,14 @@ public class NorwayListAdapter extends BaseAdapter {
 
         if (convertView == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-            convertView = layoutInflater.inflate(R.layout.list_content_parent, null);
+            convertView = layoutInflater.inflate(R.layout.list_content_norway, null);
         }
 
         TextView terminal = (TextView) convertView.findViewById(R.id.terminal);
         terminal.setText(locations.get(position));
 
         TextView flowVol = (TextView) convertView.findViewById(R.id.flow_vol);
-        String flowVolVal = String.format(Locale.UK, "%.2f", data.get(locations.get(position)));
+        String flowVolVal = String.format(Locale.UK, "%.1f", data.get(locations.get(position)));
         flowVol.setText(flowVolVal);
 
         return convertView;
