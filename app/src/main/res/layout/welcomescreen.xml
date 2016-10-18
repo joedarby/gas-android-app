@@ -211,14 +211,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/fire"
-                android:id="@+id/imageView11" />
+                android:id="@+id/imageView11"
+                android:onClick="launchNorwayFlows"/>
 
             <TextView
                 android:text="Flows"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView9"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:onClick="launchNorwayFlows"/>
 
         </LinearLayout>
     </FrameLayout>

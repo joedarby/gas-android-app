@@ -21,6 +21,7 @@ package="com.darby.joe.gas">
     <activity android:name=".Activities.TerminalListActivity"/>
     <activity android:name=".Activities.TerminalDetailActivity"/>
     <activity android:name=".Activities.MultipleChartActivity"/>
+    <activity android:name=".Activities.NorwayActivity"/>
 
 </application>
 

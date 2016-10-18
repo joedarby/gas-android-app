@@ -39,4 +39,10 @@ public class StartActivity extends AppCompatActivity {
         this.startActivity(intent);
 
     }
+
+    public void launchNorwayFlows(View v) {
+        Intent intent = new Intent(v.getContext(), NorwayActivity.class);
+        this.startActivity(intent);
+
+    }
 }

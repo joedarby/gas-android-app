@@ -2,6 +2,7 @@ package com.darby.joe.gas.Tools;
 
 import com.darby.joe.gas.Data.ChartData;
 import com.darby.joe.gas.Data.LinepackDataSet;
+import com.darby.joe.gas.Data.NorwayDataSet;
 import com.darby.joe.gas.Data.Terminal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -34,6 +35,11 @@ public class DataParser {
     public LinepackDataSet getLinepackData(InputStream inputStream) {
         Gson gson = new Gson();
         return gson.fromJson(new InputStreamReader(inputStream), LinepackDataSet.class);
+    }
+
+    public NorwayDataSet getNorwayData(InputStream inputStream) {
+        Gson gson = new Gson();
+        return gson.fromJson(new InputStreamReader(inputStream), NorwayDataSet.class);
     }
 
 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#f4f4f4">
+
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/TermViewWaiting"
+        android:layout_gravity="center">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/success"
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            android:gravity="right"
+            android:id="@+id/timestamp"
+            android:textSize="12dp"
+            android:paddingRight="20dp"
+            android:text="Live data provided by Gassco"
+            />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/list"
+            android:layout_weight="1"
+            android:divider="#f4f4f4"
+            android:dividerHeight="5dp"
+            android:childDivider="@null">
+
+        </ListView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fail"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Server is offline. Please try later."
+            android:gravity="center"
+            android:textSize="20dp"
+            />
+
+    </LinearLayout>
+</LinearLayout>
