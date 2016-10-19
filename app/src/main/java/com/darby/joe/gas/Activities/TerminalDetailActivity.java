@@ -44,7 +44,7 @@ public class TerminalDetailActivity extends AppCompatActivity implements GetChar
 
         myText.setText(tName);
 
-        String callUrl = "https://gas-server.herokuapp.com/chart/";
+        String callUrl = "https://gas-server.herokuapp.com/chart/uk/";
         for (String name : pNames) { callUrl += name + ",";}
 
         Call call = HttpHelper.getCall(callUrl);

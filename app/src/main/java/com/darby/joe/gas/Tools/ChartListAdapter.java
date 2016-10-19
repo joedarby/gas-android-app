@@ -67,7 +67,7 @@ public class ChartListAdapter extends BaseAdapter {
         ConfigureChart.configure(chart);
         Description desc = new Description();
         desc.setTextSize(14f);
-        desc.setPosition(20,25);
+        desc.setPosition(20,21);
         desc.setTextAlign(Paint.Align.LEFT);
         desc.setText(terminalNames.get(position));
         chart.setDescription(desc);

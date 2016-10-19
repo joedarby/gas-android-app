@@ -44,7 +44,7 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
 
     private void runClient() {
 
-        String callUrl = "https://gas-server.herokuapp.com/chart/";
+        String callUrl = "https://gas-server.herokuapp.com/chart/uk/";
         for (String name : TerminalMap.TERMINAL_MAPPING.keySet()) { callUrl += name + ",";}
 
         Call call = HttpHelper.getCall(callUrl);
