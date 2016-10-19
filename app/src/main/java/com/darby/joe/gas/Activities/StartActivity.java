@@ -19,6 +19,26 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcomescreen);
 
+        View nHistorical = findViewById(R.id.norwayHistorical);
+        nHistorical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View clickedView) {
+                Intent detail = new Intent(clickedView.getContext(), MultipleChartActivity.class);
+                detail.putExtra(MultipleChartActivity.COUNTRY, "norway");
+                clickedView.getContext().startActivity(detail);
+            }
+        });
+
+        View ukHistorical = findViewById(R.id.ukHistorical);
+        ukHistorical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View clickedView) {
+                Intent detail = new Intent(clickedView.getContext(), MultipleChartActivity.class);
+                detail.putExtra(MultipleChartActivity.COUNTRY, "uk");
+                clickedView.getContext().startActivity(detail);
+            }
+        });
+
     }
 
     public void launchNBPSummary(View v) {

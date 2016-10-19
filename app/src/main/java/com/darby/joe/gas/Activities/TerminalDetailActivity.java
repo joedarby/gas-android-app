@@ -26,6 +26,7 @@ import okhttp3.Callback;
 public class TerminalDetailActivity extends AppCompatActivity implements GetChart {
     public static String TERMINAL_NAME = "terminal name";
     public static String PIPELINE_NAMES = "pipeline names";
+    public static String COUNTRY = "terminal type";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,25 +38,34 @@ public class TerminalDetailActivity extends AppCompatActivity implements GetChar
 
     private void runClient() {
 
+        //Get and set the terminal name
         TextView myText = (TextView) findViewById(R.id.terminal);
-
-        ArrayList<String> pNames = getIntent().getStringArrayListExtra(PIPELINE_NAMES);
         String tName = getIntent().getStringExtra(TERMINAL_NAME);
-
         myText.setText(tName);
 
-        String callUrl = "https://gas-server.herokuapp.com/chart/uk/";
-        for (String name : pNames) { callUrl += name + ",";}
+        //Set chart data call url as appropriate for uk or norway
+        String callUrl = "https://gas-server.herokuapp.com/chart/";
+
+        String UKorNorway = getIntent().getStringExtra(COUNTRY);
+
+        if (UKorNorway.equals("uk")) {
+            callUrl += "uk/";
+            ArrayList<String> pNames = getIntent().getStringArrayListExtra(PIPELINE_NAMES);
+            for (String name : pNames) { callUrl += name + ",";}
+        } else {
+            callUrl += "norway/" + tName;
+
+        }
 
         Call call = HttpHelper.getCall(callUrl);
-        Callback callback = HttpHelper.getChartCallback(TerminalDetailActivity.this);
+        Callback callback = HttpHelper.getChartCallback("uk", TerminalDetailActivity.this);
         call.enqueue(callback);
 
 
     }
 
     @Override
-    public void getChart(ChartData chartData) {
+    public void getChart(String country, ChartData chartData) {
         List<ILineDataSet> dataSets = chartData.createLineChartData();
         LineChart chart = (LineChart) findViewById(R.id.chart);
         ConfigureChart.configure(chart);

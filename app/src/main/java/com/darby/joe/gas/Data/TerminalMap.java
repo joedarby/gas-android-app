@@ -44,6 +44,17 @@ public class TerminalMap {
         TERMINAL_NAMES.addAll(TERMINAL_MAPPING.values());
     }
 
+    public static Set<String> NORWAY_LOCATIONS = new HashSet<>();
+    static {
+        NORWAY_LOCATIONS.add("Langeled");
+        NORWAY_LOCATIONS.add("Vesterled");
+        NORWAY_LOCATIONS.add("SEGAL");
+        NORWAY_LOCATIONS.add("Zeebrugge");
+        NORWAY_LOCATIONS.add("Dunkerque");
+        NORWAY_LOCATIONS.add("Emden");
+        NORWAY_LOCATIONS.add("Dornum");
+    }
+
 
 
     //Given pipeline name, return terminal name

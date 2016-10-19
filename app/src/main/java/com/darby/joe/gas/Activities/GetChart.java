@@ -8,5 +8,5 @@ import com.darby.joe.gas.Data.ChartData;
 
 public interface GetChart {
 
-    void getChart(ChartData chartData);
+    void getChart(String country, ChartData chartData);
 }

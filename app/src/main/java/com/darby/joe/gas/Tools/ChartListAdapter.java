@@ -74,10 +74,6 @@ public class ChartListAdapter extends BaseAdapter {
         chart.setData(dataSets.get(position));
         chart.invalidate();
 
-
-
-
-
         return convertView;
     }
 }

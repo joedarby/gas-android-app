@@ -1,11 +1,13 @@
 package com.darby.joe.gas.Tools;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.darby.joe.gas.Activities.TerminalDetailActivity;
 import com.darby.joe.gas.R;
 
 import java.util.ArrayList;
@@ -51,13 +53,26 @@ public class NorwayListAdapter extends BaseAdapter {
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
             convertView = layoutInflater.inflate(R.layout.list_content_norway, null);
         }
+        final String terminalName = locations.get(position);
 
         TextView terminal = (TextView) convertView.findViewById(R.id.terminal);
-        terminal.setText(locations.get(position));
+        terminal.setText(terminalName);
 
         TextView flowVol = (TextView) convertView.findViewById(R.id.flow_vol);
-        String flowVolVal = String.format(Locale.UK, "%.1f", data.get(locations.get(position)));
+        String flowVolVal = String.format(Locale.UK, "%.1f", data.get(terminalName));
         flowVol.setText(flowVolVal);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View clickedView) {
+                Intent detail = new Intent(clickedView.getContext(), TerminalDetailActivity.class);
+                detail.putExtra(TerminalDetailActivity.COUNTRY, "norway");
+                detail.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalName);
+                //terminal_individual_chart.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].pipelines[childPosition].pipelineName);
+                //detail.putStringArrayListExtra(TerminalDetailActivity.PIPELINE_NAMES, terminalList[groupPosition].getPipelineNames());
+                clickedView.getContext().startActivity(detail);
+            }
+        });
 
         return convertView;
 

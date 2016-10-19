@@ -12,8 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/relativelayout2"
-        android:layout_marginRight="51dp"
-        android:layout_marginEnd="51dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="32dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
@@ -156,7 +156,8 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/summaryAndFlows"
             android:weightSum="1"
-            android:paddingLeft="10dp">
+            android:paddingLeft="10dp"
+            android:id="@+id/ukHistorical">
 
             <ImageView
                 android:layout_width="60dp"
@@ -166,64 +167,85 @@
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/summaryAndFlows"
-                android:onClick="launchNBPHistory"/>
+                android:layout_toRightOf="@+id/summaryAndFlows" />
 
             <TextView
                 android:text="Historical\nData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView8"
-                android:textAlignment="center"
-                android:onClick="launchNBPHistory"/>
+                android:textAlignment="center" />
         </LinearLayout>
 
 
 
     </RelativeLayout>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/frameLayout2"
-        android:layout_marginBottom="11dp"
-        android:layout_above="@+id/relativelayout1"
         android:layout_alignRight="@+id/relativelayout2"
         android:layout_alignEnd="@+id/relativelayout2"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_marginBottom="19dp">
+
+        <TextView
+            android:text="Norway"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView12"
+            android:paddingBottom="10dp"
+            android:textSize="24dp"
+            android:textAlignment="center"/>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/norwayFlows"
+            android:layout_below="@+id/textView12"
+            android:id="@+id/norwayHistorical">
 
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:srcCompat="@drawable/profit"
+                android:id="@+id/imageView"
+                android:scaleType="fitXY" />
 
             <TextView
-                android:text="Norway"
+                android:text="Historical\nData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView12"
-                android:paddingBottom="10dp"
-                android:textSize="24dp"/>
+                android:id="@+id/textView"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/norwayFlows"
+            android:layout_below="@+id/textView12"
+            android:onClick="launchNorwayFlows">
+
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/fire"
-                android:id="@+id/imageView11"
-                android:onClick="launchNorwayFlows"/>
+                android:id="@+id/imageView11" />
 
             <TextView
                 android:text="Flows"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView9"
-                android:textAlignment="center"
-                android:onClick="launchNorwayFlows"/>
+                android:textAlignment="center" />
 
         </LinearLayout>
-    </FrameLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>

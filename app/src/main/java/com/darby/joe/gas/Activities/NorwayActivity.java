@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.darby.joe.gas.Data.NorwayDataSet;
 import com.darby.joe.gas.R;

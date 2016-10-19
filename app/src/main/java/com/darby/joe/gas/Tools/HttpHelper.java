@@ -30,7 +30,7 @@ public class HttpHelper {
 
     }
 
-    public static <T extends Activity & GetChart> Callback getChartCallback(final T a) {
+    public static <T extends Activity & GetChart> Callback getChartCallback(final String country, final T a) {
 
         return new Callback() {
 
@@ -53,7 +53,7 @@ public class HttpHelper {
                     @Override
                     public void run() {
 
-                        a.getChart(chartData);
+                        a.getChart(country, chartData);
 
                     }
                 });
