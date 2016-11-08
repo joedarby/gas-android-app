@@ -1,9 +1,9 @@
-package com.darby.joe.gas.Tools;
+package com.darby.joe.gas.tools;
 
-import com.darby.joe.gas.Data.ChartData;
-import com.darby.joe.gas.Data.LinepackDataSet;
-import com.darby.joe.gas.Data.NorwayDataSet;
-import com.darby.joe.gas.Data.Terminal;
+import com.darby.joe.gas.data.ChartData;
+import com.darby.joe.gas.data.LinepackDataSet;
+import com.darby.joe.gas.data.NorwayDataSet;
+import com.darby.joe.gas.data.Terminal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

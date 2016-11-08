@@ -1,10 +1,10 @@
-package com.darby.joe.gas.Tools;
+package com.darby.joe.gas.tools;
 
 import android.app.Activity;
 import android.widget.TextView;
 
-import com.darby.joe.gas.Activities.GetChart;
-import com.darby.joe.gas.Data.ChartData;
+import com.darby.joe.gas.activities.GetChart;
+import com.darby.joe.gas.data.ChartData;
 import com.darby.joe.gas.R;
 
 import java.io.IOException;

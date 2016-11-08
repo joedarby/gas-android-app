@@ -1,4 +1,4 @@
-package com.darby.joe.gas.Data;
+package com.darby.joe.gas.data;
 
 /**
  * Created by Joe on 20/09/2016.

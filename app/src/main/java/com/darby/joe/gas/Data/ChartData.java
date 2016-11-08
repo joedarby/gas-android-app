@@ -1,6 +1,6 @@
-package com.darby.joe.gas.Data;
+package com.darby.joe.gas.data;
 
-import com.darby.joe.gas.Tools.GasApplication;
+import com.darby.joe.gas.tools.GasApplication;
 import com.darby.joe.gas.R;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineDataSet;

@@ -1,6 +1,6 @@
-package com.darby.joe.gas.Activities;
+package com.darby.joe.gas.activities;
 
-import com.darby.joe.gas.Data.ChartData;
+import com.darby.joe.gas.data.ChartData;
 
 /**
  * Created by Joe on 12/10/2016.

@@ -5,9 +5,9 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/lp_waiting"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/lpwaiting"
         android:layout_gravity="center">
 
         <ProgressBar
@@ -18,9 +18,9 @@
 
 
     <RelativeLayout
+        android:id="@+id/main_linepack_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mainlinepackview"
         android:gravity="left|top"
         android:visibility="gone"
         >
@@ -38,8 +38,8 @@
         android:id="@+id/lp_subheading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
         android:layout_below="@+id/lp_heading"
+        android:paddingLeft="10dp"
         android:textSize="22dp" />
 
     <!--System Imbalance-->
@@ -52,7 +52,7 @@
         android:paddingTop="0dp">
 
         <TextView
-            android:id="@+id/sysimbal"
+            android:id="@+id/sys_imbal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="85dp"
@@ -61,8 +61,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/sysimbal"
-            android:layout_toRightOf="@+id/sysimbal"
+            android:layout_alignBaseline="@+id/sys_imbal"
+            android:layout_toRightOf="@+id/sys_imbal"
             android:paddingLeft="5dp"
             android:text="mcm"
             android:textSize="20dp" />
@@ -79,7 +79,7 @@
 
     <!--OLP and PCLP row-->
     <LinearLayout
-        android:id="@+id/OLPcontainer"
+        android:id="@+id/olp_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/under_over"
@@ -98,6 +98,7 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:paddingLeft="20dp"
+                android:paddingStart="20dp"
                 android:text="OLP"
                 android:textSize="18dp" />
 
@@ -105,7 +106,7 @@
                 android:id="@+id/olp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
+                android:layout_gravity="bottom|end"
                 android:layout_weight="1"
                 android:textSize="36dp" />
         </LinearLayout>
@@ -122,6 +123,7 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:paddingLeft="25dp"
+                android:paddingStart="25dp"
                 android:text="PCLP"
                 android:textSize="18dp" />
 
@@ -129,8 +131,9 @@
                 android:id="@+id/pclp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
+                android:layout_gravity="bottom|end"
                 android:layout_weight="1"
+                android:paddingEnd="0dp"
                 android:paddingRight="0dp"
                 android:textSize="36dp" />
         </LinearLayout>
@@ -138,10 +141,10 @@
 
     <!--Demand and flow row-->
     <LinearLayout
-        android:id="@+id/DemContainer"
+        android:id="@+id/demand_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/OLPcontainer"
+        android:layout_below="@+id/olp_container"
         android:paddingTop="15dp"
         android:weightSum="2">
 
@@ -157,14 +160,15 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:paddingLeft="20dp"
+                android:paddingStart="20dp"
                 android:text="Demand"
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/dem"
+                android:id="@+id/demand"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
+                android:layout_gravity="bottom|end"
                 android:layout_weight="1"
                 android:textSize="36dp" />
 
@@ -182,6 +186,7 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:paddingLeft="25dp"
+                android:paddingStart="25dp"
                 android:text="Flow"
                 android:textSize="18dp" />
 
@@ -189,8 +194,9 @@
                 android:id="@+id/flow"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
+                android:layout_gravity="bottom|end"
                 android:layout_weight="1"
+                android:paddingEnd="0dp"
                 android:paddingRight="0dp"
                 android:textSize="36dp" />
 
@@ -200,36 +206,37 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/LPtime"
+        android:id="@+id/linepack_timestamp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/DemContainer"
-        android:gravity="right|top"
+        android:layout_below="@+id/demand_container"
+        android:gravity="end|top"
+        android:paddingEnd="10dp"
         android:paddingRight="10dp"
         android:textSize="12dp" />
 
     <Button
+        android:id="@+id/flows_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Instantaneous Flows"
+        android:layout_below="@+id/linepack_timestamp"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/LPtime"
-        android:id="@+id/IFButton"
         android:layout_margin="20dp"
+        android:text="Instantaneous Flows"
         android:textAllCaps="false"
         android:textSize="24dp"/>
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/linepack_fail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/linepackfail"
         android:visibility="gone">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Server is offline. Please try later."
             android:gravity="center"
+            android:text="Server is offline. Please try later."
             android:textSize="20dp"
             />
 

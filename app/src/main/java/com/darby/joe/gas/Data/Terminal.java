@@ -1,6 +1,4 @@
-package com.darby.joe.gas.Data;
-
-import com.darby.joe.gas.Data.Pipeline;
+package com.darby.joe.gas.data;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.darby.joe.gas.Activities;
+package com.darby.joe.gas.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcomescreen);
 
-        View nHistorical = findViewById(R.id.norwayHistorical);
+        View nHistorical = findViewById(R.id.norway_historical_layout);
         nHistorical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View clickedView) {
@@ -29,7 +29,7 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-        View ukHistorical = findViewById(R.id.ukHistorical);
+        View ukHistorical = findViewById(R.id.nbp_historical_layout);
         ukHistorical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View clickedView) {
@@ -43,26 +43,20 @@ public class StartActivity extends AppCompatActivity {
 
     public void launchNBPSummary(View v) {
         Intent intent = new Intent(v.getContext(), NBPLinepackDataActivity.class);
-        this.startActivity(intent);
+        startActivity(intent);
 
-
-    }
-
-    public void launchNBPHistory(View v){
-        Intent intent = new Intent(v.getContext(), MultipleChartActivity.class);
-        this.startActivity(intent);
 
     }
 
     public void launchNBPFlows(View v) {
         Intent intent = new Intent(v.getContext(), TerminalListActivity.class);
-        this.startActivity(intent);
+        startActivity(intent);
 
     }
 
     public void launchNorwayFlows(View v) {
         Intent intent = new Intent(v.getContext(), NorwayActivity.class);
-        this.startActivity(intent);
+        startActivity(intent);
 
     }
 }

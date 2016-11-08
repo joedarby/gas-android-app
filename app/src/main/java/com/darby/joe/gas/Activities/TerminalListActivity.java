@@ -1,4 +1,4 @@
-package com.darby.joe.gas.Activities;
+package com.darby.joe.gas.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.darby.joe.gas.Tools.DataParser;
-import com.darby.joe.gas.Tools.ExpandableListAdapter;
-import com.darby.joe.gas.Tools.HttpHelper;
+import com.darby.joe.gas.tools.DataParser;
+import com.darby.joe.gas.tools.ExpandableListAdapter;
+import com.darby.joe.gas.tools.HttpHelper;
 import com.darby.joe.gas.R;
-import com.darby.joe.gas.Data.Terminal;
+import com.darby.joe.gas.data.Terminal;
 
 import java.io.IOException;
 
@@ -75,7 +75,7 @@ public class TerminalListActivity extends AppCompatActivity {
     private void configListView(Terminal[] terms) {
         configFailView(true);
 
-        ExpandableListView expListView = (ExpandableListView) findViewById(R.id.lvExp);
+        ExpandableListView expListView = (ExpandableListView) findViewById(R.id.list_view_expandable);
         ExpandableListAdapter listAdapter = new ExpandableListAdapter(terms);
         expListView.setAdapter(listAdapter);
 
@@ -94,7 +94,7 @@ public class TerminalListActivity extends AppCompatActivity {
     }
 
     private void configFailView(Boolean serverSuccess) {
-        View waitView = findViewById(R.id.TermViewWaiting);
+        View waitView = findViewById(R.id.terminal_view_waiting);
         waitView.setVisibility(View.GONE);
         if (serverSuccess) {
             View failView = findViewById(R.id.fail);

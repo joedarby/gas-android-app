@@ -1,4 +1,4 @@
-package com.darby.joe.gas.Activities;
+package com.darby.joe.gas.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
-import com.darby.joe.gas.Data.NorwayDataSet;
+import com.darby.joe.gas.data.NorwayDataSet;
 import com.darby.joe.gas.R;
-import com.darby.joe.gas.Tools.DataParser;
-import com.darby.joe.gas.Tools.HttpHelper;
-import com.darby.joe.gas.Tools.NorwayListAdapter;
+import com.darby.joe.gas.tools.DataParser;
+import com.darby.joe.gas.tools.HttpHelper;
+import com.darby.joe.gas.tools.NorwayListAdapter;
 
 import java.io.IOException;
 
@@ -73,7 +73,7 @@ public class NorwayActivity extends AppCompatActivity {
     }
 
     private void configFailView(Boolean serverSuccess) {
-        View waitView = findViewById(R.id.TermViewWaiting);
+        View waitView = findViewById(R.id.terminal_view_waiting);
         waitView.setVisibility(View.GONE);
         if (serverSuccess) {
             View failView = findViewById(R.id.fail);

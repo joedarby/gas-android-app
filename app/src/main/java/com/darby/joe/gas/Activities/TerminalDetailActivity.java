@@ -1,13 +1,13 @@
-package com.darby.joe.gas.Activities;
+package com.darby.joe.gas.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.darby.joe.gas.Data.ChartData;
-import com.darby.joe.gas.Tools.ConfigureChart;
-import com.darby.joe.gas.Tools.HttpHelper;
+import com.darby.joe.gas.data.ChartData;
+import com.darby.joe.gas.tools.ConfigureChart;
+import com.darby.joe.gas.tools.HttpHelper;
 import com.darby.joe.gas.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;

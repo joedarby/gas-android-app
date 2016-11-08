@@ -1,4 +1,4 @@
-package com.darby.joe.gas.Tools;
+package com.darby.joe.gas.tools;
 
 import android.graphics.Paint;
 import android.view.LayoutInflater;

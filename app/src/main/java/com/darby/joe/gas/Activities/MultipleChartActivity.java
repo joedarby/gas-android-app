@@ -1,4 +1,4 @@
-package com.darby.joe.gas.Activities;
+package com.darby.joe.gas.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.darby.joe.gas.Data.ChartData;
-import com.darby.joe.gas.Data.TerminalMap;
+import com.darby.joe.gas.data.ChartData;
+import com.darby.joe.gas.data.TerminalMap;
 import com.darby.joe.gas.R;
-import com.darby.joe.gas.Tools.ChartListAdapter;
-import com.darby.joe.gas.Tools.HttpHelper;
+import com.darby.joe.gas.tools.ChartListAdapter;
+import com.darby.joe.gas.tools.HttpHelper;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
@@ -48,17 +48,19 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
 
     private void runClient() {
 
-        String callUrl = "https://gas-server.herokuapp.com/chart/";
+        String callUrl = "https://gas-server.herokuapp.com/chart/" + country +"/";
         if (country.equals("uk")){
-            callUrl += "uk/";
-            for (String name : TerminalMap.TERMINAL_MAPPING.keySet()) { callUrl += name + ",";}
+            for (String name : TerminalMap.TERMINAL_MAPPING.keySet()) {
+                callUrl += name + ",";
+            }
         } else {
-            callUrl += "norway/";
-            for (String name : TerminalMap.NORWAY_LOCATIONS) { callUrl += name + ",";}
+            for (String name : TerminalMap.NORWAY_LOCATIONS) {
+                callUrl += name + ",";
+            }
         }
 
         Call call = HttpHelper.getCall(callUrl);
-        Callback callback = HttpHelper.getChartCallback(country, MultipleChartActivity.this);
+        Callback callback = HttpHelper.getChartCallback(country, this);
         call.enqueue(callback);
 
 
@@ -74,7 +76,7 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
                 ChartData chartDataSubset = new ChartData();
                 for (String pipeline : chartData.dataList.keySet()) {
                     String pTerm = TerminalMap.getTerminal(pipeline);
-                    if (pTerm.equals(terminal)) {
+                    if (terminal.equals(pTerm)) {
                         chartDataSubset.dataList.put(pipeline, chartData.dataList.get(pipeline));
                     }
                 }
@@ -94,7 +96,7 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
 
         }
 
-        ListView listView = (ListView) findViewById(R.id.ChartListView);
+        ListView listView = (ListView) findViewById(R.id.chart_list_view);
         ListAdapter listAdapter = new ChartListAdapter(lineDataObjects);
         listView.setAdapter(listAdapter);
 

@@ -1,4 +1,4 @@
-package com.darby.joe.gas.Tools;
+package com.darby.joe.gas.tools;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.darby.joe.gas.Activities.NBPLinepackDataActivity;
-import com.darby.joe.gas.Activities.TerminalListActivity;
-import com.darby.joe.gas.Data.LinepackDataSet;
+import com.darby.joe.gas.activities.NBPLinepackDataActivity;
+import com.darby.joe.gas.activities.TerminalListActivity;
+import com.darby.joe.gas.data.LinepackDataSet;
 import com.darby.joe.gas.R;
 
 import java.util.Locale;
@@ -22,7 +22,7 @@ public class ConfigLinepackView{
     public static void ConfigView(LinepackDataSet data, NBPLinepackDataActivity a){
         TextView LPDate = (TextView) a.findViewById(R.id.lp_subheading);
         LPDate.setText("Gas day " + data.OLPDate);
-        TextView sysImbal = (TextView) a.findViewById(R.id.sysimbal);
+        TextView sysImbal = (TextView) a.findViewById(R.id.sys_imbal);
         sysImbal.setText(String.format(Locale.UK, "%.1f", data.sysImbalance));
         TextView underOver = (TextView) a.findViewById(R.id.under_over);
 
@@ -47,15 +47,15 @@ public class ConfigLinepackView{
         TextView pclp = (TextView) a.findViewById(R.id.pclp);
         pclp.setText(String.format(Locale.UK, "%.1f", data.PCLP));
 
-        TextView dem = (TextView) a.findViewById(R.id.dem);
+        TextView dem = (TextView) a.findViewById(R.id.demand);
         dem.setText(String.format(Locale.UK, "%.1f", data.forecastDemand));
         TextView flow = (TextView) a.findViewById(R.id.flow);
         flow.setText(String.format(Locale.UK, "%.1f", data.forecastFlow));
 
-        TextView LPtime = (TextView) a.findViewById(R.id.LPtime);
+        TextView LPtime = (TextView) a.findViewById(R.id.linepack_timestamp);
         LPtime.setText("Forecast by National Grid at " + data.PCLPTime);
 
-        final Button button = (Button) a.findViewById(R.id.IFButton);
+        final Button button = (Button) a.findViewById(R.id.flows_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent detail = new Intent(v.getContext(), TerminalListActivity.class);

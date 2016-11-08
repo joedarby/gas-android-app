@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="#f4f4f4">
+    android:background="#f4f4f4"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/terminal_view_waiting"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/TermViewWaiting"
         android:layout_gravity="center">
 
         <ProgressBar
@@ -18,31 +18,32 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/success"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/success"
         android:visibility="gone"
         >
         <TextView
+            android:id="@+id/timestamp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="35"
-            android:gravity="right"
-            android:id="@+id/timestamp"
-            android:textSize="12dp"
+            android:gravity="end"
+            android:paddingEnd="20dp"
             android:paddingRight="20dp"
             android:text="Live data. Provided by Gassco."
+            android:textSize="12dp"
             />
 
         <ListView
+            android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/list"
             android:layout_weight="1"
+            android:childDivider="@null"
             android:divider="#f4f4f4"
-            android:dividerHeight="5dp"
-            android:childDivider="@null">
+            android:dividerHeight="5dp">
 
         </ListView>
 
@@ -50,15 +51,15 @@
 
 
     <LinearLayout
+        android:id="@+id/fail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fail"
         android:visibility="gone">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Server is offline. Please try later."
             android:gravity="center"
+            android:text="Server is offline. Please try later."
             android:textSize="20dp"
             />
 
