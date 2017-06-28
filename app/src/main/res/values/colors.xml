@@ -11,6 +11,9 @@
     <color name="lightblue">#0099CC</color>
     <color name="backgroundbluedark">#CCD9FF</color>
     <color name="backgroundbluelight">#E6ECFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
 
 
 </resources>
