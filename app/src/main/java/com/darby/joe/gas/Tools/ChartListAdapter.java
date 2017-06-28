@@ -64,7 +64,7 @@ public class ChartListAdapter extends BaseAdapter {
             dataSets.add(data.get(terminal));
         }
 
-        ConfigureChart.configure(chart);
+        com.darby.joe.gas.tools.ConfigureChart.configure(chart);
         Description desc = new Description();
         desc.setTextSize(14f);
         desc.setPosition(20,21);

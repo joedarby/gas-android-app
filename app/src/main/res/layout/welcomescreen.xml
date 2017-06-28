@@ -8,7 +8,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/ttf_layout"
+        android:id="@+id/ttf_button_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -19,49 +19,50 @@
         android:layout_marginRight="40dp">
 
         <TextView
-            android:id="@+id/ttf_header"
+            android:id="@+id/ttf_button_group_header"
             android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
-            android:text="TTF"
+            android:text="@string/ttf"
             android:textAlignment="center"
-            android:textSize="24dp"/>
+            android:textSize="24sp"/>
 
         <LinearLayout
-            android:id="@+id/ttf_flows_layout"
+            android:id="@+id/ttf_flows_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/ttf_header"
+            android:layout_below="@+id/ttf_button_group_header"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/ttf_flows_image"
+                android:id="@+id/ttf_flows_button_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/fire" />
 
             <TextView
-                android:id="@+id/ttf_flows_label"
+                android:id="@+id/ttf_flows_button_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Flows"
+                android:text="@string/flows"
                 android:textAlignment="center"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ttf_historical_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ttf_header"
-            android:layout_toEndOf="@+id/ttf_flows_layout"
-            android:layout_toRightOf="@+id/ttf_flows_layout"
+            android:layout_below="@+id/ttf_button_group_header"
+            android:layout_toEndOf="@+id/ttf_flows_button"
+            android:layout_toRightOf="@+id/ttf_flows_button"
             android:orientation="vertical"
             android:paddingLeft="10dp"
             android:paddingStart="10dp">
 
             <ImageView
-                android:id="@+id/ttf_historical_image"
+                android:id="@+id/ttf_historical_button_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:adjustViewBounds="true"
@@ -69,98 +70,110 @@
                 app:srcCompat="@drawable/profit" />
 
             <TextView
-                android:id="@+id/ttf_historical_label"
+                android:id="@+id/ttf_historical_button_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Historical\nData"
+                android:text="@string/historical_data"
                 android:textAlignment="center"/>
         </LinearLayout>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/nbp_layout"
+        android:id="@+id/nbp_button_group"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
-        android:layout_above="@+id/ttf_layout"
+        android:layout_above="@+id/ttf_button_group"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@+id/ttf_layout"
-        android:layout_toStartOf="@+id/ttf_layout">
+        android:layout_toLeftOf="@+id/ttf_button_group"
+        android:layout_toStartOf="@+id/ttf_button_group">
 
         <TextView
-            android:id="@+id/nbp_header"
+            android:id="@+id/nbp_button_group_header"
             android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
-            android:text="NBP"
+            android:text="@string/nbp"
             android:textAlignment="center"
-            android:textSize="24dp"/>
+            android:textSize="24sp"/>
 
         <LinearLayout
-            android:id="@+id/nbp_summary_flows"
+            android:id="@+id/nbp_summary_and_flows_subgroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/nbp_header"
+            android:layout_below="@+id/nbp_button_group_header"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/nbp_summary_image"
-                android:layout_width="75dp"
-                android:layout_height="46dp"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:onClick="launchNBPSummary"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/arrows_green_red"/>
-
-            <TextView
-                android:id="@+id/nbp_summary_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:onClick="launchNBPSummary"
-                android:text="Summary"
-                android:textAlignment="center"/>
-
-
-
-            <ImageView
-                android:id="@+id/nbp_flows_image"
+            <LinearLayout
+                android:id="@+id/nbp_summary_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:onClick="launchNBPFlows"
-                android:paddingTop="10dp"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/fire"/>
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/nbp_flows_label"
-                android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/nbp_summary_button_image"
+                    android:layout_width="75dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/arrows_green_red"/>
+
+                <TextView
+                    android:id="@+id/nbp_summary_button_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/summary"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/nbp_flows_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:onClick="launchNBPFlows"
-                android:text="Flows"
-                android:textAlignment="center"/>
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/nbp_flows_button_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:paddingTop="10dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/fire"/>
+
+                <TextView
+                    android:id="@+id/nbp_flows_button_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/flows"
+                    android:textAlignment="center"/>
+
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/nbp_historical_layout"
+            android:id="@+id/nbp_historical_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/nbp_summary_flows"
-            android:layout_toEndOf="@+id/nbp_summary_flows"
+            android:layout_toRightOf="@+id/nbp_summary_and_flows_subgroup"
+            android:layout_toEndOf="@+id/nbp_summary_and_flows_subgroup"
             android:orientation="vertical"
             android:paddingLeft="10dp"
             android:weightSum="1">
 
             <ImageView
-                android:id="@+id/nbp_historical_image"
+                android:id="@+id/nbp_historical_button_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:adjustViewBounds="true"
@@ -168,10 +181,10 @@
                 app:srcCompat="@drawable/profit" />
 
             <TextView
-                android:id="@+id/nbp_historical_label"
+                android:id="@+id/nbp_historical_button_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Historical\nData"
+                android:text="@string/historical_data"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -180,67 +193,67 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/norway_button_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/ttf_layout"
-        android:layout_alignRight="@+id/ttf_layout"
+        android:layout_alignEnd="@+id/ttf_button_group"
+        android:layout_alignRight="@+id/ttf_button_group"
         android:layout_marginBottom="19dp">
 
         <TextView
-            android:id="@+id/norway_header"
+            android:id="@+id/norway_button_group_header"
             android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
-            android:text="Norway"
+            android:text="@string/norway"
             android:textAlignment="center"
-            android:textSize="24dp"/>
+            android:textSize="24sp"/>
 
         <LinearLayout
-            android:id="@+id/norway_historical_layout"
+            android:id="@+id/norway_historical_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/norway_header"
-            android:layout_toEndOf="@+id/norway_flows_layout"
-            android:layout_toRightOf="@+id/norway_flows_layout"
+            android:layout_below="@+id/norway_button_group_header"
+            android:layout_toEndOf="@+id/norway_flows_button"
+            android:layout_toRightOf="@+id/norway_flows_button"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/norway_historical_image"
+                android:id="@+id/norway_historical_button_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/profit" />
 
             <TextView
-                android:id="@+id/norway_historical_label"
+                android:id="@+id/norway_historical_button_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Historical\nData"
+                android:text="@string/historical_data"
                 android:textAlignment="center"/>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/norway_flows_layout"
+            android:id="@+id/norway_flows_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/norway_header"
-            android:onClick="launchNorwayFlows"
+            android:layout_below="@+id/norway_button_group_header"
             android:orientation="vertical">
 
 
             <ImageView
-                android:id="@+id/norway_flows_image"
+                android:id="@+id/norway_flows_button_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/fire" />
 
             <TextView
-                android:id="@+id/norway_flows_label"
+                android:id="@+id/norway_flows_button_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Flows"
+                android:text="@string/flows"
                 android:textAlignment="center" />
 
         </LinearLayout>

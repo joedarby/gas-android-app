@@ -10,7 +10,7 @@ package="com.darby.joe.gas">
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
     android:name=".tools.GasApplication">
-    <activity android:name=".activities.StartActivity">
+    <activity android:name=".activities.MainActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
