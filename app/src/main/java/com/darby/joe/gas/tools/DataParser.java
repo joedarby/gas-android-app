@@ -7,6 +7,9 @@ import com.darby.joe.gas.data.Terminal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -16,7 +19,7 @@ import java.io.InputStreamReader;
 public class DataParser {
 
     public Terminal[] getTerminals(InputStream inputStream) {
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
+        Gson gson = new GsonBuilder().setDateFormat("dd/MM/yyyy hh:mm").create();
         Terminal[] terminals = gson.fromJson(new InputStreamReader(inputStream), Terminal[].class);
 
         Terminal[] modifiedTerminals = new Terminal[terminals.length - 1];

@@ -3,9 +3,6 @@ package com.darby.joe.gas.data;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by Joe on 04/09/2016.
- */
 public class Terminal {
     public String terminalName;
     public Date terminalTimestamp;

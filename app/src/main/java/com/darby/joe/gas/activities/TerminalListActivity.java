@@ -13,13 +13,22 @@ import com.darby.joe.gas.tools.HttpHelper;
 import com.darby.joe.gas.R;
 import com.darby.joe.gas.data.Terminal;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class TerminalListActivity extends AppCompatActivity {
+
+    private final String API_URL = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/last_vals";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +57,8 @@ public class TerminalListActivity extends AppCompatActivity {
     */
 
     private void runClient() {
-        Call call = HttpHelper.getCall("http://gas-server.herokuapp.com/terminals");
+        //Call call = HttpHelper.getCall("http://gas-server.herokuapp.com/terminals");
+        Call call = HttpHelper.getPostCall(API_URL, getRequestBody("NG"));
 
         Callback callback = new Callback() {
             Terminal[] terminals;
@@ -108,6 +118,13 @@ public class TerminalListActivity extends AppCompatActivity {
             successView.setVisibility(View.GONE);
         }
     }
+
+    private RequestBody getRequestBody(String gridName) {
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        String body = "{\"grid\":\"" + gridName + "\"}";
+        return RequestBody.create(JSON, body);
+    }
+
 
 
 

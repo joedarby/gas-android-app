@@ -2,9 +2,6 @@ package com.darby.joe.gas.data;
 
 import java.util.Date;
 
-/**
- * Created by Joe on 01/09/2016.
- */
 public class Pipeline {
     public String pipelineName;
     public double flowValue;

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "864325878321",
+    "firebase_url": "https://gas-android-902aa.firebaseio.com",
+    "project_id": "gas-android-902aa",
+    "storage_bucket": "gas-android-902aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864325878321:android:98845a0ff24395da",
+        "android_client_info": {
+          "package_name": "com.darby.joe.gas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864325878321-69st4t1oimckga8hejmhtb0utol8hpvj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darby.joe.gas",
+            "certificate_hash": "014a1a49424a716dfcbafe187469edf65c58a9b5"
+          }
+        },
+        {
+          "client_id": "864325878321-rm7smjv76cejpr6vnj582mobm73rtvg0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-JIx1f02hL-Xz7O5zvrBRMOqxBrX-S9Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864325878321-rm7smjv76cejpr6vnj582mobm73rtvg0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
