@@ -28,18 +28,18 @@ public class HttpHelper {
 
     }
 
-    public static Call getPostCall(String url, RequestBody requestBody) {
-        Request request = new Request.Builder()
-                .url(url)
-                .post(requestBody)
-                .build();
-
-        return new OkHttpClient.Builder()
-                .connectTimeout(60, TimeUnit.SECONDS)
-                .build()
-                .newCall(request);
-
-    }
+//    public static Call getPostCall(String url, RequestBody requestBody) {
+//        Request request = new Request.Builder()
+//                .url(url)
+//                .post(requestBody)
+//                .build();
+//
+//        return new OkHttpClient.Builder()
+//                .connectTimeout(60, TimeUnit.SECONDS)
+//                .build()
+//                .newCall(request);
+//
+//    }
 
     public static <T extends Activity & GetChart> Callback getChartCallback(final String country, final T a) {
 

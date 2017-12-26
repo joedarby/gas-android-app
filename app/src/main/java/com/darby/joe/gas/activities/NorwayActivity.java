@@ -24,6 +24,9 @@ import okhttp3.Response;
 
 public class NorwayActivity extends AppCompatActivity {
 
+    private final String API_URL = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/Norway-list";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,7 @@ public class NorwayActivity extends AppCompatActivity {
 
 
     private void runClient() {
-        Call call = HttpHelper.getCall("http://gas-server.herokuapp.com/norway");
+        Call call = HttpHelper.getCall(API_URL);
 
         Callback callback = new Callback() {
             NorwayDataSet norwayDataSet;
@@ -45,6 +48,7 @@ public class NorwayActivity extends AppCompatActivity {
 
             @Override
             public void onResponse (Call call, Response response)throws IOException {
+                //String s = response.body().string();
                 norwayDataSet = new DataParser().getNorwayData(response.body().byteStream());
                 runOnUiThread(new Runnable() {
                     @Override

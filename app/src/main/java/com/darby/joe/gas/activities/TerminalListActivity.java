@@ -13,27 +13,25 @@ import com.darby.joe.gas.tools.HttpHelper;
 import com.darby.joe.gas.R;
 import com.darby.joe.gas.data.Terminal;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class TerminalListActivity extends AppCompatActivity {
+    public static String COUNTRY = "country";
+    public String country;
 
-    private final String API_URL = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/last_vals";
+    private final String API_ROOT_URL = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.terminal_list);
+
+        country = getIntent().getStringExtra(COUNTRY);
 
         runClient();
     }
@@ -58,7 +56,12 @@ public class TerminalListActivity extends AppCompatActivity {
 
     private void runClient() {
         //Call call = HttpHelper.getCall("http://gas-server.herokuapp.com/terminals");
-        Call call = HttpHelper.getPostCall(API_URL, getRequestBody("NG"));
+        //Call call = HttpHelper.getPostCall(API_ROOT_URL, getRequestBody("NG"));
+        String url =
+                country.equals("uk")
+                ? API_ROOT_URL + "NG-terminal-list/"
+                : API_ROOT_URL + "GTS-terminal-list/";
+        Call call = HttpHelper.getCall(url);
 
         Callback callback = new Callback() {
             Terminal[] terminals;
@@ -69,6 +72,7 @@ public class TerminalListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse (Call call, Response response)throws IOException {
+//                String s = response.body().string();
                 terminals = new DataParser().getTerminals(response.body().byteStream());
                 runOnUiThread(new Runnable() {
                     @Override
@@ -119,11 +123,11 @@ public class TerminalListActivity extends AppCompatActivity {
         }
     }
 
-    private RequestBody getRequestBody(String gridName) {
-        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-        String body = "{\"grid\":\"" + gridName + "\"}";
-        return RequestBody.create(JSON, body);
-    }
+//    private RequestBody getRequestBody(String gridName) {
+//        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+//        String body = "{\"grid\":\"" + gridName + "\"}";
+//        return RequestBody.create(JSON, body);
+//    }
 
 
 

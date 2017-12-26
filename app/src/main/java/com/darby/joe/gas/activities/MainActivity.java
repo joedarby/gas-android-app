@@ -22,12 +22,15 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout ukHistButton = (LinearLayout) findViewById(R.id.nbp_historical_button);
         LinearLayout ukSummaryButton = (LinearLayout) findViewById(R.id.nbp_summary_button);
         LinearLayout ukFlowsButton = (LinearLayout) findViewById(R.id.nbp_flows_button);
+        LinearLayout ttfFlowsButton = (LinearLayout) findViewById(R.id.ttf_flows_button);
+
 
         setButtonClickListener(norFlowsButton, NorwayActivity.class);
         setButtonClickListener(ukSummaryButton, NBPLinepackDataActivity.class);
-        setButtonClickListener(ukFlowsButton, TerminalListActivity.class);
+        setButtonClickListener(ukFlowsButton, TerminalListActivity.class, "uk");
         setButtonClickListener(norHistButton, MultipleChartActivity.class, "norway");
         setButtonClickListener(ukHistButton, MultipleChartActivity.class, "uk");
+        setButtonClickListener(ttfFlowsButton, TerminalListActivity.class, "nl");
 
     }
 
