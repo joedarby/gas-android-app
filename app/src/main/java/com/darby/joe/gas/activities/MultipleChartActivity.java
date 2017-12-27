@@ -13,9 +13,11 @@ import com.darby.joe.gas.R;
 import com.darby.joe.gas.tools.ChartListAdapter;
 import com.darby.joe.gas.tools.HttpHelper;
 import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -84,18 +86,36 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
         HashMap<String, LineData> lineDataObjects = new HashMap<>();
 
         if (country.equals("uk")) {
-            for (String terminal : TerminalMap.TERMINAL_NAMES){
-                ChartData chartDataSubset = new ChartData();
-                for (String pipeline : chartData.dataList.keySet()) {
-                    String pTerm = TerminalMap.getTerminal(pipeline);
-                    if (terminal.equals(pTerm)) {
-                        chartDataSubset.dataList.put(pipeline, chartData.dataList.get(pipeline));
+            HashMap<String, ChartData> dataSubsets = new HashMap<>();
+            for (String pipeline : chartData.dataList.keySet()) {
+                String pTerm = TerminalMap.getTerminal(pipeline);
+                if (pTerm != null) {
+                    if (!dataSubsets.containsKey(pTerm)) {
+                        dataSubsets.put(pTerm, new ChartData());
                     }
+                    dataSubsets.get(pTerm).dataList.put(pipeline, chartData.dataList.get(pipeline));
                 }
-                List<ILineDataSet> dataSets = chartDataSubset.createLineChartData();
+            }
+            for (String terminal : dataSubsets.keySet()) {
+                List<ILineDataSet> dataSets = dataSubsets.get(terminal).createLineChartData();
                 LineData data = new LineData(dataSets);
                 lineDataObjects.put(terminal, data);
             }
+//        }
+//
+//        if (country.equals("uk")) {
+//            for (String terminal : TerminalMap.TERMINAL_NAMES){
+//                ChartData chartDataSubset = new ChartData();
+//                for (String pipeline : chartData.dataList.keySet()) {
+//                    String pTerm = TerminalMap.getTerminal(pipeline);
+//                    if (terminal.equals(pTerm)) {
+//                        chartDataSubset.dataList.put(pipeline, chartData.dataList.get(pipeline));
+//                    }
+//                }
+//                List<ILineDataSet> dataSets = chartDataSubset.createLineChartData();
+//                LineData data = new LineData(dataSets);
+//                lineDataObjects.put(terminal, data);
+//            }
         } else if (country.equals("norway")) {
             for (String location : chartData.dataList.keySet()) {
                 ChartData chartDataSubset = new ChartData();

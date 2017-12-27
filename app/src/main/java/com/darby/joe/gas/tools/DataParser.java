@@ -13,15 +13,8 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Map;
 
-/**
- * Created by Joe on 28/08/2016.
- */
+
 public class DataParser {
 
     public Terminal[] getTerminals(InputStream inputStream) {

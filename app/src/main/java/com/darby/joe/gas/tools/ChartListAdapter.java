@@ -21,10 +21,13 @@ import java.util.HashMap;
 
 public class ChartListAdapter extends BaseAdapter {
     private HashMap<String, LineData> data;
+    float minX;
+    float maxX;
 
 
     public ChartListAdapter(HashMap<String, LineData> d) {
         data = d;
+
 
     }
 

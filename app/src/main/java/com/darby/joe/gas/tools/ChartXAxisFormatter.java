@@ -6,9 +6,6 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import java.util.Calendar;
 import java.util.Locale;
 
-/**
- * Created by Joe on 05/10/2016.
- */
 
 public class ChartXAxisFormatter implements IAxisValueFormatter {
 

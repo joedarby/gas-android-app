@@ -17,10 +17,10 @@ public class ConfigureChart {
 
         XAxis xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setAxisMinimum(0);
-        xAxis.setAxisMaximum(4320); //4320 minutes in 3 days
+        //xAxis.setAxisMinimum(0);
+        //xAxis.setAxisMaximum(4320); //4320 minutes in 3 days
         xAxis.setLabelCount(7, true);
-        xAxis.setValueFormatter(new ChartXAxisFormatter());
+        //xAxis.setValueFormatter(new ChartXAxisFormatter());
 
         //YAxis yAxis = chart.getAxisLeft();
         //yAxis.setAxisMinimum(0);
