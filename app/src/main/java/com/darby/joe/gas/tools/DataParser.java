@@ -6,12 +6,18 @@ import com.darby.joe.gas.data.NorwayDataSet;
 import com.darby.joe.gas.data.Terminal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Joe on 28/08/2016.
@@ -54,7 +60,9 @@ public class DataParser {
 
     public ChartData getChartData(InputStream inputStream) {
         Gson gson = new Gson();
-        return gson.fromJson(new InputStreamReader(inputStream), ChartData.class);
+        //Type type = new TypeToken<HashMap<String,HashMap<BigDecimal, BigDecimal>>>(){}.getType();
+        ChartData cd = gson.fromJson(new InputStreamReader(inputStream), ChartData.class);
+        return cd;
     }
 
 }

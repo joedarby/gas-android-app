@@ -15,6 +15,8 @@ import com.darby.joe.gas.tools.HttpHelper;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -48,7 +50,8 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
 
     private void runClient() {
 
-        String callUrl = "https://gas-server.herokuapp.com/chart/" + country +"/";
+//        String callUrl = "https://gas-server.herokuapp.com/chart/" + country +"/";
+        String callUrl = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/chart?location=";
         if (country.equals("uk")){
             for (String name : TerminalMap.TERMINAL_MAPPING.keySet()) {
                 callUrl += name + ",";
@@ -58,6 +61,15 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
                 callUrl += name + ",";
             }
         }
+        callUrl += "&country=" + country;
+
+        Calendar now = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:MM");
+        String end = sdf.format(now.getTime());
+        now.add(Calendar.DATE, -1);
+        String start = sdf.format(now.getTime());
+
+        callUrl += "&timeFrom=" + start + "&timeTo=" + end;
 
         Call call = HttpHelper.getCall(callUrl);
         Callback callback = HttpHelper.getChartCallback(country, this);

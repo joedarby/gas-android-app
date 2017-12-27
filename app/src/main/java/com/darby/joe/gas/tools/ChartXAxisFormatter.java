@@ -21,8 +21,8 @@ public class ChartXAxisFormatter implements IAxisValueFormatter {
         return getAxisLabel((int) value);
     }
 
-    @Override
-    public int getDecimalDigits() {return 0;}
+//    @Override
+//    public int getDecimalDigits() {return 0;}
 
 
     private String getAxisLabel(int index){

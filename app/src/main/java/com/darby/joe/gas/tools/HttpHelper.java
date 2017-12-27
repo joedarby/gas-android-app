@@ -59,6 +59,7 @@ public class HttpHelper {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                //String s = response.body().string();
                 final ChartData chartData = new DataParser().getChartData(response.body().byteStream());
                 a.runOnUiThread(new Runnable() {
                     @Override
