@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout ukSummaryButton = (LinearLayout) findViewById(R.id.nbp_summary_button);
         LinearLayout ukFlowsButton = (LinearLayout) findViewById(R.id.nbp_flows_button);
         LinearLayout ttfFlowsButton = (LinearLayout) findViewById(R.id.ttf_flows_button);
+        LinearLayout ttfHistButton = (LinearLayout) findViewById(R.id.ttf_historical_button);
 
 
         setButtonClickListener(norFlowsButton, NorwayActivity.class);
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setButtonClickListener(norHistButton, MultipleChartActivity.class, "norway");
         setButtonClickListener(ukHistButton, MultipleChartActivity.class, "uk");
         setButtonClickListener(ttfFlowsButton, TerminalListActivity.class, "nl");
+        setButtonClickListener(ttfHistButton, MultipleChartActivity.class, "nl");
 
     }
 

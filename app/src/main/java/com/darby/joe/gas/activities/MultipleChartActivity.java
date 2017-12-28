@@ -8,6 +8,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.darby.joe.gas.data.ChartData;
+import com.darby.joe.gas.data.ChartPipeline;
+import com.darby.joe.gas.data.ChartTerminal;
 import com.darby.joe.gas.data.TerminalMap;
 import com.darby.joe.gas.R;
 import com.darby.joe.gas.tools.ChartListAdapter;
@@ -54,15 +56,20 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
 
 //        String callUrl = "https://gas-server.herokuapp.com/chart/" + country +"/";
         String callUrl = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/chart?location=";
-        if (country.equals("uk")){
-            for (String name : TerminalMap.TERMINAL_MAPPING.keySet()) {
-                callUrl += name + ",";
-            }
-        } else {
-            for (String name : TerminalMap.NORWAY_LOCATIONS) {
-                callUrl += name + ",";
-            }
-        }
+//        if (country.equals("uk")){
+//            for (String name : TerminalMap.UK_TERMINAL_MAPPING.keySet()) {
+//                callUrl += name + ",";
+//            }
+//        } else if (country.equals("nl")){
+//            for (String name : TerminalMap.NL_TERMINAL_MAPPING.keySet()) {
+//                callUrl += name + ",";
+//            }
+//        } else {
+//            for (String name : TerminalMap.NORWAY_LOCATIONS) {
+//                callUrl += name + ",";
+//            }
+//        }
+        callUrl += "all";
         callUrl += "&country=" + country;
 
         Calendar now = Calendar.getInstance();
@@ -82,56 +89,52 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
 
     @Override
     public void getChart(String country, ChartData chartData) {
+        ArrayList<ChartPipeline> chartPipelines = new ArrayList<>();
 
-        HashMap<String, LineData> lineDataObjects = new HashMap<>();
+        for (String pipeline : chartData.dataList.keySet())
+            chartPipelines.add(new ChartPipeline(pipeline, chartData.dataList.get(pipeline)));
 
-        if (country.equals("uk")) {
-            HashMap<String, ChartData> dataSubsets = new HashMap<>();
-            for (String pipeline : chartData.dataList.keySet()) {
-                String pTerm = TerminalMap.getTerminal(pipeline);
-                if (pTerm != null) {
-                    if (!dataSubsets.containsKey(pTerm)) {
-                        dataSubsets.put(pTerm, new ChartData());
-                    }
-                    dataSubsets.get(pTerm).dataList.put(pipeline, chartData.dataList.get(pipeline));
-                }
-            }
-            for (String terminal : dataSubsets.keySet()) {
-                List<ILineDataSet> dataSets = dataSubsets.get(terminal).createLineChartData();
-                LineData data = new LineData(dataSets);
-                lineDataObjects.put(terminal, data);
-            }
-//        }
-//
-//        if (country.equals("uk")) {
-//            for (String terminal : TerminalMap.TERMINAL_NAMES){
-//                ChartData chartDataSubset = new ChartData();
-//                for (String pipeline : chartData.dataList.keySet()) {
-//                    String pTerm = TerminalMap.getTerminal(pipeline);
-//                    if (terminal.equals(pTerm)) {
-//                        chartDataSubset.dataList.put(pipeline, chartData.dataList.get(pipeline));
-//                    }
-//                }
-//                List<ILineDataSet> dataSets = chartDataSubset.createLineChartData();
-//                LineData data = new LineData(dataSets);
-//                lineDataObjects.put(terminal, data);
-//            }
-        } else if (country.equals("norway")) {
-            for (String location : chartData.dataList.keySet()) {
-                ChartData chartDataSubset = new ChartData();
-                chartDataSubset.dataList.put(location, chartData.dataList.get(location));
-
-                List<ILineDataSet> dataSets = chartDataSubset.createLineChartData();
-                LineData data = new LineData(dataSets);
-                lineDataObjects.put(location, data);
-            }
-
-        }
+        HashMap<String, LineData> lineDataObjects = country.equals("uk") || country.equals("nl")
+                ? getGroupedChartLineData(chartPipelines, country)
+                : getUngroupedChartLineData(chartPipelines);
 
         ListView listView = (ListView) findViewById(R.id.chart_list_view);
         ListAdapter listAdapter = new ChartListAdapter(lineDataObjects);
         listView.setAdapter(listAdapter);
 
+    }
 
+    private HashMap<String, LineData> getGroupedChartLineData(ArrayList<ChartPipeline> pipelines, String country) {
+        HashMap<String, LineData> lineDataMap = new HashMap<>();
+
+        HashMap<String, ChartTerminal> terminalDataSets = new HashMap<>();
+
+        for (ChartPipeline pipeline : pipelines) {
+            String pTerm = pipeline.getTerminalName(country);
+            if (pTerm != null) {
+                if (!terminalDataSets.containsKey(pTerm)) {
+                    terminalDataSets.put(pTerm, new ChartTerminal(pTerm));
+                }
+                terminalDataSets.get(pTerm).addPipeline(pipeline);
+            }
+        }
+
+        for (String terminal : terminalDataSets.keySet()) {
+            List<ILineDataSet> dataSets = terminalDataSets.get(terminal).getLineDataSetList();
+            LineData data = new LineData(dataSets);
+            lineDataMap.put(terminal, data);
+        }
+        return lineDataMap;
+    }
+
+    private HashMap<String, LineData> getUngroupedChartLineData(ArrayList<ChartPipeline> pipelines) {
+        HashMap<String, LineData> lineDataMap = new HashMap<>();
+
+        for (ChartPipeline pipeline: pipelines) {
+            LineDataSet dataSet = pipeline.getLineDataSet();
+            LineData data = new LineData(dataSet);
+            lineDataMap.put(pipeline.getName(), data);
+        }
+        return lineDataMap;
     }
 }

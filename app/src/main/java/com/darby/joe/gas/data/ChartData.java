@@ -18,14 +18,10 @@ import java.util.List;
  */
 
 public class ChartData {
-    public HashMap<String, HashMap<BigDecimal, BigDecimal>> dataList;
+    public HashMap<String, HashMap<BigDecimal, Float>> dataList;
 
     public ChartData() {
         dataList = new HashMap<>();
-    }
-
-    public ChartData(HashMap<String, HashMap<BigDecimal,BigDecimal>> data) {
-        dataList = data;
     }
 
     public List<ILineDataSet> createLineChartData() {
@@ -39,7 +35,7 @@ public class ChartData {
             List<Entry> entries = new ArrayList<>();
 
             for (BigDecimal dp : dataList.get(pipeline).keySet()) {
-                float flow = dataList.get(pipeline).get(dp).floatValue();
+                float flow = dataList.get(pipeline).get(dp);
                 entries.add(new Entry(dp.floatValue(), flow));
             }
 
