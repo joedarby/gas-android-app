@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.darby.joe.gas.data.ChartData;
+import com.darby.joe.gas.data.ChartPipeline;
+import com.darby.joe.gas.data.ChartTerminal;
+import com.darby.joe.gas.data.TerminalMap;
 import com.darby.joe.gas.tools.ConfigureChart;
 import com.darby.joe.gas.tools.HttpHelper;
 import com.darby.joe.gas.R;
@@ -14,7 +17,9 @@ import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import okhttp3.Call;
@@ -44,21 +49,31 @@ public class TerminalDetailActivity extends AppCompatActivity implements GetChar
         myText.setText(tName);
 
         //Set chart data call url as appropriate for uk or norway
-        String callUrl = "https://gas-server.herokuapp.com/chart/";
+        //String callUrl = "https://gas-server.herokuapp.com/chart/";
+        String callUrl = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/chart?location=";
 
-        String UKorNorway = getIntent().getStringExtra(COUNTRY);
+        String country = getIntent().getStringExtra(COUNTRY);
 
-        if (UKorNorway.equals("uk")) {
-            callUrl += "uk/";
+        if (country.equals("uk") || country.equals("nl")){
             ArrayList<String> pNames = getIntent().getStringArrayListExtra(PIPELINE_NAMES);
-            for (String name : pNames) { callUrl += name + ",";}
+            for (String name : pNames) {
+                callUrl += name + ",";
+            }
         } else {
-            callUrl += "norway/" + tName;
-
+            callUrl += tName;
         }
+        callUrl += "&country=" + country;
+
+        Calendar now = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:MM");
+        String end = sdf.format(now.getTime());
+        now.add(Calendar.DATE, -1);
+        String start = sdf.format(now.getTime());
+
+        callUrl += "&timeFrom=" + start + "&timeTo=" + end;
 
         Call call = HttpHelper.getCall(callUrl);
-        Callback callback = HttpHelper.getChartCallback("uk", TerminalDetailActivity.this);
+        Callback callback = HttpHelper.getChartCallback(country, TerminalDetailActivity.this);
         call.enqueue(callback);
 
 
@@ -66,7 +81,12 @@ public class TerminalDetailActivity extends AppCompatActivity implements GetChar
 
     @Override
     public void getChart(String country, ChartData chartData) {
-        List<ILineDataSet> dataSets = chartData.createLineChartData();
+        ChartTerminal cTerm = new ChartTerminal(getIntent().getStringExtra(TERMINAL_NAME));
+
+        for (String pipeline : chartData.dataList.keySet())
+            cTerm.addPipeline(new ChartPipeline(pipeline, chartData.dataList.get(pipeline)));
+
+        List<ILineDataSet> dataSets = cTerm.getLineDataSetList();
         LineChart chart = (LineChart) findViewById(R.id.chart);
         ConfigureChart.configure(chart);
         Description desc = new Description();

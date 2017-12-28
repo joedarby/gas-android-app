@@ -90,7 +90,7 @@ public class TerminalListActivity extends AppCompatActivity {
         configFailView(true);
 
         ExpandableListView expListView = (ExpandableListView) findViewById(R.id.list_view_expandable);
-        ExpandableListAdapter listAdapter = new ExpandableListAdapter(terms);
+        ExpandableListAdapter listAdapter = new ExpandableListAdapter(terms, country);
         expListView.setAdapter(listAdapter);
 
         View header_view = LayoutInflater

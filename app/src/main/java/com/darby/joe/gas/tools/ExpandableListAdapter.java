@@ -20,9 +20,11 @@ import java.util.Locale;
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Terminal[] terminalList;
+    private String country;
 
-    public ExpandableListAdapter(Terminal[] groups){
+    public ExpandableListAdapter(Terminal[] groups, String country){
         this.terminalList = groups;
+        this.country = country;
     }
 
     @Override
@@ -47,7 +49,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View clickedView) {
                 Intent detail = new Intent(clickedView.getContext(), TerminalDetailActivity.class);
-                detail.putExtra(TerminalDetailActivity.COUNTRY, "uk");
+                detail.putExtra(TerminalDetailActivity.COUNTRY, country);
                 detail.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].terminalName);
                 //terminal_individual_chart.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].pipelines[childPosition].pipelineName);
                 detail.putStringArrayListExtra(TerminalDetailActivity.PIPELINE_NAMES, terminalList[groupPosition].getPipelineNames());
