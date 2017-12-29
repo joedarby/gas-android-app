@@ -27,9 +27,6 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 
-/**
- * Created by Joe on 12/10/2016.
- */
 
 public class MultipleChartActivity extends AppCompatActivity implements GetChart {
     public static String COUNTRY = "country";

@@ -50,19 +50,19 @@ public class TerminalDetailActivity extends AppCompatActivity implements GetChar
 
         //Set chart data call url as appropriate for uk or norway
         //String callUrl = "https://gas-server.herokuapp.com/chart/";
-        String callUrl = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/chart?location=";
+        StringBuilder callUrl = new StringBuilder("https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/chart?location=");
 
         String country = getIntent().getStringExtra(COUNTRY);
 
         if (country.equals("uk") || country.equals("nl")){
             ArrayList<String> pNames = getIntent().getStringArrayListExtra(PIPELINE_NAMES);
             for (String name : pNames) {
-                callUrl += name + ",";
+                callUrl.append(name).append(",");
             }
         } else {
-            callUrl += tName;
+            callUrl.append(tName);
         }
-        callUrl += "&country=" + country;
+        callUrl.append("&country=").append(country);
 
         Calendar now = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:MM");
@@ -70,9 +70,9 @@ public class TerminalDetailActivity extends AppCompatActivity implements GetChar
         now.add(Calendar.DATE, -1);
         String start = sdf.format(now.getTime());
 
-        callUrl += "&timeFrom=" + start + "&timeTo=" + end;
+        callUrl.append("&timeFrom=").append(start).append("&timeTo=").append(end);
 
-        Call call = HttpHelper.getCall(callUrl);
+        Call call = HttpHelper.getCall(callUrl.toString());
         Callback callback = HttpHelper.getChartCallback(country, TerminalDetailActivity.this);
         call.enqueue(callback);
 

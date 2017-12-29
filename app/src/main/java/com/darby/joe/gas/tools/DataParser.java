@@ -19,7 +19,6 @@ public class DataParser {
 
     public Terminal[] getTerminals(InputStream inputStream) {
         Gson gson = new GsonBuilder().setDateFormat("dd/MM/yyyy hh:mm").create();
-        Terminal[] terminals = gson.fromJson(new InputStreamReader(inputStream), Terminal[].class);
 
 //        Terminal[] modifiedTerminals = new Terminal[terminals.length - 1];
 //        int i = 0;
@@ -31,7 +30,7 @@ public class DataParser {
 //                i++;
 //            }
 //        }
-        return terminals;
+        return gson.fromJson(new InputStreamReader(inputStream), Terminal[].class);
     }
 
     public LinepackDataSet getLinepackData(InputStream inputStream) {
@@ -54,8 +53,7 @@ public class DataParser {
     public ChartData getChartData(InputStream inputStream) {
         Gson gson = new Gson();
         //Type type = new TypeToken<HashMap<String,HashMap<BigDecimal, BigDecimal>>>(){}.getType();
-        ChartData cd = gson.fromJson(new InputStreamReader(inputStream), ChartData.class);
-        return cd;
+        return gson.fromJson(new InputStreamReader(inputStream), ChartData.class);
     }
 
 }

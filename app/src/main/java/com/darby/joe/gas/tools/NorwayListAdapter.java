@@ -25,9 +25,7 @@ public class NorwayListAdapter extends BaseAdapter {
 
     public NorwayListAdapter(HashMap<String, Double> dataSet) {
         data = dataSet;
-        for (String key : dataSet.keySet()) {
-            locations.add(key);
-        }
+        locations.addAll(dataSet.keySet());
     }
 
 

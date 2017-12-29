@@ -58,9 +58,7 @@ public class ChartListAdapter extends BaseAdapter {
 
         ArrayList<String> terminalNames = new ArrayList<>();
         ArrayList<LineData> dataSets =  new ArrayList<>();
-        for (String key : data.keySet()) {
-            terminalNames.add(key);
-        }
+        terminalNames.addAll(data.keySet());
 
         Collections.sort(terminalNames);
         for (String terminal : terminalNames) {
