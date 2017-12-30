@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.widget.TextView;
 
 import com.darby.joe.gas.activities.GetChart;
-//import com.darby.joe.gas.activities.CurrentFlowsActivityNorway;
 import com.darby.joe.gas.activities.CurrentFlowsActivity;
 import com.darby.joe.gas.charts.ChartData;
 import com.darby.joe.gas.R;
@@ -22,16 +21,24 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class HttpHelper {
-
     public static final String API_ROOT_URL = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/";
+    private static HttpHelper httpHelper = new HttpHelper();
+    private OkHttpClient okHttp;
 
-    public static Call getCall(String url) {
+    private HttpHelper() {
+        okHttp = new OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS).build();
+    }
+
+    public HttpHelper getInstance() {
+        return httpHelper;
+    }
+
+    public Call getCall(String url) {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
 
-        return new OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS).build().newCall(request);
-
+        return okHttp.newCall(request);
     }
 
     public static String getChartUrl(String country, String... pNames) {

@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout ttfFlowsButton = (LinearLayout) findViewById(R.id.ttf_flows_button);
         LinearLayout ttfHistButton = (LinearLayout) findViewById(R.id.ttf_historical_button);
 
-
         setButtonClickListener(norFlowsButton, CurrentFlowsActivityNorway.class, "norway");
         setButtonClickListener(ukSummaryButton, NBPLinepackDataActivity.class);
         setButtonClickListener(ukFlowsButton, CurrentFlowsActivity.class, "uk");

@@ -17,7 +17,7 @@ public class DataParser {
 
     private DataParser() {
         gsonInstance = new GsonBuilder().setDateFormat("dd/MM/yyyy hh:mm").create();
-    };
+    }
 
     public static DataParser getInstance() {
         return dataParser;
