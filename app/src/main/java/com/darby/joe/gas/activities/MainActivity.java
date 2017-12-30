@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout ttfHistButton = (LinearLayout) findViewById(R.id.ttf_historical_button);
 
 
-        setButtonClickListener(norFlowsButton, NorwayListActivity.class, "norway");
+        setButtonClickListener(norFlowsButton, CurrentFlowsActivityNorway.class, "norway");
         setButtonClickListener(ukSummaryButton, NBPLinepackDataActivity.class);
-        setButtonClickListener(ukFlowsButton, TerminalListActivity.class, "uk");
+        setButtonClickListener(ukFlowsButton, CurrentFlowsActivity.class, "uk");
         setButtonClickListener(norHistButton, MultipleChartActivity.class, "norway");
         setButtonClickListener(ukHistButton, MultipleChartActivity.class, "uk");
-        setButtonClickListener(ttfFlowsButton, TerminalListActivity.class, "nl");
+        setButtonClickListener(ttfFlowsButton, CurrentFlowsActivity.class, "nl");
         setButtonClickListener(ttfHistButton, MultipleChartActivity.class, "nl");
 
     }

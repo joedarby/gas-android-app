@@ -15,7 +15,7 @@ import com.darby.joe.gas.data.Terminal;
 import okhttp3.Call;
 import okhttp3.Callback;
 
-public class TerminalListActivity extends AppCompatActivity {
+public class CurrentFlowsActivity extends AppCompatActivity {
     public static String COUNTRY = "country";
     public String country;
 
@@ -33,17 +33,7 @@ public class TerminalListActivity extends AppCompatActivity {
     }
 
     private void runClient() {
-        String url = HttpHelper.API_ROOT_URL;
-        switch (country) {
-            case "uk":
-                url += "NG-terminal-list/";
-                break;
-            case "nl":
-                url += "GTS-terminal-list/";
-                break;
-            default:
-                url += "Norway-list";
-        }
+        String url = HttpHelper.API_ROOT_URL + "current-flows?country=" + country;
 
         Call call = HttpHelper.getCall(url);
         Callback callback = HttpHelper.getTerminalListCallback(this, country);

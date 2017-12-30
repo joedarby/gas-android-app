@@ -9,7 +9,7 @@ import com.darby.joe.gas.data.Terminal;
 import com.darby.joe.gas.tools.NorwayListAdapter;
 
 
-public class NorwayListActivity extends TerminalListActivity {
+public class CurrentFlowsActivityNorway extends CurrentFlowsActivity {
 
     @Override
     public void configListView(Terminal[] terms) {

@@ -18,10 +18,10 @@ package="com.darby.joe.gas">
         </intent-filter>
     </activity>
     <activity android:name=".activities.NBPLinepackDataActivity"/>
-    <activity android:name=".activities.TerminalListActivity"/>
+    <activity android:name=".activities.CurrentFlowsActivity"/>
     <activity android:name=".activities.DetailChartActivity"/>
     <activity android:name=".activities.MultipleChartActivity"/>
-    <activity android:name=".activities.NorwayListActivity"/>
+    <activity android:name=".activities.CurrentFlowsActivityNorway"/>
 
     <service
         android:name=".firebase.MyFirebaseInstanceIdService">

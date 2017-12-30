@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.darby.joe.gas.activities.NBPLinepackDataActivity;
-import com.darby.joe.gas.activities.TerminalListActivity;
+import com.darby.joe.gas.activities.CurrentFlowsActivity;
 import com.darby.joe.gas.data.LinepackDataSet;
 import com.darby.joe.gas.R;
 
@@ -58,7 +58,7 @@ public class ConfigLinepackView{
         final Button button = (Button) a.findViewById(R.id.flows_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent detail = new Intent(v.getContext(), TerminalListActivity.class);
+                Intent detail = new Intent(v.getContext(), CurrentFlowsActivity.class);
                 v.getContext().startActivity(detail);
             }
         });

@@ -46,7 +46,7 @@ public class NBPLinepackDataActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                data = new DataParser().getLinepackData(response.body().byteStream());
+                data = DataParser.getInstance().getLinepackData(response.body().byteStream());
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

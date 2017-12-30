@@ -14,9 +14,6 @@ import com.darby.joe.gas.R;
 
 import java.util.Locale;
 
-/**
- * Created by Joe on 04/09/2016.
- */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Terminal[] terminalList;

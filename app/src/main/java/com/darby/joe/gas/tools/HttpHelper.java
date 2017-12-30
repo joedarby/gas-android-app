@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.widget.TextView;
 
 import com.darby.joe.gas.activities.GetChart;
-//import com.darby.joe.gas.activities.NorwayListActivity;
-import com.darby.joe.gas.activities.TerminalListActivity;
+//import com.darby.joe.gas.activities.CurrentFlowsActivityNorway;
+import com.darby.joe.gas.activities.CurrentFlowsActivity;
 import com.darby.joe.gas.charts.ChartData;
 import com.darby.joe.gas.R;
 import com.darby.joe.gas.data.Terminal;
@@ -60,7 +60,7 @@ public class HttpHelper {
         return callUrl.toString();
     }
 
-    public static Callback getTerminalListCallback(final TerminalListActivity a, final String country) {
+    public static Callback getTerminalListCallback(final CurrentFlowsActivity a, final String country) {
         return new Callback() {
             Terminal[] terminals;
             @Override
@@ -75,9 +75,7 @@ public class HttpHelper {
 
             @Override
             public void onResponse (Call call, Response response)throws IOException {
-                terminals = country.equals("norway")
-                        ? new DataParser().getNorwayData(response.body().byteStream())
-                        : new DataParser().getTerminals(response.body().byteStream());
+                terminals = DataParser.getInstance().getTerminals(response.body().byteStream());
                 a.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -105,7 +103,7 @@ public class HttpHelper {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                final ChartData chartData = new DataParser().getChartData(response.body().byteStream());
+                final ChartData chartData = DataParser.getInstance().getChartData(response.body().byteStream());
                 a.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
