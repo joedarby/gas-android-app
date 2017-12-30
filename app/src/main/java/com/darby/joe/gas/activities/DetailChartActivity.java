@@ -21,7 +21,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class DetailChartActivity extends AppCompatActivity implements GetChart {
+public class DetailChartActivity extends AppCompatActivity {
     public static String TERMINAL_NAME = "terminal name";
     public static String PIPELINE_NAMES = "pipeline names";
     public static String COUNTRY = "terminal type";
@@ -50,14 +50,13 @@ public class DetailChartActivity extends AppCompatActivity implements GetChart {
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                final ChartData chartData = DataParser.getInstance().getChartData(response.body().byteStream());
-                runOnUiThread(() -> getChart(country, chartData));
+                ChartData chartData = DataParser.getInstance().getChartData(response.body().byteStream());
+                runOnUiThread(() -> getChart(chartData));
             }
         }, country, pipelineNames);
     }
 
-    @Override
-    public void getChart(String country, ChartData chartData) {
+    public void getChart(ChartData chartData) {
         ChartTerminal cTerm = chartData.dataList[0];
         LineData lineData = cTerm.getLineData();
         LineChart chart = (LineChart) findViewById(R.id.chart);

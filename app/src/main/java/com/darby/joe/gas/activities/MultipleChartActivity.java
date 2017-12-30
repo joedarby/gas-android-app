@@ -24,7 +24,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 
-public class MultipleChartActivity extends AppCompatActivity implements GetChart {
+public class MultipleChartActivity extends AppCompatActivity {
     public static String COUNTRY = "country";
     public String country;
 
@@ -55,13 +55,12 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final ChartData chartData = DataParser.getInstance().getChartData(response.body().byteStream());
-                runOnUiThread(() -> getChart(country, chartData));
+                runOnUiThread(() -> getChart(chartData));
             }
         }, country);
     }
 
-    @Override
-    public void getChart(String country, ChartData chartData) {
+    public void getChart(ChartData chartData) {
 
         TreeMap<String, LineData> lineDataObjects = getChartLineData(chartData);
 
