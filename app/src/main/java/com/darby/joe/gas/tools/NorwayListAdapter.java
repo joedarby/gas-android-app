@@ -9,23 +9,24 @@ import android.widget.TextView;
 
 import com.darby.joe.gas.activities.DetailChartActivity;
 import com.darby.joe.gas.R;
+import com.darby.joe.gas.data.Terminal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
-/**
- * Created by Joe on 18/10/2016.
- */
 
 public class NorwayListAdapter extends BaseAdapter {
 
-    private HashMap<String, Double> data;
+    private HashMap<String, Double> data = new HashMap<>();
     private ArrayList<String> locations = new ArrayList<>();
 
-    public NorwayListAdapter(HashMap<String, Double> dataSet) {
-        data = dataSet;
-        locations.addAll(dataSet.keySet());
+    public NorwayListAdapter(Terminal[] terminals) {
+        for (Terminal t : terminals) {
+            data.put(t.terminalName, t.terminalFlow);
+            locations.add(t.terminalName);
+        }
+
     }
 
 

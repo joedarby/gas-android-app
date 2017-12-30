@@ -21,7 +21,6 @@ package="com.darby.joe.gas">
     <activity android:name=".activities.TerminalListActivity"/>
     <activity android:name=".activities.DetailChartActivity"/>
     <activity android:name=".activities.MultipleChartActivity"/>
-    <activity android:name=".activities.NorwayActivity"/>
 
     <service
         android:name=".firebase.MyFirebaseInstanceIdService">

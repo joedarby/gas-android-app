@@ -4,13 +4,16 @@ import android.app.Activity;
 import android.widget.TextView;
 
 import com.darby.joe.gas.activities.GetChart;
+//import com.darby.joe.gas.activities.NorwayListActivity;
+import com.darby.joe.gas.activities.TerminalListActivity;
 import com.darby.joe.gas.data.ChartData;
 import com.darby.joe.gas.R;
+import com.darby.joe.gas.data.NorwayDataSet;
+import com.darby.joe.gas.data.Terminal;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
@@ -18,10 +21,11 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class HttpHelper {
+
+    public static final String API_ROOT_URL = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/";
 
     public static Call getCall(String url) {
         Request request = new Request.Builder()
@@ -34,7 +38,8 @@ public class HttpHelper {
 
     public static String getChartUrl(String country, String... pNames) {
 
-        StringBuilder callUrl = new StringBuilder("https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/chart?location=");
+        StringBuilder callUrl = new StringBuilder(API_ROOT_URL);
+        callUrl.append("chart?location=");
 
         //pNames is empty if called from MultipleChartActivity
         if (pNames.length > 0) {
@@ -57,6 +62,33 @@ public class HttpHelper {
         return callUrl.toString();
     }
 
+    public static Callback getTerminalListCallback(final TerminalListActivity a, final String country) {
+        return new Callback() {
+            Terminal[] terminals;
+            @Override
+            public void onFailure (Call call, IOException e){
+                a.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        a.configFailView(false);
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse (Call call, Response response)throws IOException {
+                terminals = country.equals("norway")
+                        ? new DataParser().getNorwayData(response.body().byteStream())
+                        : new DataParser().getTerminals(response.body().byteStream());
+                a.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        a.configListView(terminals);
+                    }
+                });
+            }
+        };
+    }
 
     public static <T extends Activity & GetChart> Callback getChartCallback(final String country, final T a) {
 
@@ -73,17 +105,13 @@ public class HttpHelper {
                 });
             }
 
-
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                //String s = response.body().string();
                 final ChartData chartData = new DataParser().getChartData(response.body().byteStream());
                 a.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         a.getChart(country, chartData);
-
                     }
                 });
             }

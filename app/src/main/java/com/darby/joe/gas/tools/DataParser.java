@@ -6,10 +6,6 @@ import com.darby.joe.gas.data.NorwayDataSet;
 import com.darby.joe.gas.data.Terminal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -38,11 +34,12 @@ public class DataParser {
         return gson.fromJson(new InputStreamReader(inputStream), LinepackDataSet.class);
     }
 
-    public NorwayDataSet getNorwayData(InputStream inputStream) {
+    public Terminal[] getNorwayData(InputStream inputStream) {
         Gson gson = new Gson();
-        return gson.fromJson(new InputStreamReader(inputStream), NorwayDataSet.class);
-    }
+        NorwayDataSet dataSet = gson.fromJson(new InputStreamReader(inputStream), NorwayDataSet.class);
+        return dataSet.convertToTerminals();
 
+    }
 
     /*public TerminalHistory getDbData(InputStream inputStream) {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
@@ -52,7 +49,6 @@ public class DataParser {
 
     public ChartData getChartData(InputStream inputStream) {
         Gson gson = new Gson();
-        //Type type = new TypeToken<HashMap<String,HashMap<BigDecimal, BigDecimal>>>(){}.getType();
         return gson.fromJson(new InputStreamReader(inputStream), ChartData.class);
     }
 
