@@ -21,8 +21,10 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -45,43 +47,15 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
         decorView.setSystemUiVisibility(uiOptions);
         getSupportActionBar().hide();
 
-
         runClient();
     }
 
     private void runClient() {
-
-//        String callUrl = "https://gas-server.herokuapp.com/chart/" + country +"/";
-        String callUrl = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/chart?location=";
-//        if (country.equals("uk")){
-//            for (String name : TerminalMap.UK_TERMINAL_MAPPING.keySet()) {
-//                callUrl += name + ",";
-//            }
-//        } else if (country.equals("nl")){
-//            for (String name : TerminalMap.NL_TERMINAL_MAPPING.keySet()) {
-//                callUrl += name + ",";
-//            }
-//        } else {
-//            for (String name : TerminalMap.NORWAY_LOCATIONS) {
-//                callUrl += name + ",";
-//            }
-//        }
-        callUrl += "all";
-        callUrl += "&country=" + country;
-
-        Calendar now = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:MM");
-        String end = sdf.format(now.getTime());
-        now.add(Calendar.DATE, -1);
-        String start = sdf.format(now.getTime());
-
-        callUrl += "&timeFrom=" + start + "&timeTo=" + end;
+        String callUrl = HttpHelper.getChartUrl(country);
 
         Call call = HttpHelper.getCall(callUrl);
         Callback callback = HttpHelper.getChartCallback(country, this);
         call.enqueue(callback);
-
-
     }
 
     @Override
@@ -91,7 +65,7 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
         for (String pipeline : chartData.dataList.keySet())
             chartPipelines.add(new ChartPipeline(pipeline, chartData.dataList.get(pipeline)));
 
-        HashMap<String, LineData> lineDataObjects = country.equals("uk") || country.equals("nl")
+        TreeMap<String, LineData> lineDataObjects = country.equals("uk") || country.equals("nl")
                 ? getGroupedChartLineData(chartPipelines, country)
                 : getUngroupedChartLineData(chartPipelines);
 
@@ -101,8 +75,8 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
 
     }
 
-    private HashMap<String, LineData> getGroupedChartLineData(ArrayList<ChartPipeline> pipelines, String country) {
-        HashMap<String, LineData> lineDataMap = new HashMap<>();
+    private TreeMap<String, LineData> getGroupedChartLineData(ArrayList<ChartPipeline> pipelines, String country) {
+        TreeMap<String, LineData> lineDataMap = new TreeMap<>();
 
         HashMap<String, ChartTerminal> terminalDataSets = new HashMap<>();
 
@@ -124,8 +98,8 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
         return lineDataMap;
     }
 
-    private HashMap<String, LineData> getUngroupedChartLineData(ArrayList<ChartPipeline> pipelines) {
-        HashMap<String, LineData> lineDataMap = new HashMap<>();
+    private TreeMap<String, LineData> getUngroupedChartLineData(ArrayList<ChartPipeline> pipelines) {
+        TreeMap<String, LineData> lineDataMap = new TreeMap<>();
 
         for (ChartPipeline pipeline: pipelines) {
             LineDataSet dataSet = pipeline.getLineDataSet();

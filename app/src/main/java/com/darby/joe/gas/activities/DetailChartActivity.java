@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.darby.joe.gas.data.ChartData;
 import com.darby.joe.gas.data.ChartPipeline;
 import com.darby.joe.gas.data.ChartTerminal;
-import com.darby.joe.gas.data.TerminalMap;
 import com.darby.joe.gas.tools.ConfigureChart;
 import com.darby.joe.gas.tools.HttpHelper;
 import com.darby.joe.gas.R;
@@ -17,73 +16,46 @@ import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 
-/**
- * Created by Joe on 26/08/2016.
- */
-public class TerminalDetailActivity extends AppCompatActivity implements GetChart {
+public class DetailChartActivity extends AppCompatActivity implements GetChart {
     public static String TERMINAL_NAME = "terminal name";
     public static String PIPELINE_NAMES = "pipeline names";
     public static String COUNTRY = "terminal type";
+    private String tName;
+    private String country;
+    String[] pipelineNames;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.terminal_individual_chart);
+        tName = getIntent().getStringExtra(TERMINAL_NAME);
+        country = getIntent().getStringExtra(COUNTRY);
+        pipelineNames = getIntent().getStringArrayListExtra(PIPELINE_NAMES).toArray(new String[0]);
 
         runClient();
     }
 
     private void runClient() {
-
-        //Get and set the terminal name
         TextView myText = (TextView) findViewById(R.id.terminal);
-        String tName = getIntent().getStringExtra(TERMINAL_NAME);
         myText.setText(tName);
 
-        //Set chart data call url as appropriate for uk or norway
-        //String callUrl = "https://gas-server.herokuapp.com/chart/";
-        StringBuilder callUrl = new StringBuilder("https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/chart?location=");
+        String callUrl = HttpHelper.getChartUrl(country, pipelineNames);
 
-        String country = getIntent().getStringExtra(COUNTRY);
-
-        if (country.equals("uk") || country.equals("nl")){
-            ArrayList<String> pNames = getIntent().getStringArrayListExtra(PIPELINE_NAMES);
-            for (String name : pNames) {
-                callUrl.append(name).append(",");
-            }
-        } else {
-            callUrl.append(tName);
-        }
-        callUrl.append("&country=").append(country);
-
-        Calendar now = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:MM");
-        String end = sdf.format(now.getTime());
-        now.add(Calendar.DATE, -1);
-        String start = sdf.format(now.getTime());
-
-        callUrl.append("&timeFrom=").append(start).append("&timeTo=").append(end);
-
-        Call call = HttpHelper.getCall(callUrl.toString());
-        Callback callback = HttpHelper.getChartCallback(country, TerminalDetailActivity.this);
+        Call call = HttpHelper.getCall(callUrl);
+        Callback callback = HttpHelper.getChartCallback(country, DetailChartActivity.this);
         call.enqueue(callback);
-
-
     }
 
     @Override
     public void getChart(String country, ChartData chartData) {
-        ChartTerminal cTerm = new ChartTerminal(getIntent().getStringExtra(TERMINAL_NAME));
+        ChartTerminal cTerm = new ChartTerminal(tName);
 
-        for (String pipeline : chartData.dataList.keySet())
+        for (String pipeline : pipelineNames)
             cTerm.addPipeline(new ChartPipeline(pipeline, chartData.dataList.get(pipeline)));
 
         List<ILineDataSet> dataSets = cTerm.getLineDataSetList();

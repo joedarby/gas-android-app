@@ -19,7 +19,7 @@ package="com.darby.joe.gas">
     </activity>
     <activity android:name=".activities.NBPLinepackDataActivity"/>
     <activity android:name=".activities.TerminalListActivity"/>
-    <activity android:name=".activities.TerminalDetailActivity"/>
+    <activity android:name=".activities.DetailChartActivity"/>
     <activity android:name=".activities.MultipleChartActivity"/>
     <activity android:name=".activities.NorwayActivity"/>
 

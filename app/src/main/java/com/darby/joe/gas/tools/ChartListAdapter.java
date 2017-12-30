@@ -12,23 +12,20 @@ import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.LineData;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeMap;
 
-/**
- * Created by Joe on 12/10/2016.
- */
 
 public class ChartListAdapter extends BaseAdapter {
-    private HashMap<String, LineData> data;
-    float minX;
-    float maxX;
+    private TreeMap<String, LineData> data;
+    private String[] terminalNames;
 
-
-    public ChartListAdapter(HashMap<String, LineData> d) {
+    public ChartListAdapter(TreeMap<String, LineData> d) {
         data = d;
-
-
+        this.terminalNames = d.keySet().toArray(new String[0]);
     }
 
     @Override
@@ -56,23 +53,16 @@ public class ChartListAdapter extends BaseAdapter {
 
         LineChart chart = (LineChart) convertView.findViewById(R.id.m_chart);
 
-        ArrayList<String> terminalNames = new ArrayList<>();
-        ArrayList<LineData> dataSets =  new ArrayList<>();
-        terminalNames.addAll(data.keySet());
-
-        Collections.sort(terminalNames);
-        for (String terminal : terminalNames) {
-            dataSets.add(data.get(terminal));
-        }
+        String terminal = terminalNames[position];
 
         com.darby.joe.gas.tools.ConfigureChart.configure(chart);
         Description desc = new Description();
         desc.setTextSize(14f);
         desc.setPosition(20,21);
         desc.setTextAlign(Paint.Align.LEFT);
-        desc.setText(terminalNames.get(position));
+        desc.setText(terminal);
         chart.setDescription(desc);
-        chart.setData(dataSets.get(position));
+        chart.setData(data.get(terminal));
         chart.invalidate();
 
         return convertView;

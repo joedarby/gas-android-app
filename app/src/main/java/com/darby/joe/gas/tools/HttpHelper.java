@@ -8,6 +8,10 @@ import com.darby.joe.gas.data.ChartData;
 import com.darby.joe.gas.R;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -28,18 +32,31 @@ public class HttpHelper {
 
     }
 
-//    public static Call getPostCall(String url, RequestBody requestBody) {
-//        Request request = new Request.Builder()
-//                .url(url)
-//                .post(requestBody)
-//                .build();
-//
-//        return new OkHttpClient.Builder()
-//                .connectTimeout(60, TimeUnit.SECONDS)
-//                .build()
-//                .newCall(request);
-//
-//    }
+    public static String getChartUrl(String country, String... pNames) {
+
+        StringBuilder callUrl = new StringBuilder("https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/chart?location=");
+
+        //pNames is empty if called from MultipleChartActivity
+        if (pNames.length > 0) {
+            for (String name : pNames) {
+                callUrl.append(name).append(",");
+            }
+        } else
+            callUrl.append("all");
+
+        callUrl.append("&country=").append(country);
+
+        Calendar now = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:MM");
+        String end = sdf.format(now.getTime());
+        now.add(Calendar.DATE, -1);
+        String start = sdf.format(now.getTime());
+
+        callUrl.append("&timeFrom=").append(start).append("&timeTo=").append(end);
+
+        return callUrl.toString();
+    }
+
 
     public static <T extends Activity & GetChart> Callback getChartCallback(final String country, final T a) {
 

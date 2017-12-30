@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.darby.joe.gas.activities.TerminalDetailActivity;
+import com.darby.joe.gas.activities.DetailChartActivity;
 import com.darby.joe.gas.R;
 
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class NorwayListAdapter extends BaseAdapter {
         }
         final String terminalName = locations.get(position);
 
-        TextView terminal = (TextView) convertView.findViewById(R.id.terminal);
+        final TextView terminal = (TextView) convertView.findViewById(R.id.terminal);
         terminal.setText(terminalName);
 
         TextView flowVol = (TextView) convertView.findViewById(R.id.flow_vol);
@@ -63,11 +63,15 @@ public class NorwayListAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View clickedView) {
-                Intent detail = new Intent(clickedView.getContext(), TerminalDetailActivity.class);
-                detail.putExtra(TerminalDetailActivity.COUNTRY, "norway");
-                detail.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalName);
-                //terminal_individual_chart.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].pipelines[childPosition].pipelineName);
-                //detail.putStringArrayListExtra(TerminalDetailActivity.PIPELINE_NAMES, terminalList[groupPosition].getPipelineNames());
+                Intent detail = new Intent(clickedView.getContext(), DetailChartActivity.class);
+                detail.putExtra(DetailChartActivity.COUNTRY, "norway");
+                detail.putExtra(DetailChartActivity.TERMINAL_NAME, terminalName);
+
+                ArrayList<String> pipelineName = new ArrayList<>();
+                pipelineName.add(terminalName);
+
+                //terminal_individual_chart.putExtra(DetailChartActivity.TERMINAL_NAME, terminalList[groupPosition].pipelines[childPosition].pipelineName);
+                detail.putStringArrayListExtra(DetailChartActivity.PIPELINE_NAMES, pipelineName);
                 clickedView.getContext().startActivity(detail);
             }
         });

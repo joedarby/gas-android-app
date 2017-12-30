@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import com.darby.joe.gas.activities.TerminalDetailActivity;
+import com.darby.joe.gas.activities.DetailChartActivity;
 import com.darby.joe.gas.data.Pipeline;
 import com.darby.joe.gas.data.Terminal;
 import com.darby.joe.gas.R;
@@ -48,11 +48,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View clickedView) {
-                Intent detail = new Intent(clickedView.getContext(), TerminalDetailActivity.class);
-                detail.putExtra(TerminalDetailActivity.COUNTRY, country);
-                detail.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].terminalName);
-                //terminal_individual_chart.putExtra(TerminalDetailActivity.TERMINAL_NAME, terminalList[groupPosition].pipelines[childPosition].pipelineName);
-                detail.putStringArrayListExtra(TerminalDetailActivity.PIPELINE_NAMES, terminalList[groupPosition].getPipelineNames());
+                Intent detail = new Intent(clickedView.getContext(), DetailChartActivity.class);
+                detail.putExtra(DetailChartActivity.COUNTRY, country);
+                detail.putExtra(DetailChartActivity.TERMINAL_NAME, terminalList[groupPosition].terminalName);
+                //terminal_individual_chart.putExtra(DetailChartActivity.TERMINAL_NAME, terminalList[groupPosition].pipelines[childPosition].pipelineName);
+                detail.putStringArrayListExtra(DetailChartActivity.PIPELINE_NAMES, terminalList[groupPosition].getPipelineNames());
                 clickedView.getContext().startActivity(detail);
             }
         });
