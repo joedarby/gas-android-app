@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by Joe on 03/09/2016.
- */
 public class TerminalMap {
     private static final HashMap<String, String> UK_TERMINAL_MAPPING = new HashMap<>();
     private static HashMap<String, String> NL_TERMINAL_MAPPING = new HashMap<>();
@@ -20,7 +17,7 @@ public class TerminalMap {
         UK_TERMINAL_MAPPING.put("BACTON IC", "Bacton IP");
         UK_TERMINAL_MAPPING.put("BACTON PERENCO", "Bacton UKCS");
         UK_TERMINAL_MAPPING.put("BACTON SEAL", "Bacton UKCS");
-        UK_TERMINAL_MAPPING.put("BACTON Shell", "Bacton UKCS");
+        UK_TERMINAL_MAPPING.put("BACTON SHELL", "Bacton UKCS");
         UK_TERMINAL_MAPPING.put("ST FERGUS MOBIL", "St Fergus");
         UK_TERMINAL_MAPPING.put("ST FERGUS NSMP", "St Fergus");
         UK_TERMINAL_MAPPING.put("ST FERGUS SHELL", "St Fergus");
@@ -108,6 +105,17 @@ public class TerminalMap {
                 return NL_TERMINAL_NAMES;
             default:
                 return NORWAY_DELIVERY_GROUPS;
+        }
+    }
+
+    public static Set<String> getAllPipelineNames(String country) {
+        switch (country) {
+            case "uk":
+                return UK_TERMINAL_MAPPING.keySet();
+            case "nl":
+                return NL_TERMINAL_MAPPING.keySet();
+            default:
+                return NOR_TERMINAL_MAPPING.keySet();
         }
     }
 

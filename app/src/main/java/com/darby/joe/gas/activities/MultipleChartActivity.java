@@ -11,6 +11,7 @@ import com.darby.joe.gas.data.ChartData;
 import com.darby.joe.gas.data.ChartPipeline;
 import com.darby.joe.gas.data.ChartTerminal;
 import com.darby.joe.gas.R;
+import com.darby.joe.gas.data.Terminal;
 import com.darby.joe.gas.data.TerminalMap;
 import com.darby.joe.gas.tools.ChartListAdapter;
 import com.darby.joe.gas.tools.HttpHelper;
@@ -28,7 +29,7 @@ import okhttp3.Callback;
 public class MultipleChartActivity extends AppCompatActivity implements GetChart {
     public static String COUNTRY = "country";
     public String country;
-    private Set<String> terminalNames;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +37,6 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
         setContentView(R.layout.all_nbp_charts);
 
         country = getIntent().getStringExtra(COUNTRY);
-        terminalNames = TerminalMap.getAllTerminalNames(country);
 
         View decorView = getWindow().getDecorView();
 
@@ -57,35 +57,20 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
 
     @Override
     public void getChart(String country, ChartData chartData) {
-        ArrayList<ChartPipeline> chartPipelines = new ArrayList<>();
 
-        for (String pipeline : chartData.dataList.keySet())
-            chartPipelines.add(new ChartPipeline(pipeline, chartData.dataList.get(pipeline)));
-
-        TreeMap<String, LineData> lineDataObjects = getChartLineData(chartPipelines, country);
+        TreeMap<String, LineData> lineDataObjects = getChartLineData(chartData);
 
         ListView listView = (ListView) findViewById(R.id.chart_list_view);
         ListAdapter listAdapter = new ChartListAdapter(lineDataObjects);
         listView.setAdapter(listAdapter);
-
     }
 
-    private TreeMap<String, LineData> getChartLineData(ArrayList<ChartPipeline> pipelines, String country) {
+    private TreeMap<String, LineData> getChartLineData(ChartData chartData) {
         TreeMap<String, LineData> lineDataMap = new TreeMap<>();
 
-        HashMap<String, ChartTerminal> terminalDataSets = new HashMap<>();
-
-        for (String tName : terminalNames)
-            terminalDataSets.put(tName, new ChartTerminal());
-
-        for (ChartPipeline pipeline : pipelines) {
-            String pTerm = TerminalMap.getTerminalName(pipeline.getName(), country);
-            terminalDataSets.get(pTerm).addPipeline(pipeline);
-        }
-
-        for (String terminal : terminalNames) {
-            LineData data = terminalDataSets.get(terminal).getLineData();
-            lineDataMap.put(terminal, data);
+        for (ChartTerminal t : chartData.dataList) {
+            LineData lineData = t.getLineData();
+            lineDataMap.put(t.terminalName, lineData);
         }
         return lineDataMap;
     }

@@ -10,21 +10,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by joe on 27/12/17.
- */
-
 public class ChartPipeline {
-    private String name;
+    private String pipelineName;
     HashMap<BigDecimal, Float> data;
 
-    public ChartPipeline(String name, HashMap<BigDecimal, Float> data) {
-        this.name = name;
+    public ChartPipeline(String pipelineName, HashMap<BigDecimal, Float> data) {
+        this.pipelineName = pipelineName;
         this.data = data;
-    }
-
-    public String getName() {
-        return name;
     }
 
     private List<Entry> getEntries() {
@@ -38,7 +30,7 @@ public class ChartPipeline {
     }
 
     public LineDataSet getLineDataSet() {
-        LineDataSet dataSet = new LineDataSet(getEntries(), name);
+        LineDataSet dataSet = new LineDataSet(getEntries(), pipelineName);
         dataSet.setDrawValues(false);
         dataSet.setDrawCircles(false);
         dataSet.setDrawFilled(false);

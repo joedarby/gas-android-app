@@ -10,14 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChartTerminal {
-    private ArrayList<ChartPipeline> pipelines;
+    public String terminalName;
+    public ArrayList<ChartPipeline> pipelines;
 
     public ChartTerminal() {
         pipelines = new ArrayList<>();
-    }
-
-    public void addPipeline(ChartPipeline p) {
-        pipelines.add(p);
     }
 
     public LineData getLineData() {
