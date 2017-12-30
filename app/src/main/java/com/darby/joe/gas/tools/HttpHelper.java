@@ -6,13 +6,11 @@ import android.widget.TextView;
 import com.darby.joe.gas.activities.GetChart;
 //import com.darby.joe.gas.activities.NorwayListActivity;
 import com.darby.joe.gas.activities.TerminalListActivity;
-import com.darby.joe.gas.data.ChartData;
+import com.darby.joe.gas.charts.ChartData;
 import com.darby.joe.gas.R;
-import com.darby.joe.gas.data.NorwayDataSet;
 import com.darby.joe.gas.data.Terminal;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;

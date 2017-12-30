@@ -5,18 +5,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.darby.joe.gas.data.ChartData;
-import com.darby.joe.gas.data.ChartPipeline;
-import com.darby.joe.gas.data.ChartTerminal;
-import com.darby.joe.gas.tools.ConfigureChart;
+import com.darby.joe.gas.charts.ChartData;
+import com.darby.joe.gas.charts.ChartTerminal;
+import com.darby.joe.gas.charts.ConfigureChart;
 import com.darby.joe.gas.tools.HttpHelper;
 import com.darby.joe.gas.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;

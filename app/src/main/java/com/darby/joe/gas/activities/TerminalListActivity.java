@@ -5,21 +5,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.darby.joe.gas.tools.DataParser;
 import com.darby.joe.gas.tools.ExpandableListAdapter;
 import com.darby.joe.gas.tools.HttpHelper;
 import com.darby.joe.gas.R;
 import com.darby.joe.gas.data.Terminal;
-import com.darby.joe.gas.tools.NorwayListAdapter;
-
-import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.Response;
 
 public class TerminalListActivity extends AppCompatActivity {
     public static String COUNTRY = "country";

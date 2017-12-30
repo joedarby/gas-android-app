@@ -7,19 +7,13 @@ import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.darby.joe.gas.data.ChartData;
-import com.darby.joe.gas.data.ChartPipeline;
-import com.darby.joe.gas.data.ChartTerminal;
+import com.darby.joe.gas.charts.ChartData;
+import com.darby.joe.gas.charts.ChartTerminal;
 import com.darby.joe.gas.R;
-import com.darby.joe.gas.data.Terminal;
-import com.darby.joe.gas.data.TerminalMap;
-import com.darby.joe.gas.tools.ChartListAdapter;
+import com.darby.joe.gas.charts.ChartListAdapter;
 import com.darby.joe.gas.tools.HttpHelper;
 import com.github.mikephil.charting.data.LineData;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
 import java.util.TreeMap;
 
 import okhttp3.Call;

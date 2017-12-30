@@ -1,4 +1,4 @@
-package com.darby.joe.gas.data;
+package com.darby.joe.gas.charts;
 
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineDataSet;

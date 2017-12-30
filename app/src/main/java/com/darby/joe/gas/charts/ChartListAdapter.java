@@ -1,4 +1,4 @@
-package com.darby.joe.gas.tools;
+package com.darby.joe.gas.charts;
 
 import android.graphics.Paint;
 import android.view.LayoutInflater;
@@ -11,11 +11,6 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.LineData;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Set;
 import java.util.TreeMap;
 
 
@@ -55,7 +50,7 @@ public class ChartListAdapter extends BaseAdapter {
 
         String terminal = terminalNames[position];
 
-        com.darby.joe.gas.tools.ConfigureChart.configure(chart);
+        ConfigureChart.configure(chart);
         Description desc = new Description();
         desc.setTextSize(14f);
         desc.setPosition(20,21);
