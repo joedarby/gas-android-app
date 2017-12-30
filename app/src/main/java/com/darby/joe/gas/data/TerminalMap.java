@@ -8,41 +8,12 @@ import java.util.Set;
  * Created by Joe on 03/09/2016.
  */
 public class TerminalMap {
-    public static final HashMap<String, String> UK_TERMINAL_MAPPING = new HashMap<>();
-    public static Set<String> UK_TERMINAL_NAMES = new HashSet<>();
-//    static {
-//        UK_TERMINAL_MAPPING.put("Bacton BBL", "Bacton IP");
-//        UK_TERMINAL_MAPPING.put("Interconnector", "Bacton IP");
-//        UK_TERMINAL_MAPPING.put("Bacton Perenco", "Bacton UKCS");
-//        UK_TERMINAL_MAPPING.put("Bacton SEAL", "Bacton UKCS");
-//        UK_TERMINAL_MAPPING.put("Bacton Shell", "Bacton UKCS");
-//        UK_TERMINAL_MAPPING.put("St Fergus Mobil", "St Fergus");
-//        UK_TERMINAL_MAPPING.put("St Fergus NSMP", "St Fergus");
-//        UK_TERMINAL_MAPPING.put("St Fergus Shell", "St Fergus");
-//        UK_TERMINAL_MAPPING.put("Teesside PX", "Teesside");
-//        UK_TERMINAL_MAPPING.put("Teesside CATS", "Teesside");
-//        UK_TERMINAL_MAPPING.put("Aldbrough", "Medium Range Storage");
-//        UK_TERMINAL_MAPPING.put("Hilltop", "Medium Range Storage");
-//        UK_TERMINAL_MAPPING.put("Hole House Farm", "Medium Range Storage");
-//        UK_TERMINAL_MAPPING.put("Holford", "Medium Range Storage");
-//        UK_TERMINAL_MAPPING.put("Hornsea", "Medium Range Storage");
-//        UK_TERMINAL_MAPPING.put("Stublach", "Medium Range Storage");
-//        UK_TERMINAL_MAPPING.put("Grain NTS 1", "Isle of Grain");
-//        UK_TERMINAL_MAPPING.put("Grain NTS 2", "Isle of Grain");
-//        UK_TERMINAL_MAPPING.put("Easington Dimlington", "Easington");
-//        UK_TERMINAL_MAPPING.put("Easington Langeled", "Easington");
-//        //UK_TERMINAL_MAPPING.put("Avonmouth", "LNG Storage");
-//        //UK_TERMINAL_MAPPING.put("Glenmavis", "LNG Storage");
-//        //UK_TERMINAL_MAPPING.put("Dynevor Arms", "LNG Storage");
-//        //UK_TERMINAL_MAPPING.put("Partington", "LNG Storage");
-//        UK_TERMINAL_MAPPING.put("South Hook", "Milford Haven");
-//        UK_TERMINAL_MAPPING.put("Dragon", "Milford Haven");
-//        UK_TERMINAL_MAPPING.put("Theddlethorpe NTS", "Theddlethorpe");
-//        UK_TERMINAL_MAPPING.put("Barrow South", "Barrow");
-//        UK_TERMINAL_MAPPING.put("Rough LRS", "Rough Storage");
-//
-//        UK_TERMINAL_NAMES.addAll(UK_TERMINAL_MAPPING.values());
-//    }
+    private static final HashMap<String, String> UK_TERMINAL_MAPPING = new HashMap<>();
+    private static HashMap<String, String> NL_TERMINAL_MAPPING = new HashMap<>();
+    private static HashMap<String, String> NOR_TERMINAL_MAPPING = new HashMap<>();
+    private static Set<String> UK_TERMINAL_NAMES = new HashSet<>();
+    private static Set<String> NL_TERMINAL_NAMES = new HashSet<>();
+    private static Set<String> NORWAY_DELIVERY_GROUPS = new HashSet<>();
 
     static {
         UK_TERMINAL_MAPPING.put("BACTON BBL", "Bacton IP");
@@ -78,18 +49,20 @@ public class TerminalMap {
         UK_TERMINAL_NAMES.addAll(UK_TERMINAL_MAPPING.values());
     }
 
-    public static Set<String> NORWAY_LOCATIONS = new HashSet<>();
+
     static {
-        NORWAY_LOCATIONS.add("Easington");
-        NORWAY_LOCATIONS.add("St. Fergus");
-        NORWAY_LOCATIONS.add("Entry SEGAL Pipeline System");
-        NORWAY_LOCATIONS.add("Zeebrugge");
-        NORWAY_LOCATIONS.add("Dunkerque");
-        NORWAY_LOCATIONS.add("Emden");
-        NORWAY_LOCATIONS.add("Dornum");
+        NOR_TERMINAL_MAPPING.put("Easington", "UK");
+        NOR_TERMINAL_MAPPING.put("St. Fergus", "UK");
+        NOR_TERMINAL_MAPPING.put("Entry SEGAL Pipeline System", "UK");
+        NOR_TERMINAL_MAPPING.put("Zeebrugge", "BE/FR");
+        NOR_TERMINAL_MAPPING.put("Dunkerque", "BE/FR");
+        NOR_TERMINAL_MAPPING.put("Emden", "DE/NL");
+        NOR_TERMINAL_MAPPING.put("Dornum", "DE/NL");
+
+        NORWAY_DELIVERY_GROUPS.addAll(NOR_TERMINAL_MAPPING.values());
     }
 
-    public static HashMap<String, String> NL_TERMINAL_MAPPING = new HashMap<>();
+
     static {
         NL_TERMINAL_MAPPING.put("BOCHOLTZ TENP (OGE - FLX TENP)", "Bocholtz");
         NL_TERMINAL_MAPPING.put("BOCHOLTZ VETSCHAU (THYSSENGAS)", "Bocholtz");
@@ -111,29 +84,31 @@ public class TerminalMap {
         NL_TERMINAL_MAPPING.put("ZANDVLIET (FLUXYS-H)", "Belgium");
         NL_TERMINAL_MAPPING.put("ZELZATE (FLUXYS)", "Belgium");
         NL_TERMINAL_MAPPING.put("ZEVENAAR", "Other (DE)");
+
+        NL_TERMINAL_NAMES.addAll(NL_TERMINAL_MAPPING.values());
     }
 
-
-
-    //Given pipeline name, return terminal name
-    public static String getUKTerminal(String pipelineName) {
-        String terminalName;
-        if (UK_TERMINAL_MAPPING.containsKey(pipelineName)) {
-            terminalName = UK_TERMINAL_MAPPING.get(pipelineName);
-        } else {
-            terminalName = null;
+    public static String getTerminalName(String pipelineName, String country) {
+        switch (country) {
+            case "uk":
+                return UK_TERMINAL_MAPPING.get(pipelineName);
+            case "nl":
+                return NL_TERMINAL_MAPPING.get(pipelineName);
+            default:
+                return NOR_TERMINAL_MAPPING.get(pipelineName);
         }
-        return terminalName;
     }
 
-    public static String getNLTerminal(String pipelineName) {
-        String terminalName;
-        if (NL_TERMINAL_MAPPING.containsKey(pipelineName)) {
-            terminalName = NL_TERMINAL_MAPPING.get(pipelineName);
-        } else {
-            terminalName = null;
+    public static Set<String> getAllTerminalNames(String country) {
+
+        switch (country) {
+            case "uk":
+                return UK_TERMINAL_NAMES;
+            case "nl":
+                return NL_TERMINAL_NAMES;
+            default:
+                return NORWAY_DELIVERY_GROUPS;
         }
-        return terminalName;
     }
 
 

@@ -53,18 +53,18 @@ public class DetailChartActivity extends AppCompatActivity implements GetChart {
 
     @Override
     public void getChart(String country, ChartData chartData) {
-        ChartTerminal cTerm = new ChartTerminal(tName);
+        ChartTerminal cTerm = new ChartTerminal();
 
         for (String pipeline : pipelineNames)
             cTerm.addPipeline(new ChartPipeline(pipeline, chartData.dataList.get(pipeline)));
 
-        List<ILineDataSet> dataSets = cTerm.getLineDataSetList();
+        LineData lineData = cTerm.getLineData();
         LineChart chart = (LineChart) findViewById(R.id.chart);
         ConfigureChart.configure(chart);
         Description desc = new Description();
         desc.setEnabled(false);
         chart.setDescription(desc);
-        chart.setData(new LineData(dataSets));
+        chart.setData(lineData);
         chart.invalidate();
     }
 }

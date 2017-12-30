@@ -27,12 +27,6 @@ public class ChartPipeline {
         return name;
     }
 
-    public String getTerminalName(String country) {
-        return country.equals("uk")
-                ? TerminalMap.getUKTerminal(name)
-                : TerminalMap.getNLTerminal(name);
-    }
-
     private List<Entry> getEntries() {
         List<Entry> entries = new ArrayList<>();
         for (BigDecimal t : data.keySet()) {
