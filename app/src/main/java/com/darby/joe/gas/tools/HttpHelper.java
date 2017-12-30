@@ -29,7 +29,7 @@ public class HttpHelper {
         okHttp = new OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS).build();
     }
 
-    public HttpHelper getInstance() {
+    public static HttpHelper getInstance() {
         return httpHelper;
     }
 
@@ -67,30 +67,10 @@ public class HttpHelper {
         return callUrl.toString();
     }
 
-    public static Callback getTerminalListCallback(final CurrentFlowsActivity a, final String country) {
-        return new Callback() {
-            Terminal[] terminals;
-            @Override
-            public void onFailure (Call call, IOException e){
-                a.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        a.configFailView(false);
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse (Call call, Response response)throws IOException {
-                terminals = DataParser.getInstance().getTerminals(response.body().byteStream());
-                a.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        a.configListView(terminals);
-                    }
-                });
-            }
-        };
+    public void getTerminals(Callback callback, String country) {
+        String url = API_ROOT_URL + "current-flows?country=" + country;
+        Call call = getCall(url);
+        call.enqueue(callback);
     }
 
     public static <T extends Activity & GetChart> Callback getChartCallback(final String country, final T a) {

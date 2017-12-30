@@ -7,13 +7,17 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import com.darby.joe.gas.tools.DataParser;
 import com.darby.joe.gas.tools.ExpandableListAdapter;
 import com.darby.joe.gas.tools.HttpHelper;
 import com.darby.joe.gas.R;
 import com.darby.joe.gas.data.Terminal;
 
+import java.io.IOException;
+
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Response;
 
 public class CurrentFlowsActivity extends AppCompatActivity {
     public static String COUNTRY = "country";
@@ -33,11 +37,29 @@ public class CurrentFlowsActivity extends AppCompatActivity {
     }
 
     private void runClient() {
-        String url = HttpHelper.API_ROOT_URL + "current-flows?country=" + country;
+        HttpHelper.getInstance().getTerminals(new Callback() {
+            Terminal[] terminals;
+            @Override
+            public void onFailure (Call call, IOException e){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        configFailView(false);
+                    }
+                });
+            }
 
-        Call call = HttpHelper.getCall(url);
-        Callback callback = HttpHelper.getTerminalListCallback(this, country);
-        call.enqueue(callback);
+            @Override
+            public void onResponse (Call call, Response response)throws IOException {
+                terminals = DataParser.getInstance().getTerminals(response.body().byteStream());
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        configListView(terminals);
+                    }
+                });
+            }
+        }, country);
     }
 
     public void configListView(Terminal[] terms) {
