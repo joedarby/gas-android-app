@@ -1,15 +1,5 @@
 package com.darby.joe.gas.tools;
 
-import android.app.Activity;
-import android.widget.TextView;
-
-import com.darby.joe.gas.activities.GetChart;
-import com.darby.joe.gas.activities.CurrentFlowsActivity;
-import com.darby.joe.gas.charts.ChartData;
-import com.darby.joe.gas.R;
-import com.darby.joe.gas.data.Terminal;
-
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +8,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 
 public class HttpHelper {
     public static final String API_ROOT_URL = "https://wjvfbfyc7c.execute-api.eu-west-2.amazonaws.com/dev/";
@@ -41,7 +30,7 @@ public class HttpHelper {
         return okHttp.newCall(request);
     }
 
-    public static String getChartUrl(String country, String... pNames) {
+    private static String getChartUrl(String country, String... pNames) {
 
         StringBuilder callUrl = new StringBuilder(API_ROOT_URL);
         callUrl.append("chart?location=");
@@ -73,33 +62,10 @@ public class HttpHelper {
         call.enqueue(callback);
     }
 
-    public static <T extends Activity & GetChart> Callback getChartCallback(final String country, final T a) {
-
-        return new Callback() {
-
-            @Override
-            public void onFailure(Call call, final IOException e) {
-                a.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextView myText = (TextView) a.findViewById(R.id.terminal);
-                        myText.setText("No response");
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                final ChartData chartData = DataParser.getInstance().getChartData(response.body().byteStream());
-                a.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        a.getChart(country, chartData);
-                    }
-                });
-            }
-        };
+    public void getChartData(Callback callback, String country, String... pipelineNames) {
+        String callUrl = HttpHelper.getChartUrl(country, pipelineNames);
+        Call call = getCall(callUrl);
+        call.enqueue(callback);
     }
-
 
 }

@@ -6,18 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.darby.joe.gas.charts.ChartData;
 import com.darby.joe.gas.charts.ChartTerminal;
 import com.darby.joe.gas.R;
 import com.darby.joe.gas.charts.ChartListAdapter;
+import com.darby.joe.gas.tools.DataParser;
 import com.darby.joe.gas.tools.HttpHelper;
 import com.github.mikephil.charting.data.LineData;
 
+import java.io.IOException;
 import java.util.TreeMap;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Response;
 
 
 public class MultipleChartActivity extends AppCompatActivity implements GetChart {
@@ -42,11 +46,18 @@ public class MultipleChartActivity extends AppCompatActivity implements GetChart
     }
 
     private void runClient() {
-        String callUrl = HttpHelper.getChartUrl(country);
-
-        Call call = HttpHelper.getCall(callUrl);
-        Callback callback = HttpHelper.getChartCallback(country, this);
-        call.enqueue(callback);
+        TextView myText = (TextView) findViewById(R.id.terminal);
+        HttpHelper.getInstance().getChartData(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                runOnUiThread(() -> myText.setText("No response"));
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final ChartData chartData = DataParser.getInstance().getChartData(response.body().byteStream());
+                runOnUiThread(() -> getChart(country, chartData));
+            }
+        }, country);
     }
 
     @Override

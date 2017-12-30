@@ -8,14 +8,18 @@ import android.widget.TextView;
 import com.darby.joe.gas.charts.ChartData;
 import com.darby.joe.gas.charts.ChartTerminal;
 import com.darby.joe.gas.charts.ConfigureChart;
+import com.darby.joe.gas.tools.DataParser;
 import com.darby.joe.gas.tools.HttpHelper;
 import com.darby.joe.gas.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.LineData;
 
+import java.io.IOException;
+
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Response;
 
 public class DetailChartActivity extends AppCompatActivity implements GetChart {
     public static String TERMINAL_NAME = "terminal name";
@@ -39,12 +43,17 @@ public class DetailChartActivity extends AppCompatActivity implements GetChart {
     private void runClient() {
         TextView myText = (TextView) findViewById(R.id.terminal);
         myText.setText(tName);
-
-        String callUrl = HttpHelper.getChartUrl(country, pipelineNames);
-
-        Call call = HttpHelper.getCall(callUrl);
-        Callback callback = HttpHelper.getChartCallback(country, DetailChartActivity.this);
-        call.enqueue(callback);
+        HttpHelper.getInstance().getChartData(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                runOnUiThread(() -> myText.setText("No response"));
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final ChartData chartData = DataParser.getInstance().getChartData(response.body().byteStream());
+                runOnUiThread(() -> getChart(country, chartData));
+            }
+        }, country, pipelineNames);
     }
 
     @Override

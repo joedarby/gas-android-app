@@ -41,23 +41,13 @@ public class CurrentFlowsActivity extends AppCompatActivity {
             Terminal[] terminals;
             @Override
             public void onFailure (Call call, IOException e){
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        configFailView(false);
-                    }
-                });
+                runOnUiThread(() -> configFailView(false));
             }
 
             @Override
             public void onResponse (Call call, Response response)throws IOException {
                 terminals = DataParser.getInstance().getTerminals(response.body().byteStream());
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        configListView(terminals);
-                    }
-                });
+                runOnUiThread(() -> configListView(terminals));
             }
         }, country);
     }

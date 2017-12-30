@@ -28,31 +28,23 @@ public class NBPLinepackDataActivity extends AppCompatActivity {
 
     private void runClient() {
 
-        Call call = HttpHelper.getCall("http://gas-server.herokuapp.com/linepack");
+        Call call = HttpHelper.getInstance().getCall("http://gas-server.herokuapp.com/linepack");
 
         Callback callback = new Callback() {
             LinepackDataSet data;
 
             @Override
             public void onFailure(Call call, final IOException e) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        configFailView2(false);
-                    }
-                });
+                runOnUiThread(() -> configFailView2(false));
             }
 
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 data = DataParser.getInstance().getLinepackData(response.body().byteStream());
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        configFailView2(true);
-                        ConfigLinepackView.ConfigView(data, NBPLinepackDataActivity.this);
-                    }
+                runOnUiThread(() -> {
+                    configFailView2(true);
+                    ConfigLinepackView.ConfigView(data, NBPLinepackDataActivity.this);
                 });
             }
         };
