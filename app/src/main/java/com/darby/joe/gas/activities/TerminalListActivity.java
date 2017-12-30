@@ -62,27 +62,17 @@ public class TerminalListActivity extends AppCompatActivity {
         View header_view = LayoutInflater
                 .from(this)
                 .inflate(R.layout.list_header, null);
+        ExpandableListView expListView = (ExpandableListView) findViewById(R.id.list_view_expandable);
+        ExpandableListAdapter listAdapter = new ExpandableListAdapter(terms, country);
+        expListView.setAdapter(listAdapter);
+        expListView.addHeaderView(header_view);
 
-        if (country.equals("norway")) {
-            ListView listView = (ListView) findViewById(R.id.list);
-            NorwayListAdapter norwayListAdapter = new NorwayListAdapter(terms);
-            listView.setAdapter(norwayListAdapter);
-            listView.addHeaderView(header_view);
-        } else {
-            ExpandableListView expListView = (ExpandableListView) findViewById(R.id.list_view_expandable);
-            ExpandableListAdapter listAdapter = new ExpandableListAdapter(terms, country);
-            expListView.setAdapter(listAdapter);
-            expListView.addHeaderView(header_view);
-
-            int count = listAdapter.getGroupCount();
-            for ( int i = 0; i < count; i++){
-                expListView.expandGroup(i);
-            }
-
-            TextView timestamp = (TextView) findViewById(R.id.timestamp);
-            timestamp.setText("Last update at: " + terms[0].terminalTimestamp);
+        int count = listAdapter.getGroupCount();
+        for ( int i = 0; i < count; i++){
+            expListView.expandGroup(i);
         }
-
+        TextView timestamp = (TextView) findViewById(R.id.timestamp);
+        timestamp.setText("Last update at: " + terms[0].terminalTimestamp);
     }
 
     public void configFailView(Boolean serverSuccess) {

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout ttfHistButton = (LinearLayout) findViewById(R.id.ttf_historical_button);
 
 
-        setButtonClickListener(norFlowsButton, TerminalListActivity.class, "norway");
+        setButtonClickListener(norFlowsButton, NorwayListActivity.class, "norway");
         setButtonClickListener(ukSummaryButton, NBPLinepackDataActivity.class);
         setButtonClickListener(ukFlowsButton, TerminalListActivity.class, "uk");
         setButtonClickListener(norHistButton, MultipleChartActivity.class, "norway");
